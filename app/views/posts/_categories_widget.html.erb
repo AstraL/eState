@@ -1,0 +1,10 @@
+<div class="widget sidebar-widget">
+    <div class="sidebar-widget-title">
+        <%= content_tag(:h3, t('activerecord.models.category.other'), class: 'widgettitle') %>
+    </div>
+    <ul>
+        <% @categories.each do |cat| %>
+            <li><%= link_to (cat.title + " (#{cat.posts.count})"), category_posts_path({category_slug: cat.slug}) %></li>
+        <% end %>
+    </ul>
+</div>

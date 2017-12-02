@@ -1,0 +1,61 @@
+<% provide(:title, @post.title) %>
+<div class="site-showcase">
+    <!-- Start Page Header -->
+    <div class="parallax page-header" style="background-image:url(<%= image_url("blog-header") %>);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <%= content_tag(:h1, @post.title) %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Header -->
+</div>
+<div class="main" role="main">
+    <div id="content" class="content full">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <header class="single-post-header clearfix">
+                        <%= content_tag(:h2, @post.title, class: 'post-title') %>
+                    </header>
+                    <article class="post-content">
+                        <div class="post-meta meta-data">
+                            <span><%= fa_icon "calendar", text: "#{t('activerecord.attributes.post.created_at')} #{l(@post.created_at, format: '%d %B %Y')}" %></span>
+                            <span><%= fa_icon "user", text: "#{t('activerecord.attributes.post.user')}: #{@post.user.fullname}" %></span>
+                            <span><%= fa_icon "tag", text: "#{t('activerecord.models.category.one')}: " %><%= link_to @post.category.title, category_posts_path({category_slug: @post.category.slug}) %></span>
+                        </div>
+                        <% if @post.image? %>
+                        <div class="featured-image">
+                            <%= image_tag @post.image.show, class: 'img-responsive' %>
+                        </div>
+                        <% end %>
+                        <%= @post.body.html_safe %>
+                        <!--<div class="post-meta"> <i class="fa fa-tags"></i> <a href="#">Sold</a>, <a href="#">Property</a> </div>-->
+                    </article>
+                </div>
+                <div class="col-md-3 sidebar">
+                    <div class="widget-recent-posts widget">
+                        <%= content_tag(:h3, t('posts.recent_posts'), class: 'widgettitle') %>
+                        <ul>
+                            <% @recent_posts.each do |rp| %>
+                                <li class="clearfix">
+                                    <%= link_to post_path(rp), class: 'media-box post-image' do %>
+                                        <%= image_tag rp.image.thumb, class: 'img-thumbnail' %>
+                                    <% end %>
+                                    <div class="widget-blog-content">
+                                        <%= link_to rp.title, post_path(rp) %>
+                                    </div>
+                                </li>
+                            <% end %>
+                        </ul>
+                    </div>
+                    <%= render 'posts/search_widget' %>
+                    <%= render 'posts/categories_widget' %>
+                    <%#= render 'posts/tags_widget' %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

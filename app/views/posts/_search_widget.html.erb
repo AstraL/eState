@@ -1,0 +1,13 @@
+<div class="widget sidebar-widget search-form-widget">
+    <%= content_tag(:h3, t('search.title'), class: 'widgettitle') %>
+    <%= search_form_for @q do |f| %>
+        <%= f.input :title_cont, label: false, wrapper: :vertical_input_group do %>
+            <%= f.search_field :title_cont, placeholder: t('search.placeholder.post'), class: 'form-control' %>
+            <span class="input-group-btn">
+                <%= f.button :button do %>
+                    <%= fa_icon "search lg" %>
+                <% end %>
+            </span>
+        <% end %>
+    <% end %>
+</div>

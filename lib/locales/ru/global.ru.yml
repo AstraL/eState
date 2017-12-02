@@ -1,0 +1,31 @@
+ru:
+  titles:
+    home: 'Главная'
+    realties: 'Объявления'
+    contacts: 'Контакты'
+    blog: 'Блог'
+    admin: 'Панель управления'
+  home:
+    recently_listed: 'Недавно добавленные'
+    view_more: 'Больше объявлений'
+  contacts:
+    free_line: 'Позвоните нам'
+    email_us: 'Отправьте письмо'
+    working_hours: 'Рабочие часы'
+  users:
+    default_attributes: 'Общая информация'
+    sign_attributes: 'Активность'
+    new_user: 'Новый пользователь'
+  categories:
+    new: 'Новая категория'
+  posts:
+    new: 'Новая запись в блоге'
+    btn_continue_reading: 'Продолжить чтение'
+    recent_posts: 'Недавние статьи'
+  realties:
+    price:
+      monthly: ' в месяц'
+  search:
+    title: 'Поиск'
+    placeholder:
+      post: 'Искать статью...'

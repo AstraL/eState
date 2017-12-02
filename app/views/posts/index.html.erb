@@ -1,0 +1,55 @@
+<% provide(:title, resolve_title) %>
+<div class="site-showcase">
+    <!-- Start Page Header -->
+    <div class="parallax page-header" style="background-image:url(<%= image_url("blog-header") %>);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <%= content_tag(:h1, t('titles.blog')) %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Header -->
+</div>
+<!-- Start Content -->
+<div class="main" role="main">
+    <div id="content" class="content full">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 posts-archive">
+                    <% @posts.each do |post| %>
+                        <article class="post">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4">
+                                    <%= link_to post_path(post) do %>
+                                        <%= image_tag post.image.thumb, class: 'img-thumbnail' %>
+                                    <% end %>
+                                </div>
+                                <div class="col-md-8 col-sm-8">
+                                    <h3><%= link_to post.title, post_path(post) %></h3>
+                                    <span class="post-meta meta-data">
+                                        <span><%= fa_icon "calendar", text: l(post.created_at, format: :long) %></span>
+                                        <span><%= fa_icon "archive" %> <%= link_to post.category.title, category_posts_path({category_slug: post.category.slug}) %></span>
+                                    </span>
+                                    <%= content_tag(:p, truncate(strip_tags(post.body), length: 450, omission: '...', separator: ' ')) %>
+                                    <p><%= link_to (fa_icon "long-arrow-right", text: t('posts.btn_continue_reading'), right: true), post_path(post), class: 'btn btn-primary' %></p>
+                                </div>
+                            </div>
+                        </article>
+                    <% end %>
+                    <%= will_paginate(@posts, :renderer => WillPaginate::ActionView::BootstrapLinkRenderer, :previous_label => (fa_icon "long-arrow-left"), :next_label => (fa_icon "long-arrow-right")) %>
+                    <% if @posts.count == 0 %>
+                        <%= render 'posts/empty' %>
+                    <% end %>
+                </div>
+                <!-- Start Sidebar -->
+                <div class="col-md-3 sidebar">
+                    <%= render 'posts/search_widget' %>
+                    <%= render 'posts/categories_widget' %>
+                    <%#= render 'posts/tags_widget' %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

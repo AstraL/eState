@@ -11,5 +11,13 @@
 // about supported directives.
 //
 //= require rails-ujs
+
+//= require jquery2
+//= require prettyphoto/js/prettyphoto
+//= require flexslider/js/jquery.flexslider
+//= require helper-plugins
+//= require bootstrap-sprockets
+//= require waypoints
+//= require init
+//= require ckeditor/init
 //= require turbolinks
-//= require_tree .

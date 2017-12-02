@@ -1,0 +1,47 @@
+ru:
+  activerecord:
+    models:
+      user:
+        one: 'Пользователь'
+        other: 'Пользователи'
+      category:
+        one: 'Категория'
+        other: 'Категории'
+      post:
+        one: 'Запись'
+        other: 'Записи'
+    attributes:
+      user:
+        id: 'ID'
+        firstName: 'Имя'
+        lastName: 'Фамилия'
+        email: 'E-mail'
+        avatar: 'Аватар'
+        sign_in_count: 'Количество входов'
+        last_sign_in_ip: 'Последний IP'
+        current_sign_in_ip: 'Текущий IP'
+        last_sign_in_at: 'Последний вход'
+        current_sign_in_at: 'Текущий вход'
+        created_at: 'Зарегистрирован'
+        update_at: 'Обновлен'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+        posts: 'Записи'
+      category:
+        id: 'ID'
+        title: 'Название'
+        slug: 'Ссылка'
+        description: 'Описание'
+        created_at: 'Добавлена'
+        updated_at: 'Обновлена'
+        posts: 'Записи'
+      post:
+        id: 'ID'
+        title: 'Заголовок'
+        slug: 'Ссылка'
+        category: 'Категория'
+        body: 'Текст'
+        image: 'Обложка'
+        user: 'Автор'
+        created_at: 'Добавлено'
+        updated_at: 'Обновлено'

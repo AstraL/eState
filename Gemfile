@@ -9,12 +9,27 @@ gem 'rails', '~> 5.1.4'
 
 gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer', platforms: :ruby
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+gem 'httparty'
+gem 'bootstrap-sass', '~> 3.3.7'
+gem 'jquery-rails'
+gem "font-awesome-rails"
+gem 'devise'
+gem 'rails_admin'
+gem 'friendly_id', '~> 5.2.3'
+gem 'babosa'
+gem 'carrierwave'
+gem "mini_magick"
+gem 'will_paginate', '~> 3.1.0'
+gem 'bootstrap-will_paginate'
+gem 'ckeditor', github: 'galetahub/ckeditor'
+gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'simple_form'
+gem 'active_link_to'
 # gem 'redis', '~> 3.0'
 # gem 'bcrypt', '~> 3.1.7'
 

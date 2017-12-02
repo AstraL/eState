@@ -1,0 +1,64 @@
+<header class="site-header">
+    <div class="top-header hidden-xs">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <%#= render 'layouts/partials/user_menu' %>
+                </div>
+                <div class="col-md-8 col-sm-6">
+                    <ul class="horiz-nav pull-right">
+                        <li><%= link_to (fa_icon "instagram"), 'http://instagram.com', target: '_blank' %></li>
+                        <li><%= link_to (fa_icon "facebook"), 'http://facebook.com', target: '_blank' %></li>
+                        <li><%= link_to (fa_icon "twitter"), 'http://twitter.com', target: '_blank' %></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="middle-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-8 col-xs-8">
+                    <h1 class="logo">
+                        <%= link_to root_path do %>
+                            <%= image_tag 'logo.png' %>
+                        <% end %>
+                    </h1>
+                </div>
+                <div class="col-md-8 col-sm-4 col-xs-4">
+                    <div class="contact-info-blocks hidden-sm hidden-xs">
+                        <div>
+                            <%= fa_icon "phone", text: I18n.t('contacts.free_line') %>
+                            <span><%= link_to '+38 093 170 36 95', 'tel:+380931703695' %></span>
+                        </div>
+                        <div>
+                            <%= fa_icon "envelope", text: I18n.t('contacts.email_us') %>
+                            <span><%= mail_to 'info@e-state.com.ua' %></span>
+                        </div>
+                        <!--<div>
+                            <%= fa_icon "clock-o", text: I18n.t('contacts.working_hours') %>
+                            <span>09:00 to 17:00</span>
+                        </div>-->
+                    </div>
+                    <a href="#" class="visible-sm visible-xs menu-toggle"><i class="fa fa-bars"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-menu-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav class="navigation">
+                        <ul class="sf-menu">
+                            <%= active_link_to t('titles.home'), root_path, active: :exclusive, wrap_tag: :li %>
+                            <%= active_link_to t('titles.realties'), realties_path, wrap_tag: :li %>
+                            <%= active_link_to t('titles.blog'), posts_path, wrap_tag: :li %>
+                            <%#= active_link_to t('titles.contacts'), contacts_path, wrap_tag: :li %>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
