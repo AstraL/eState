@@ -36,6 +36,7 @@ module PostAdmin
 								end
 								field :category
 								field :user do
+=begin
 										read_only true
 										def value
 												if bindings[:controller].action_name == 'new'
@@ -44,6 +45,7 @@ module PostAdmin
 														bindings[:object].user
 												end
 										end
+=end
 								end
 						end
 				end
