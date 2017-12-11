@@ -14,6 +14,14 @@ module RealtiesHelper
 				end
 		end
 
+		def field_present?(field)
+				if field.nil?
+						"0"
+				else
+						field.text
+				end
+		end
+
 		def xml_to_json(item)
 				j = {
 						id: item["internal-id"].to_i,
@@ -28,18 +36,18 @@ module RealtiesHelper
 								city: { value: item.at_xpath("location/city")["value"], label: item.at_xpath("location/city").text },
 								district: { value: item.at_xpath("location/district")["value"], label: item.at_xpath("location/district").text },
 								street: { value: item.at_xpath("location/street")["value"], label: item.at_xpath("location/street").text},
-								house_num: item.at_xpath("location/house_num").text,
+								house_num: item.at_xpath("location/house_num").nil? ? t('activerecord.attributes.realty.empty_field') : item.at_xpath("location/house_num").text,
 								map_lat: item.at_xpath("location/map_lat").text,
 								map_lng: item.at_xpath("location/map_lng").text,
-								apartment: item.at_xpath("location/apartment").nil? ? "" : item.at_xpath("location/apartment").text,
+								apartment: item.at_xpath("location/apartment").nil? ? t('activerecord.attributes.realty.empty_field') : item.at_xpath("location/apartment").text,
 								landmark: item.at_xpath("location/landmark").text
 						},
-						#total_floors: item.at_xpath("total_floors").text.to_i,
-						#floor: item.at_xpath("floor").text.to_i,
+						total_floors: field_present?(item.at_xpath("total_floors")),
+						floor: field_present?(item.at_xpath("floor")),
 						area_total: item.at_xpath("area_total").text,
-						area_living: item.at_xpath("area_living").nil? ? "" : item.at_xpath("area_living").text,
-						area_kitchen: item.at_xpath("area_kitchen").nil? ? "" : item.at_xpath("area_kitchen").text,
-						#room_count: item.at_xpath("room_count").text,
+						area_living: field_present?(item.at_xpath("area_living")),
+						area_kitchen: field_present?(item.at_xpath("area_kitchen")),
+						room_count: field_present?(item.at_xpath("room_count")),
 						price: {
 								type: item.at_xpath("price")["type"],
 								currency: item.at_xpath("price")["currency"],
@@ -103,6 +111,54 @@ module RealtiesHelper
 		end
 
 		def strip_title(r)
-				r[:title].sub('Аренда /', '').sub('Продажа /', '').sub(', г. Киев','')
+				r[:title].sub('Аренда /', '').sub('Продажа /', '').sub(', г. Киев','').sub('Квартира /', '')
+		end
+
+		def get_property(r, key)
+				props = r[:properties]
+				if props.key?(key)
+						props.fetch(key).fetch(:value)
+				else
+						"0"
+				end
+		end
+
+		def get_deal_type(r)
+				d = r.fetch(:deal).fetch(:value)
+				case d
+						when 1
+								t('activerecord.attributes.realty.deal.buy')
+						when 2
+								t('activerecord.attributes.realty.deal.rent')
+						else
+								t('activerecord.attributes.realty.empty_field')
+				end
+		end
+
+		def get_realty_type(r)
+				t = r.fetch(:realty_type).fetch(:value)
+				case t
+						when 1
+								t('activerecord.attributes.realty.type.apartment')
+						else
+								t('activerecord.attributes.realty.empty_field')
+				end
+		end
+
+		def room_count_label(r)
+				i = r.fetch(:room_count).to_i
+				case i
+						when 1
+								t('activerecord.attributes.realty.room_count.one')
+						when 2...4
+								t('activerecord.attributes.realty.room_count.two')
+						else
+								t('activerecord.attributes.realty.room_count.other')
+				end
+		end
+
+		def creation_date(r)
+				date = Date.parse(r[:created_at])
+				content_tag(:span, "#{t('activerecord.attributes.realty.created_at')} #{l(date, format: :long)}")
 		end
 end

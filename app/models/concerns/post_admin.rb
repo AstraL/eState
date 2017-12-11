@@ -12,14 +12,23 @@ module PostAdmin
 
 						list do
 								field :title do
-										formatted_value do
-												path = bindings[:view].show_path(model_name: 'post', id: bindings[:object].id)
+										pretty_value do
+												path = bindings[:view].edit_path(model_name: 'post', id: bindings[:object].id)
 												bindings[:view].tag(:a, href: path) << bindings[:object].title
 										end
 								end
 								field :category
 								field :user
 								field :created_at
+						end
+
+						show do
+								field :title
+								field :body do
+										pretty_value do
+												bindings[:object].body.html_safe
+										end
+								end
 						end
 
 						edit do

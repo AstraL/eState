@@ -1,53 +1,28 @@
-<div class="site-showcase">
-    <!-- Start Page Header -->
-    <div class="parallax page-header" style="background-image:url(<%= image_url "blog-header.jpg" %>);">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1>Property Grid Listing</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Page Header -->
-</div>
+<% provide(:title, t('titles.realties')) %>
+<% content_for :caching, '<meta name="turbolinks-cache-control" content="no-cache">'.html_safe %>
+<%= render partial: 'layouts/partials/page_header', locals: {heading: t('titles.realties')} %>
 <div class="main" role="main">
     <div id="content" class="content full">
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
                     <div class="block-heading">
-                        <h4><span class="heading-icon"><i class="fa fa-th-large"></i></span>Property Grid</h4>
+                        <h4>
+                            <span class="heading-icon">
+                                <%= fa_icon "th-large" %>
+                            </span>
+                            <%= t('realties.all_realties') %>
+                        </h4>
                         <!--<div class="toggle-view pull-right">
                             <a href="/" class="active"><i class="fa fa-th-large"></i></a>
                             <a href="simple-listing.html"><i class="fa fa-th-list"></i></a>
                         </div>-->
                     </div>
-                    <div class="property-grid">
-                        <ul class="grid-holder col-3">
-                            <% @realties.each do |realty| %>
-                            <li class="grid-item type-rent">
-                                <div class="property-block">
-                                    <a href="#" class="property-featured-image" style="background-image: url(<%= main_image(realty) %>);">
-                                        <span class="images-count"><%= fa_icon "picture-o", text: realty.fetch(:images).count %></span>
-                                        <%= content_tag(:span, realty.fetch(:deal).fetch(:label), class: 'badges') %>
-                                    </a>
-                                    <div class="property-info">
-                                        <%= content_tag(:h4, (link_to strip_title(realty), realty_path(id: realty[:id]))) %>
-                                        <%= content_tag(:span, realty[:location].fetch(:city).fetch(:label), class: 'location') %>
-                                        <div class="price"><%= set_price(realty) %></div>
-                                    </div>
-                                    <div class="property-amenities clearfix"> <span class="area"><strong>5000</strong>Area</span> <span class="baths"><strong>3</strong>Baths</span> <span class="beds"><strong>3</strong>Beds</span> <span class="parking"><strong>1</strong>Parking</span> </div>
-                                </div>
-                            </li>
-                            <% end %>
-                        </ul>
-                    </div>
-                    <%= will_paginate(@realties, :renderer => WillPaginate::ActionView::BootstrapLinkRenderer, :previous_label => (fa_icon "long-arrow-left"), :next_label => (fa_icon "long-arrow-right")) %>
+                    <%= render 'realties/grid_listing', realties: @realties %>
                 </div>
                 <!-- Start Sidebar -->
                 <div class="sidebar right-sidebar col-md-3">
-                    <%#= render 'realties/search_widget' %>
+                    <%= render 'realties/search_widget' %>
                 </div>
             </div>
         </div>

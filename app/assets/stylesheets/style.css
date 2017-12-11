@@ -929,7 +929,7 @@ html[xmlns] .slides {
 	border-radius:3px;
 }
 .flex-caption strong.title{
-	font-size:20px;
+	font-size:16px;
 	display:block;
 	font-weight:normal;
 	padding:20px;
@@ -937,7 +937,7 @@ html[xmlns] .slides {
 }
 .flex-caption strong.title em{
 	font-style:italic;
-	font-size:14px;
+	font-size:13px;
 	font-weight:400;
 	color:#999999;
 }
@@ -1097,7 +1097,7 @@ html[xmlns] .slides {
   	position: relative;
 }
 #gmap.map-single-page{
-	height:200px;
+	height:300px;
 }
 #gmap img {
   	max-width: none;
@@ -1189,7 +1189,7 @@ html[xmlns] .slides {
 }
 
 .property-featured-image {
-    height: 160px;
+    min-height: 160px;
     background-position: center;
     background-size: cover;
 }
@@ -1260,7 +1260,7 @@ html[xmlns] .slides {
 }
 .property-amenities > span{
 	display:block;
-	width:25%;
+	width:33%;
 	float:left;
 	padding:4px 0 4px 0;
 	text-align:center;
@@ -1513,8 +1513,11 @@ html[xmlns] .slides {
 	display:inline-block;
 	margin-right:5px;
 }
+.agent-contacts ul {
+    padding-left: 25px;
+}
 .agent-contacts li{
-	display:inline-block;
+    font-size: 1em;
 	margin:5px 20px 0 0;
 }
 .property-listing .property-info .price, .agents-listing .agent-info .counts{
@@ -3107,7 +3110,7 @@ span.progress-bar-tooltip:after {
 		padding-bottom:15px;
 	}
 	#gmap{
-		height:200px;
+		height:300px;
 	}
 	.site-footer-bottom{
 		text-align:center;

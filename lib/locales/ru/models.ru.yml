@@ -10,6 +10,18 @@ ru:
       post:
         one: 'Запись'
         other: 'Записи'
+      ckeditor:
+        one: 'Библиотека'
+        other: 'Библиотеки'
+      ckeditor/asset:
+        one: 'Ресурс'
+        other: 'Ресурсы'
+      ckeditor/attachment_file:
+        one: 'Документ'
+        other: 'Документы'
+      ckeditor/picture:
+        one: 'Изображение'
+        other: 'Изображения'
     attributes:
       user:
         id: 'ID'
@@ -27,6 +39,7 @@ ru:
         password: 'Пароль'
         password_confirmation: 'Подтверждение пароля'
         posts: 'Записи'
+        remember_me: 'Запомнить меня'
       category:
         id: 'ID'
         title: 'Название'
@@ -45,3 +58,65 @@ ru:
         user: 'Автор'
         created_at: 'Добавлено'
         updated_at: 'Обновлено'
+      feedback:
+        name: 'Имя'
+        email: 'E-mail'
+        phone: 'Телефон'
+        body: 'Сообщение'
+      realty:
+        empty_field: 'Не указано'
+        type:
+          apartment: 'Квартира'
+          house: 'Дом'
+        deal:
+          rent: 'Аренда'
+          buy: 'Продажа'
+        description: 'Описание'
+        agent: 'Агент'
+        address: 'Адрес'
+        city: 'Город'
+        district: 'Район'
+        street: 'Улица'
+        house_num: '№ дома'
+        apartment: '№ квартиры'
+        floor: 'Этаж'
+        area_total:
+          long: 'Общая площадь'
+          short: 'Площадь'
+        area_living: 'Жилая площадь'
+        area_kitchen: 'Площадь кухни'
+        room_count:
+          one: 'Комната'
+          two: 'Комнаты'
+          other: 'Комнат'
+        property_2: 'Газ'
+        property_11: 'Высота потолков'
+        property_13: 'Эксклюзив'
+        property_16: 'Количество спален'
+        property_17: 'Материал стен'
+        property_18: 'Ремонт'
+        property_19: 'Количество санузлов'
+        property_20: 'Планировка'
+        property_21: 'Класс жилья'
+        property_22: 'Схема комнат'
+        property_23: 'Год постройки'
+        property_24: 'Количество балконов'
+        property_25: 'Окна выходят'
+        property_27: 'Собственность'
+        property_28: 'Перекрытие'
+        property_29: 'Подъезд/Вход'
+        property_30: 'Сантехника'
+        property_32: 'Целевое назначение'
+        property_40: 'Комиссия'
+        created_at: 'Добавлено'
+      ckeditor/asset:
+        id: 'ID'
+        data_file_name: 'Имя файла'
+        data_content_type: 'Формат'
+        data_file_size: 'Размер файла'
+        type: 'Тип'
+        width: 'Ширина'
+        height: 'Высота'
+        data: 'Файл'
+        created_at: 'Загружен'
+        updated_at: 'Обновлен'

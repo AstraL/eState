@@ -19,7 +19,7 @@ Ckeditor.setup do |config|
   # Allowed attachment file types for upload.
   # Set to nil or [] (empty array) for all file types
   # By default: %w(doc docx xls odt ods pdf rar zip tar tar.gz swf)
-  # config.attachment_file_types = %w(doc docx xls odt ods pdf rar zip tar tar.gz swf)
+  config.attachment_file_types = %w(doc docx xls odt ods pdf rar zip tar tar.gz)
 
   # Setup authorization to be run as a before filter
   # By default: there is no authorization.
@@ -30,8 +30,8 @@ Ckeditor.setup do |config|
   # config.parent_controller = 'MyController'
 
   # Asset model classes
-  # config.picture_model { Ckeditor::Picture }
-  # config.attachment_file_model { Ckeditor::AttachmentFile }
+  config.picture_model { Ckeditor::Picture }
+  config.attachment_file_model { Ckeditor::AttachmentFile }
 
   # Paginate assets
   # By default: 24

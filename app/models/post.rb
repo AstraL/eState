@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id          :integer          not null, primary key
+#  title       :string
+#  category_id :integer
+#  body        :text
+#  image       :string
+#  user_id     :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  slug        :string
+#
+
 class Post < ApplicationRecord
 		include PostAdmin
 		extend FriendlyId

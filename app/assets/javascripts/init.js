@@ -41,41 +41,6 @@ var REAL = window.REAL || {};
 	}
 
 /* ==================================================
-	Newsletter Form Validations
-================================================== */
-	REAL.Newsletter = function(){
-		$('.newsletter-form').each(function(){
-			var formInstance = $(this);
-			formInstance.submit(function(){
-		
-			var action = $(this).attr('action');
-		
-			$("#nl-message").slideUp(750,function() {
-			$('#nl-message').hide();
-		
-			$('#nl-submit')
-				.after('<img src="images/assets/ajax-loader.gif" class="loader" />')
-				.attr('disabled','disabled');
-		
-			$.post(action, {
-				email: $('#nl-email').val()
-			},
-				function(data){
-					document.getElementById('nl-message').innerHTML = data;
-					$('#nl-message').slideDown('slow');
-					$('.newsletter-form img.loader').fadeOut('slow',function(){$(this).remove()});
-					$('#nl-submit').removeAttr('disabled');
-					if(data.match('success') != null) $('.newsletter-form').slideUp('slow');
-		
-				}
-			);
-			});
-			return false;
-		});
-		});
-	}
-
-/* ==================================================
 	Responsive Nav Menu
 ================================================== */
 	REAL.navMenu = function() {
@@ -167,21 +132,7 @@ var REAL = window.REAL || {};
 	REAL.toolTip = function(){ 
 		$('a[data-toggle=tooltip]').tooltip();
 	}
-/* ==================================================
-   Twitter Widget
-================================================== */
-	REAL.TwitterWidget = function() {
-		$('.twitter-widget').each(function(){
-			var twitterInstance = $(this); 
-			twitterTweets = twitterInstance.attr("data-tweets-count") ? twitterInstance.attr("data-tweets-count") : "2"
-			twitterInstance.twittie({
-            	dateFormat: '%b. %d, %Y',
-            	template: '<li><i class="fa fa-twitter"></i> {{tweet}} <span class="date">{{date}}</span></li>',
-            	count: twitterTweets,
-            	hideReplies: true
-        	});
-		});
-	}
+
 /* ==================================================
    Flex Slider
 ================================================== */
@@ -215,63 +166,15 @@ var REAL = window.REAL || {};
 		});
 	}
 /* ==================================================
-   Owl Carousel
-================================================== */
-	REAL.OwlCarousel = function() {
-		$('.owl-carousel').each(function(){
-				var carouselInstance = $(this); 
-				carouselColumns = carouselInstance.attr("data-columns") ? carouselInstance.attr("data-columns") : "1",
-				carouselitemsDesktop = carouselInstance.attr("data-items-desktop") ? carouselInstance.attr("data-items-desktop") : "4",
-				carouselitemsDesktopSmall = carouselInstance.attr("data-items-desktop-small") ? carouselInstance.attr("data-items-desktop-small") : "3",
-				carouselitemsTablet = carouselInstance.attr("data-items-tablet") ? carouselInstance.attr("data-items-tablet") : "2",
-				carouselitemsMobile = carouselInstance.attr("data-items-mobile") ? carouselInstance.attr("data-items-mobile") : "1",
-				carouselAutoplay = carouselInstance.attr("data-autoplay") == 'yes' ? true : false,
-				carouselPagination = carouselInstance.attr("data-pagination") == 'yes' ? true : false,
-				carouselArrows = carouselInstance.attr("data-arrows") == 'yes' ? true : false,
-				carouselSingle = carouselInstance.attr("data-single-item") == 'yes' ? true : false
-				carouselStyle = carouselInstance.attr("data-style") ? carouselInstance.attr("data-style") : "fade",
-				
-				carouselInstance.owlCarousel({
-					items: carouselColumns,
-					autoPlay : carouselAutoplay,
-					navigation : carouselArrows,
-					pagination : carouselPagination,
-					itemsDesktop:[1199,carouselitemsDesktop],
-					itemsDesktopSmall:[979,carouselitemsDesktopSmall],
-					itemsTablet:[768,carouselitemsTablet],
-					itemsMobile:[479,carouselitemsMobile],
-					singleItem:carouselSingle,
-					navigationText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
-					stopOnHover: true,
-					lazyLoad: true,
-					transitionStyle: carouselStyle
-				});
-		});
-	}
-/* ==================================================
    PrettyPhoto
 ================================================== */
 	REAL.PrettyPhoto = function() {
-			$("a[data-rel^='prettyPhoto']").prettyPhoto({
-				  opacity: 0.5,
-				  social_tools: "",
-				  deeplinking: false
-			});
-	}
-/* ==================================================
-   Pricing Tables
-================================================== */
-	var $tallestCol;
-	REAL.pricingTable = function(){
-		$('.pricing-table').each(function(){
-			$tallestCol = 0;
-			$(this).find('> div .features').each(function(){
-				($(this).height() > $tallestCol) ? $tallestCol = $(this).height() : $tallestCol = $tallestCol;
-			});	
-			if($tallestCol == 0) $tallestCol = 'auto';
-			$(this).find('> div .features').css('height',$tallestCol);
-		});
-	}
+	    $("a[data-rel^='prettyPhoto']").prettyPhoto({
+            opacity: 0.5,
+            social_tools: "",
+            deeplinking: false
+        });
+	};
 /* ==================================================
    Animated Counters
 ================================================== */
@@ -399,67 +302,68 @@ var REAL = window.REAL || {};
 		if($("body").hasClass("boxed"))
 			return false;
 		if ($(window).width() > 992){
-			$(".main-menu-wrapper").sticky({topSpacing:0});
+			$(".main-menu-wrapper").sticky({topSpacing:0,getWidthFrom: ''});
+            $("#realties-search").sticky({topSpacing:65,getWidthFrom: '.col-md-3'});
 		}
 	}
 /* ==================================================
    Init Functions
 ================================================== */
-$(document).ready(function(){
-	REAL.ContactForm();
-	REAL.Newsletter();
-	REAL.scrollToTop();
-	REAL.accordion();
-	REAL.toggle();
-	REAL.toolTip();
-	REAL.navMenu();
-	REAL.TwitterWidget();
-	REAL.FlexSlider();
-	REAL.PrettyPhoto();
-	REAL.SuperFish();
-	REAL.pricingTable();
-	REAL.Counters();
-	REAL.IsoTope();
-	REAL.StickyNav();
-	REAL.OwlCarousel();
-	$('.selectpicker').selectpicker({container:'body'});
+$(document).on('turbolinks:load',function(){
+    REAL.ContactForm();
+    REAL.scrollToTop();
+    REAL.accordion();
+    REAL.toggle();
+    REAL.toolTip();
+    REAL.navMenu();
+    REAL.FlexSlider();
+    REAL.PrettyPhoto();
+    REAL.SuperFish();
+    //REAL.Counters();
+    REAL.IsoTope();
+    REAL.StickyNav();
+    $('.selectpicker').selectpicker({container:'body'});
 });
 
+
 /* Design Related Scripts */
-$(".flex-caption").each(function(){
-	$(this).prepend('<i class="fa fa-caret-down"></i>');
+$(document).on('turbolinks:load', function() {
+    $(".flex-caption").each(function(){
+        $(this).prepend('<i class="fa fa-caret-down"></i>');
+    });
+    $(".block-heading").each(function(){
+        $(this).find('.heading-icon').prepend('<i class="fa fa-caret-right icon-design"></i>');
+    });
+    $(".property-featured-image").each(function(){
+        PIheight = $(this).find("img").outerHeight();
+        $(this).prepend("<div class='overlay' style='line-height:"+PIheight+"px'><i class='fa fa-search'></i></div>");
+    });
+    $(".agent-featured-image").each(function(){
+        PIheight = $(this).find("img").outerHeight();
+        $(this).prepend("<div class='overlay' style='line-height:"+PIheight+"px'><i class='fa fa-plus'></i></div>");
+    });
+    $(".format-image").each(function(){
+        $(this).find(".media-box").append("<span class='zoom'><i class='fa fa-search'></i></span>");
+    });
+    $(".format-standard").each(function(){
+        $(this).find(".media-box").append("<span class='zoom'><i class='fa fa-plus'></i></span>");
+    });
+    $(".format-video").each(function(){
+        $(this).find(".media-box").append("<span class='zoom'><i class='fa fa-play'></i></span>");
+    });
+    $(".format-link").each(function(){
+        $(this).find(".media-box").append("<span class='zoom'><i class='fa fa-link'></i></span>");
+    });
+    $(".media-box .zoom").each(function(){
+        mpwidth = $(this).parent().width();
+        mpheight = $(this).parent().find("img").height();
+
+        $(this).css("width", mpwidth);
+        $(this).css("height", mpheight);
+        $(this).css("line-height", mpheight+"px");
+    });
 });
-$(".block-heading").each(function(){
-	$(this).find('.heading-icon').prepend('<i class="fa fa-caret-right icon-design"></i>');
-});
-$(".property-featured-image").each(function(){
-	PIheight = $(this).find("img").outerHeight();
-	$(this).prepend("<div class='overlay' style='line-height:"+PIheight+"px'><i class='fa fa-search'></i></div>");
-});
-$(".agent-featured-image").each(function(){
-	PIheight = $(this).find("img").outerHeight();
-	$(this).prepend("<div class='overlay' style='line-height:"+PIheight+"px'><i class='fa fa-plus'></i></div>");
-});
-$(".format-image").each(function(){
-	$(this).find(".media-box").append("<span class='zoom'><i class='fa fa-search'></i></span>");
-});
-$(".format-standard").each(function(){
-	$(this).find(".media-box").append("<span class='zoom'><i class='fa fa-plus'></i></span>");
-});
-$(".format-video").each(function(){
-	$(this).find(".media-box").append("<span class='zoom'><i class='fa fa-play'></i></span>");
-});
-$(".format-link").each(function(){
-	$(this).find(".media-box").append("<span class='zoom'><i class='fa fa-link'></i></span>");
-});
-$(".media-box .zoom").each(function(){
-	mpwidth = $(this).parent().width();
-	mpheight = $(this).parent().find("img").height();
-	
-	$(this).css("width", mpwidth);
-	$(this).css("height", mpheight);
-	$(this).css("line-height", mpheight+"px");
-});
+
 
 $(window).resize(function(){
 	$(".media-box .zoom").each(function(){
@@ -477,69 +381,74 @@ $(window).resize(function(){
 	}
 });
 
-$('#ads-trigger').click(function () {	
-	if ($(this).hasClass('advanced')) {
-		$(this).removeClass('advanced');
-		$(".site-search-module").animate({
-			'bottom': '-107px'
-		});
-		$(this).html('<i class="fa fa-plus"></i> Advanced');
-		$('.slider-mask').fadeOut(500);
-	} else {
-		
-		$(this).addClass('advanced');
-		$(".site-search-module").animate({
-			'bottom': '-15px'
-		});
-		$(this).html('<i class="fa fa-minus"></i> Basic');
-		$('.slider-mask').fadeIn(500);
-	}	
-	return false;
-});
-
 // FITVIDS
 $(".container").fitVids();
 
 
 // List Styles
-$(".location").prepend('<i class="fa fa-map-marker"></i> ');
-$(".nav-tabs li").prepend('<i class="fa fa-caret-down"></i> ');
-$('ul.checks li').prepend('<i class="fa fa-check"></i> ');
-$('ul.angles li, .nav-list-primary li a').prepend('<i class="fa fa-angle-right"></i> ');
-$('ul.inline li').prepend('<i class="fa fa-check-circle-o"></i> ');
-$('ul.chevrons li').prepend('<i class="fa fa-chevron-right"></i> ');
-$('ul.carets li').prepend('<i class="fa fa-caret-right"></i> ');
-$('a.external').prepend('<i class="fa fa-external-link"></i> ');
+    $(document).on('turbolinks:load', function() {
+        $('#ads-trigger').click(function (e) {
+            e.preventDefault();
+            if ($(this).hasClass('advanced')) {
+                $(this).removeClass('advanced');
+                $(".site-search-module").animate({
+                    'bottom': '-107px'
+                });
+                $(this).html('<i class="fa fa-plus"></i> Раскрыть');
+                $('.slider-mask').fadeOut(500);
+            } else {
+                $(this).addClass('advanced');
+                $(".site-search-module").animate({
+                    'bottom': '-15px'
+                });
+                $(this).html('<i class="fa fa-minus"></i> Скрыть');
+                $('.slider-mask').fadeIn(500);
+            }
+            return false;
+        });
+
+        $(".location").prepend('<i class="fa fa-map-marker"></i> ');
+        $(".nav-tabs li").prepend('<i class="fa fa-caret-down"></i> ');
+        $('ul.checks li').prepend('<i class="fa fa-check"></i> ');
+        $('ul.angles li, .nav-list-primary li a').prepend('<i class="fa fa-angle-right"></i> ');
+        $('ul.inline li').prepend('<i class="fa fa-check-circle-o"></i> ');
+        $('ul.chevrons li').prepend('<i class="fa fa-chevron-right"></i> ');
+        $('ul.carets li').prepend('<i class="fa fa-caret-right"></i> ');
+        $('a.external').prepend('<i class="fa fa-external-link"></i> ');
+
+        $("[data-appear-animation]").each(function() {
+
+            var $this = $(this);
+
+            $this.addClass("appear-animation");
+
+            if(!$("html").hasClass("no-csstransitions") && $(window).width() > 767) {
+
+                $this.appear(function() {
+
+                    var delay = ($this.attr("data-appear-animation-delay") ? $this.attr("data-appear-animation-delay") : 1);
+
+                    if(delay > 1) $this.css("animation-delay", delay + "ms");
+                    $this.addClass($this.attr("data-appear-animation"));
+
+                    setTimeout(function() {
+                        $this.addClass("appear-animation-visible");
+                    }, delay);
+
+                }, {accX: 0, accY: -150});
+
+            } else {
+                $this.addClass("appear-animation-visible");
+            }
+        });
+    });
+
+
 
 
 
 // Animation Appear
-$("[data-appear-animation]").each(function() {
 
-	var $this = $(this);
-  
-	$this.addClass("appear-animation");
-  
-	if(!$("html").hasClass("no-csstransitions") && $(window).width() > 767) {
-  
-		$this.appear(function() {
-  
-			var delay = ($this.attr("data-appear-animation-delay") ? $this.attr("data-appear-animation-delay") : 1);
-  
-			if(delay > 1) $this.css("animation-delay", delay + "ms");
-			$this.addClass($this.attr("data-appear-animation"));
-  
-			setTimeout(function() {
-				$this.addClass("appear-animation-visible");
-			}, delay);
-  
-		}, {accX: 0, accY: -150});
-  
-	} else {
-  
-		$this.addClass("appear-animation-visible");
-	}
-});
 // Animation Progress Bars
 $("[data-appear-progress-animation]").each(function() {
 
@@ -586,37 +495,15 @@ function parallaxInit() {
 	/*add as necessary*/
 }
 
-// Window height/Width Getter Classes
-wheighter = $(window).height();
-wwidth = $(window).width();
-$(".wheighter").css("height",wheighter);
-$(".wwidth").css("width",wwidth);
-$(window).resize(function(){
-	wheighter = $(window).height();
-	wwidth = $(window).width();
-	$(".wheighter").css("height",wheighter);
-	$(".wwidth").css("width",wwidth);
-});
-/* Property details slider */
-	 $('#property-thumbs').flexslider({
-    animation: "slide",
-    controlNav: false,
-    animationLoop: false,
-    slideshow: false,
-    itemWidth: 175,
-    itemMargin: 10,
-    asNavFor: '#property-images',            
-	prevText: "",          
-	nextText: ""
-  });
-   
-  $('#property-images').flexslider({
-    animation: "slide",
-    controlNav: false,
-    animationLoop: false,
-    slideshow: true,
-    sync: "#property-thumbs",            
-	prevText: "",          
-	nextText: ""
-  });
+    // Window height/Width Getter Classes
+    wheighter = $(window).height();
+    wwidth = $(window).width();
+    $(".wheighter").css("height",wheighter);
+    $(".wwidth").css("width",wwidth);
+    $(window).resize(function(){
+        wheighter = $(window).height();
+        wwidth = $(window).width();
+        $(".wheighter").css("height",wheighter);
+        $(".wwidth").css("width",wwidth);
+    });
 });

@@ -2,11 +2,11 @@
     <div class="container">
         <div class="row">
             <div class="copyrights-col-left col-md-6 col-sm-6">
-                <p>&copy; 2017 e-States. All Rights Reserved</p>
+                <%= content_tag(:p, "&copy; #{l(Time.now, format: "%Y")} #{full_title(yield(:base_title))}. #{t('footer.copyright')}".html_safe) %>
             </div>
             <div class="copyrights-col-right col-md-6 col-sm-6">
                 <div class="social-icons">
-                    <%= link_to (fa_icon "facebook"), 'https://www.facebook.com/', target: '_blank' %>
+                    <%= link_to (fa_icon "facebook"), 'https://www.facebook.com/estatecomua/', target: '_blank' %>
                 </div>
             </div>
         </div>

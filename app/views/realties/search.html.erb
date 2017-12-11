@@ -1,0 +1,30 @@
+<% provide(:title, t('titles.realties')) %>
+<% content_for :caching, '<meta name="turbolinks-cache-control" content="no-cache">'.html_safe %>
+<%= render partial: 'layouts/partials/page_header', locals: {heading: t('titles.realties')} %>
+<div class="main" role="main">
+    <div id="content" class="content full">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="block-heading">
+                        <h4>
+                            <span class="heading-icon">
+                                <%= fa_icon "th-large" %>
+                            </span>
+                            <%= "#{t('realties.results')} (#{@r_count})" %>
+                        </h4>
+                        <!--<div class="toggle-view pull-right">
+                            <a href="/" class="active"><i class="fa fa-th-large"></i></a>
+                            <a href="simple-listing.html"><i class="fa fa-th-list"></i></a>
+                        </div>-->
+                    </div>
+                    <%= render 'realties/grid_listing', realties: @results %>
+                </div>
+                <!-- Start Sidebar -->
+                <div class="sidebar right-sidebar col-md-3">
+                    <%= render 'realties/search_widget' %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

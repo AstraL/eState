@@ -1,3 +1,83 @@
 // Place all the styles related to the realties controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.flexslider .slides .item {
+    background-size: cover;
+    background-position: center;
+}
+
+sup {
+    font-size: 0.8em;
+}
+
+.ameniti {
+    border-width: 0.5px;
+    border-style: solid;
+}
+
+#latest-properties-rent {
+    .block-heading {
+        margin-top: 30px;
+    }
+}
+
+#latest-properties-rent, #latest-properties-buy {
+    .property-featured-image {
+        height: 220px;
+        .overlay {
+            line-height: 220px;
+        }
+    }
+    .property-block {
+        margin-bottom: 40px;
+    }
+}
+
+.parallax {
+    .bg-blur {
+        background-position: bottom center;
+        background-size: cover;
+        background-attachment: fixed;
+        filter: blur(5px);
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+}
+
+.page-header {
+    position: relative;
+    h1 {
+        position: relative;
+        z-index: 10;
+    }
+    &::after {
+        background-color: rgba(#000, .25);
+        content: '';
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+#realties-search-sticky-wrapper {
+    width: 100%;
+}
+
+.single-property {
+    .date {
+        margin: 10px 0 15px;
+        padding-left: 5px;
+        color: $grey;
+        .fa {
+            margin-right: 5px;
+            color: $brand-primary;
+        }
+        span {
+            font-style: italic;
+        }
+    }
+}

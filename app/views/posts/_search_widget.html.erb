@@ -4,7 +4,7 @@
         <%= f.input :title_cont, label: false, wrapper: :vertical_input_group do %>
             <%= f.search_field :title_cont, placeholder: t('search.placeholder.post'), class: 'form-control' %>
             <span class="input-group-btn">
-                <%= f.button :button do %>
+                <%= f.button :button, class: 'btn-default' do %>
                     <%= fa_icon "search lg" %>
                 <% end %>
             </span>

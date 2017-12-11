@@ -1,17 +1,5 @@
 <% provide(:title, resolve_title) %>
-<div class="site-showcase">
-    <!-- Start Page Header -->
-    <div class="parallax page-header" style="background-image:url(<%= image_url("blog-header.jpg") %>);">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <%= content_tag(:h1, t('titles.blog')) %>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Page Header -->
-</div>
+<%= render partial: 'layouts/partials/page_header', locals: {heading: t('titles.blog')} %>
 <!-- Start Content -->
 <div class="main" role="main">
     <div id="content" class="content full">

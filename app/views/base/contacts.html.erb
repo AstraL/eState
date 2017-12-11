@@ -1,0 +1,51 @@
+<% provide :title, t('titles.contacts') %>
+<div class="site-showcase">
+    <!-- Start Page Header -->
+    <div class="parallax map-single-page" id="gmap">
+
+    </div>
+    <!-- End Page Header -->
+</div>
+<!-- Start Content -->
+<div class="main" role="main">
+    <div id="content" class="content full">
+        <div class="container">
+            <div class="page">
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-1 col-sm-6">
+                        <%= content_tag(:h3, t('contacts.feedback_form')) %>
+                        <%= simple_form_for @feedback, url: feedbacks_path, remote: true, html: {class: 'contact-form'} do |f| %>
+                            <%= f.input :name, label: false, placeholder: t('activerecord.attributes.feedback.name'), input_html: {class: 'input-lg'} %>
+                            <%= f.input :email, label: false, placeholder: t('activerecord.attributes.feedback.email'), input_html: {class: 'input-lg'} %>
+                            <%= f.input :phone, label: false, placeholder: t('activerecord.attributes.feedback.phone'), input_html: {class: 'input-lg'} %>
+                            <%= f.input :body, label: false, placeholder: t('activerecord.attributes.feedback.body'), input_html: {rows: '8', class: 'input-lg'} %>
+                            <%= f.button :button, class: 'btn-primary btn-lg btn-block' do %>
+                                <%= fa_icon "envelope-o", text: t('contacts.send') %>
+                            <% end %>
+                        <% end %>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <%= content_tag(:h3, t('contacts.location')) %>
+                        <div id="address" data-lat="50.416014" data-lng="30.5371058" class="padding-as25 lgray-bg">
+                            <p class="big">Украина, г. Киев<br>
+                                бульвар Дружбы Народов, 17/5</p>
+                        </div>
+                        <%= content_tag(:h3, t('contacts.contact_info')) %>
+                        <div class="padding-as25 lgray-bg">
+                            <ul class="contact-info">
+                                <li><%= fa_icon "phone" %><%= link_to '+38 (050) 171-77-70', 'tel:+380501717770' %></li>
+                                <li><%= fa_icon "phone" %><%= link_to '+38 (067) 414-34-41', 'tel:+380674143441' %></li>
+                                <li><%= fa_icon "phone" %><%= link_to '+38 (093) 170-36-95', 'tel:+380931703695' %></li>
+                                <li><%= fa_icon "envelope-o" %><%= mail_to 'info@e-state.com.ua' %></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% content_for :map do %>
+    <%= render 'realties/map' %>
+<% end %>

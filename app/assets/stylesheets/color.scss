@@ -79,4 +79,13 @@ blockquote{
 	border-left-color: $brand-primary;
 }
 
+.ameniti {
+    background: lighten($brand-primary, 46%) !important;
+    border-color: rgba($brand-primary, .4);
+    transition: transform .3s ease-in-out;
+    &:hover {
+        transform: scale(1.2);
+    }
+}
+
 /* Color Scheme Specific Classes */

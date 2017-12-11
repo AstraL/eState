@@ -1,0 +1,25 @@
+<div class="property-block">
+    <%= link_to realty_path(id: realty[:id]), class: 'property-featured-image', style: "background-image: url(#{main_image(realty)});" do %>
+        <%= content_tag(:span, (fa_icon "picture-o", text: realty.fetch(:images).count), class: 'images-count') %>
+        <%= content_tag(:span, get_deal_type(realty), class: 'badges') %>
+    <% end %>
+    <div class="property-info">
+        <%= content_tag(:h4, (link_to strip_title(realty), realty_path(id: realty[:id]))) %>
+        <%= content_tag(:span, realty[:location].fetch(:city).fetch(:label), class: 'location') %>
+        <div class="price"><%= set_price(realty) %></div>
+    </div>
+    <div class="property-amenities clearfix">
+        <span class="area">
+            <%= content_tag(:strong, "#{realty[:area_total]} м<sup>2</sup>".html_safe) %>
+            <%= t('activerecord.attributes.realty.area_total.short') %>
+        </span>
+        <span class="baths">
+            <%= content_tag(:strong, realty[:room_count]) %>
+            <%= room_count_label(realty) %>
+        </span>
+        <span class="beds">
+            <%= content_tag(:strong, "#{get_property(realty, "property_40")}%") %>
+            <%= t('activerecord.attributes.realty.property_40') %>
+        </span>
+    </div>
+</div>

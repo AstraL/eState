@@ -1,26 +1,41 @@
-<h2>Log in</h2>
+<% provide(:title, t('titles.login')) %>
+<%= render partial: 'layouts/partials/page_header', locals: {heading: t('titles.login')} %>
+<!-- Start Content -->
+<div class="main" role="main">
+    <div id="content" class="content full">
+        <div class="container">
+            <div class="page">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-md-offset-4 col-sm-offset-4 login-form">
+                        <%= content_tag(:h3, t('titles.login')) %>
+                        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                            <div class="input-group">
+                                <%= content_tag(:span, (fa_icon "user"), class: 'input-group-addon') %>
+                                <%= f.email_field :email, autofocus: true, placeholder: t('activerecord.attributes.user.email'), class: 'form-control' %>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <%= content_tag(:span, (fa_icon "lock"), class: 'input-group-addon') %>
+                                <%= f.password_field :password, autocomplete: "off", placeholder: t('activerecord.attributes.user.password'),class: 'form-control' %>
+                            </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+                            <% if devise_mapping.rememberable? -%>
+                                <div class="checkbox">
+                                    <%= f.check_box :remember_me %>
+                                    <%= f.label :remember_me %>
+                                </div>
+                            <% end -%>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+                            <%= f.submit t('login.btn'), class: 'btn btn-primary btn-block' %>
+                        <% end %>
+                        <%#= render "devise/shared/links" %>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  <% end -%>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+
+

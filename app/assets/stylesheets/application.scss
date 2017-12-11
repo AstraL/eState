@@ -1,8 +1,10 @@
 @import "bootstrap-sprockets";
-@import "bootstrap";
+@import "bootstrap/bootstrap";
 @import "font-awesome";
 @import "prettyphoto/css/prettyPhoto";
-@import "animations";
+@import "animate/animations";
 @import "variables";
 @import "style";
-@import "color1";
+@import "color";
+@import "base";
+@import "realties";

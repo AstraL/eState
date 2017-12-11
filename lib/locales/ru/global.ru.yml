@@ -3,15 +3,25 @@ ru:
     home: 'Главная'
     realties: 'Объявления'
     contacts: 'Контакты'
-    blog: 'Блог'
+    blog: 'Статьи'
     admin: 'Панель управления'
+    login: 'Вход'
   home:
     recently_listed: 'Недавно добавленные'
     view_more: 'Больше объявлений'
+    details: 'Подробнее'
+    contact_agent: 'Связаться с агентом'
+    extend_search_btn: 'Раскрыть'
+  login:
+    btn: 'Войти'
   contacts:
     free_line: 'Позвоните нам'
     email_us: 'Отправьте письмо'
     working_hours: 'Рабочие часы'
+    feedback_form: 'Форма обратной связи'
+    location: 'Наш адрес'
+    contact_info: 'Контакты'
+    send: 'Отправить'
   users:
     default_attributes: 'Общая информация'
     sign_attributes: 'Активность'
@@ -23,9 +33,19 @@ ru:
     btn_continue_reading: 'Продолжить чтение'
     recent_posts: 'Недавние статьи'
   realties:
+    all_realties: 'Все предложения'
+    results: 'Результат поиска'
+    amenities: 'Характеристики'
+    landmarks: 'Места поблизости'
     price:
       monthly: ' в месяц'
   search:
     title: 'Поиск'
     placeholder:
       post: 'Искать статью...'
+      deal: 'Тип сделки'
+      realty_type: 'Тип жилья'
+      min: 'От'
+      max: 'До'
+  footer:
+    copyright: 'Все права защищены.'

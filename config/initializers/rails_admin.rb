@@ -27,14 +27,25 @@ RailsAdmin.config do |config|
 
   config.actions do
     dashboard                     # mandatory
-    index                         # mandatory
-    new
-    export
+    index
+    grid do
+		    except ['Post', 'Category', 'Feedback']
+    end
+    new do
+        except ['Ckeditor::Asset', 'Ckeditor::Picture', 'Ckeditor::AttachmentFile']
+    end
+    export do
+		    except ['Ckeditor::Asset', 'Ckeditor::Picture', 'Ckeditor::AttachmentFile']
+    end
     bulk_delete
-    show
+    show do
+		    except ['Post', 'Category','Ckeditor::Asset', 'Ckeditor::Picture', 'Ckeditor::AttachmentFile']
+    end
     edit
     delete
-    show_in_app
+    show_in_app do
+        except ['Ckeditor::Asset', 'Ckeditor::Picture', 'Ckeditor::AttachmentFile']
+    end
 
     ## With an audit adapter, you can add:
     # history_index

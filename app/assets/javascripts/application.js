@@ -13,11 +13,18 @@
 //= require rails-ujs
 
 //= require jquery2
+//= require underscore-min
+//= require gmaps/google
 //= require prettyphoto/js/prettyphoto
 //= require flexslider/js/jquery.flexslider
-//= require helper-plugins
+//= require jquery/helper-plugins
 //= require bootstrap-sprockets
-//= require waypoints
-//= require init
-//= require ckeditor/init
+//= require jquery/waypoints
 //= require turbolinks
+
+//= require ckeditor/init
+
+//= require init
+
+//= require realties
+

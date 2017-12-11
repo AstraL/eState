@@ -19,6 +19,7 @@ gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
 gem "font-awesome-rails"
 gem 'devise'
+gem 'rails_admin_grid', github: 'jprberlin/rails_admin_grid'
 gem 'rails_admin'
 gem 'friendly_id', '~> 5.2.3'
 gem 'babosa'
@@ -30,13 +31,16 @@ gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'simple_form'
 gem 'active_link_to'
+gem 'gmaps4rails'
 # gem 'redis', '~> 3.0'
 # gem 'bcrypt', '~> 3.1.7'
 
 group :development do
+  gem 'rails_real_favicon'
   gem 'web-console', '>= 3.3.0'
   gem 'byebug'
   gem 'sqlite3'
+  gem 'annotate'
   gem 'capistrano',         require: false
   gem 'capistrano-rvm',     require: false
   gem 'capistrano-rails',   require: false
