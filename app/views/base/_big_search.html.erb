@@ -2,7 +2,7 @@
 <div class="site-search-module">
     <div class="container">
         <div class="site-search-module-inside">
-            <%= simple_form_for(:q, url: realties_search_path) do |f| %>
+            <%= simple_form_for(:q, url: realties_search_path, method: 'get') do |f| %>
                 <div class="row">
                     <div class="col-md-2">
                         <%= f.input :deal, label: false, collection: @deal, label_method: ->(obj){obj[:label]}, value_method: ->(obj){obj[:value]}, include_blank: false, prompt: t('search.placeholder.deal'), input_html: { name: "deal", class: 'input-lg selectpicker'} %>
