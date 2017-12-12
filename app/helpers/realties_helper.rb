@@ -34,7 +34,7 @@ module RealtiesHelper
 						location: {
 								region: { value: item.at_xpath("location/region")["value"], label: item.at_xpath("location/region").text },
 								city: { value: item.at_xpath("location/city")["value"], label: item.at_xpath("location/city").text },
-								district: { value: item.at_xpath("location/district")["value"], label: item.at_xpath("location/district").text },
+								district: { value: get_district_value(item.at_xpath("location/district").text), label: item.at_xpath("location/district").text },
 								street: { value: item.at_xpath("location/street")["value"], label: item.at_xpath("location/street").text},
 								house_num: item.at_xpath("location/house_num").nil? ? t('activerecord.attributes.realty.empty_field') : item.at_xpath("location/house_num").text,
 								map_lat: item.at_xpath("location/map_lat").text,
@@ -160,5 +160,12 @@ module RealtiesHelper
 		def creation_date(r)
 				date = Date.parse(r[:created_at])
 				content_tag(:span, "#{t('activerecord.attributes.realty.created_at')} #{l(date, format: :long)}")
+		end
+
+		def get_district_value(label)
+				district = District.find_by_name(label)
+				if district
+						district.area_id
+				end
 		end
 end

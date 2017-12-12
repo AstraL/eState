@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20171212110447) do
     t.integer "area_id"
     t.string "name"
     t.integer "level"
-    t.integer "parent_area_id", default: 0
+    t.integer "parent_id", default: 0
   end
 
   create_table "feedbacks", force: :cascade do |t|

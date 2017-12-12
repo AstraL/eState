@@ -68,6 +68,11 @@ class RealtiesController < ApplicationController
 										@results_ids.push(r[:id])
 								end
 						end
+						unless params[:district].blank?
+								if r[:location].fetch(:district).fetch(:value) != params[:district].to_i
+										@results_ids.push(r[:id])
+								end
+						end
 				end
 
 				@results_ids.uniq!
@@ -112,5 +117,6 @@ class RealtiesController < ApplicationController
 				@deal = [{ value: 1, label: t('activerecord.attributes.realty.deal.buy') }, { value: 2, label: t('activerecord.attributes.realty.deal.rent') }]
 				@realty_type = [{value: 1, label: t('activerecord.attributes.realty.type.apartment')}, {value: 2, label: t('activerecord.attributes.realty.type.house')}]
 				@rooms = [1, 2, 3, 4, 5]
+				@kiev_districts = District.where('city_id = "10" and level = "1"')
 		end
 end
