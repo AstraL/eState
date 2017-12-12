@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171208001007) do
+ActiveRecord::Schema.define(version: 20171211221659) do
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
@@ -18,6 +18,13 @@ ActiveRecord::Schema.define(version: 20171208001007) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.integer "city_id"
+    t.integer "state_id"
+    t.string "name"
+    t.string "translit"
   end
 
   create_table "ckeditor_assets", force: :cascade do |t|
@@ -30,6 +37,13 @@ ActiveRecord::Schema.define(version: 20171208001007) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["type"], name: "index_ckeditor_assets_on_type"
+  end
+
+  create_table "districts", force: :cascade do |t|
+    t.integer "city_id"
+    t.integer "area_id"
+    t.string "name"
+    t.integer "level"
   end
 
   create_table "feedbacks", force: :cascade do |t|
@@ -62,6 +76,15 @@ ActiveRecord::Schema.define(version: 20171208001007) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+  end
+
+  create_table "regions", force: :cascade do |t|
+    t.integer "state_id"
+    t.string "name"
+    t.string "translit"
+    t.string "declension"
+    t.string "region_center"
+    t.string "center_declension"
   end
 
   create_table "users", force: :cascade do |t|

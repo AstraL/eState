@@ -32,6 +32,8 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'simple_form'
 gem 'active_link_to'
 gem 'gmaps4rails'
+gem 'httparty'
+gem 'seed_dump'
 # gem 'redis', '~> 3.0'
 # gem 'bcrypt', '~> 3.1.7'
 

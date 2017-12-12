@@ -1,5 +1,5 @@
 # Change these
-server '95.46.45.98', port: 22, roles: [:web, :app, :db], primary: true
+server '95.46.45.98', port: 22, roles: [:web, :app, :administrator], primary: true
 
 set :repo_url,        'git@github.com:AstraL/eState.git'
 set :application,     'estate'

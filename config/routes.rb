@@ -16,4 +16,10 @@ Rails.application.routes.draw do
 
 		mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 		mount Ckeditor::Engine => '/ckeditor'
+
+		namespace :control do
+				get '/getRegions', to: 'location#get_regions', as: :regions_update
+				get '/getCities', to: 'location#get_cities', as: :cities_update
+				get '/getDistricts', to: 'location#get_districts', as: :districts_update
+		end
 end
