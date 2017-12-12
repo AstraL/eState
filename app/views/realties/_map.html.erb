@@ -1,4 +1,5 @@
 <script>
+
     function initRealtyMap() {
         var address = $('#address');
         var lat = address.attr('data-lat');
@@ -71,6 +72,15 @@
         });
         map.addListener('resize', function() {
             map.panTo(position);
+        });
+        var geocoder = new google.maps.Geocoder;
+
+        geocoder.geocode({'location': position}, function(results, status) {
+            if (status === 'OK') {
+                console.log(results)
+            } else {
+                console.log('Geocoder failed due to: ' + status);
+            }
         });
     }
 </script>
