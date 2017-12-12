@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 Region.create!([
   {state_id: 1, name: "Винницкая", translit: "vynnytskaia", declension: "Винницкой области", region_center: "Винница", center_declension: "Винницы"},
   {state_id: 18, name: "Волынская", translit: "volynskaia", declension: "Волынской области", region_center: "Луцк", center_declension: "Луцка"},
@@ -615,3 +608,62 @@ City.create!([
   {city_id: 544, state_id: 25, name: "Хотин", translit: "hotin"},
   {city_id: 25, state_id: 25, name: "Черновцы", translit: "chernovciy"}
 ])
+District.create!([
+  {city_id: 10, area_id: 15186, name: "Святошинский", level: 1},
+  {city_id: 10, area_id: 15185, name: "Соломенский", level: 1},
+  {city_id: 10, area_id: 15949, name: "Троещина", level: 1},
+  {city_id: 10, area_id: 15190, name: "Шевченковский", level: 1},
+  {city_id: 10, area_id: 17420, name: "Борщаговка", level: 1},
+  {city_id: 10, area_id: 15184, name: "Голосеевский", level: 1},
+  {city_id: 10, area_id: 15181, name: "Дарницкий", level: 1},
+  {city_id: 10, area_id: 15183, name: "Деснянский", level: 1},
+  {city_id: 10, area_id: 15182, name: "Днепровский", level: 1},
+  {city_id: 10, area_id: 15187, name: "Оболонский", level: 1},
+  {city_id: 10, area_id: 15189, name: "Печерский", level: 1},
+  {city_id: 10, area_id: 15188, name: "Подольский", level: 1}
+])
+
+District.create!([
+		                 {city_id: 10, area_id: 101, name: "Академгородок", level: 4, parent_area_id: 15186},
+		                 {city_id: 10, area_id: 102, name: "Беличи", level: 4, parent_area_id: 15186},
+		                 {city_id: 10, area_id: 103, name: "Березняки", level: 4, parent_area_id: 15182},
+		                 {city_id: 10, area_id: 104, name: "Бортничи", level: 4, parent_area_id: 15181},
+		                 {city_id: 10, area_id: 105, name: "Борщаговка", level: 4, parent_area_id: 15186},
+		                 {city_id: 10, area_id: 106, name: "Ветряные Горы", level: 4, parent_area_id: 15188},
+		                 {city_id: 10, area_id: 107, name: "Виноградарь", level: 4, parent_area_id: 15188},
+		                 {city_id: 10, area_id: 108, name: "Воскресенка", level: 4, parent_area_id: 15182},
+		                 {city_id: 10, area_id: 109, name: "Галаганы", level: 4, parent_area_id: 15186},
+		                 {city_id: 10, area_id: 110, name: "Голосеево", level: 4, parent_area_id: 15184},
+		                 {city_id: 10, area_id: 111, name: "ДВРЗ", level: 4, parent_area_id: 15182},
+		                 {city_id: 10, area_id: 112, name: "Комсомольский", level: 4, parent_area_id: 15182},
+		                 {city_id: 10, area_id: 113, name: "Кудрявец", level: 4, parent_area_id: 15190},
+		                 {city_id: 10, area_id: 114, name: "Куреневка", level: 4, parent_area_id: 15187},
+		                 {city_id: 10, area_id: 115, name: "Левобережный массив", level: 4, parent_area_id: 15182},
+		                 {city_id: 10, area_id: 116, name: "Лесной", level: 4, parent_area_id: 15183},
+		                 {city_id: 10, area_id: 117, name: "Липки", level: 4, parent_area_id: 15189},
+		                 {city_id: 10, area_id: 118, name: "Лукьяновка", level: 4, parent_area_id: 15190},
+		                 {city_id: 10, area_id: 119, name: "Минский", level: 4, parent_area_id: 15187},
+		                 {city_id: 10, area_id: 120, name: "Мостицкий массив", level: 4, parent_area_id: 15188},
+		                 {city_id: 10, area_id: 121, name: "Нивки", level: 4, parent_area_id: 15190},
+		                 {city_id: 10, area_id: 122, name: "Новое строение", level: 4, parent_area_id: 15190},
+		                 {city_id: 10, area_id: 123, name: "Оболонь", level: 4, parent_area_id: 15187},
+		                 {city_id: 10, area_id: 124, name: "Осокорки", level: 4, parent_area_id: 15181},
+		                 {city_id: 10, area_id: 125, name: "Отрадный", level: 4, parent_area_id: 15185},
+		                 {city_id: 10, area_id: 126, name: "Печерск", level: 4, parent_area_id: 15189},
+		                 {city_id: 10, area_id: 127, name: "Подол", level: 4, parent_area_id: 15188},
+		                 {city_id: 10, area_id: 128, name: "Позняки", level: 4, parent_area_id: 15181},
+		                 {city_id: 10, area_id: 129, name: "Пуща-Водица", level: 4, parent_area_id: 15187},
+		                 {city_id: 10, area_id: 130, name: "Русановка", level: 4, parent_area_id: 15182},
+		                 {city_id: 10, area_id: 131, name: "Саперная Слободка", level: 4, parent_area_id: 15184},
+		                 {city_id: 10, area_id: 132, name: "Святошино", level: 4, parent_area_id: 15186},
+		                 {city_id: 10, area_id: 133, name: "Соломенка", level: 4, parent_area_id: 15185},
+		                 {city_id: 10, area_id: 134, name: "Соцгород", level: 4, parent_area_id: 15182},
+		                 {city_id: 10, area_id: 135, name: "Старый Киев", level: 4, parent_area_id: 15190},
+		                 {city_id: 10, area_id: 136, name: "Сырец", level: 4, parent_area_id: 15190},
+		                 {city_id: 10, area_id: 137, name: "Татарка", level: 4, parent_area_id: 15190},
+		                 {city_id: 10, area_id: 138, name: "Теремки", level: 4, parent_area_id: 15184},
+		                 {city_id: 10, area_id: 139, name: "Троещина", level: 4, parent_area_id: 15183},
+		                 {city_id: 10, area_id: 140, name: "Харьковский", level: 4, parent_area_id: 15181},
+		                 {city_id: 10, area_id: 141, name: "Чёрная гора", level: 4, parent_area_id: 15189},
+		                 {city_id: 10, area_id: 142, name: "Шулявка", level: 4, parent_area_id: 15190}
+                 ])
