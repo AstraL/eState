@@ -31,3 +31,18 @@
         margin-bottom: 0;
     }
 }
+
+.hero-slider {
+    height: $slider-height;
+    &.flexslider ul.slides li {
+        height: $slider-height;
+        a {
+            display: block;
+            height: 100%;
+        }
+    }
+}
+
+.slider-mask {
+    height: $slider-height;
+}

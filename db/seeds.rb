@@ -1,4 +1,3 @@
-=begin
 Region.create!([
   {state_id: 1, name: "Винницкая", translit: "vynnytskaia", declension: "Винницкой области", region_center: "Винница", center_declension: "Винницы"},
   {state_id: 18, name: "Волынская", translit: "volynskaia", declension: "Волынской области", region_center: "Луцк", center_declension: "Луцка"},
@@ -609,7 +608,6 @@ City.create!([
   {city_id: 544, state_id: 25, name: "Хотин", translit: "hotin"},
   {city_id: 25, state_id: 25, name: "Черновцы", translit: "chernovciy"}
 ])
-=end
 District.create!([
   {city_id: 10, area_id: 15186, name: "Святошинский", level: 1, parent_id: 0},
   {city_id: 10, area_id: 15185, name: "Соломенский", level: 1, parent_id: 0},

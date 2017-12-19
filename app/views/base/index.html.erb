@@ -5,9 +5,7 @@
     <!-- Start Hero Slider -->
     <div class="hero-slider flexslider clearfix" data-autoplay="yes" data-pagination="no" data-arrows="yes" data-style="fade" data-pause="yes">
         <ul class="slides">
-            <% @random.each do |r| %>
-                <%= render partial: 'base/slider_item', locals: {realty: r} %>
-            <% end %>
+            <%= render partial: 'base/slider_item' %>
         </ul>
     </div>
     <!-- End Hero Slider -->
@@ -16,7 +14,6 @@
 <!-- Start Content -->
 <div class="main" role="main">
     <div id="content" class="content full">
-        <div class="spacer-40"></div>
         <div class="container">
             <div class="row">
                 <div class="property-columns clearfix" id="latest-properties-rent">

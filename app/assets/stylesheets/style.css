@@ -1243,9 +1243,9 @@ html[xmlns] .slides {
 	-webkit-border-radius:100%;
 	-moz-border-radius:100%;
 	border-radius:100%;
-	width:65px;
-	height:65px;
-	line-height:65px;
+	width:70px;
+	height:70px;
+	line-height:70px;
 	text-align:center;
 	background:#fff;
 	font-weight:700;
@@ -1280,7 +1280,7 @@ html[xmlns] .slides {
 }
 .property-info h4 {
     font-size: 14px;
-    min-height: 42px;
+    min-height: 65px;
 }
 .property-info .location{
 	display:block;

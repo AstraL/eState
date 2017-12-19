@@ -4,6 +4,9 @@ ru:
       user:
         one: 'Пользователь'
         other: 'Пользователи'
+      feedback:
+        one: 'Сообщение'
+        other: 'Сообщения'
       category:
         one: 'Категория'
         other: 'Категории'

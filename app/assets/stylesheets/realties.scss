@@ -6,6 +6,15 @@
     background-position: center;
 }
 
+.property-featured-image .badges {
+    background: $brand-primary;
+    color: #fff;
+}
+
+.price {
+    background-color: $brand-primary;
+}
+
 sup {
     font-size: 0.8em;
 }
@@ -35,10 +44,9 @@ sup {
 
 .parallax {
     .bg-blur {
-        background-position: bottom center;
-        background-size: cover;
-        background-attachment: fixed;
-        filter: blur(5px);
+        background-position: bottom;
+        background-size: 100% 105%;
+        background-repeat: no-repeat;
         position: absolute;
         height: 100%;
         width: 100%;
@@ -80,4 +88,9 @@ sup {
             font-style: italic;
         }
     }
+}
+
+.commission {
+    @extend .price;
+    background: $success-color !important;
 }

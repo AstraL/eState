@@ -130,7 +130,7 @@ var REAL = window.REAL || {};
    Tooltip
 ================================================== */
 	REAL.toolTip = function(){ 
-		$('a[data-toggle=tooltip]').tooltip();
+		$('[data-toggle=tooltip]').tooltip();
 	}
 
 /* ==================================================
@@ -309,7 +309,7 @@ var REAL = window.REAL || {};
 /* ==================================================
    Init Functions
 ================================================== */
-$(document).on('turbolinks:load',function(){
+$(document).on('turbolinks:render',function(){
     REAL.ContactForm();
     REAL.scrollToTop();
     REAL.accordion();

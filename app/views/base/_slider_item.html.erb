@@ -1,16 +1,21 @@
 <li class="parallax">
-    <div class="bg-blur" style="background-image:url(<%= main_image(realty) %>);">
+    <a href="#">
+        <div class="bg-blur" style="background-image:url(<%= image_url "banners/1.jpg" %>);">
 
-    </div>
-    <div class="flex-caption">
-        <strong class="title"><%= strip_title(realty) %>, <em><%= realty[:location].fetch(:city).fetch(:label) %></em></strong>
-        <div class="price"><%= set_price(realty) %></div>
-        <%= link_to t('home.details'), realty_path(id: realty[:id]), class: 'btn btn-primary btn-block' %>
-        <div class="hero-agent">
-            <%= image_tag "fallback/agent_placeholder.png", class: 'hero-agent-pic' %>
-            <%= link_to "#{realty_path(id: realty[:id])}#agent", data: {placement: 'left', toggle: 'tooltip', original_title: t('home.contact_agent')}, class: 'hero-agent-contact' do %>
-                <%= fa_icon "envelope" %>
-            <% end %>
         </div>
-    </div>
+    </a>
+</li>
+<li class="parallax">
+    <a href="#">
+        <div class="bg-blur" style="background-image:url(<%= image_url "banners/2.jpg" %>);">
+
+        </div>
+    </a>
+</li>
+<li class="parallax">
+    <a href="#">
+        <div class="bg-blur" style="background-image:url(<%= image_url "banners/3.jpg" %>);">
+
+        </div>
+    </a>
 </li>

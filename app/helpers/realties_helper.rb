@@ -16,7 +16,7 @@ module RealtiesHelper
 
 		def field_present?(field)
 				if field.nil?
-						"0"
+						"-"
 				else
 						field.text
 				end
@@ -60,6 +60,7 @@ module RealtiesHelper
 								name: item.at_xpath('user/name').text,
 								phones: [ item.at_xpath('user/phones/phone').text ]
 						},
+						commission: get_commission(item),
 						created_at: item.at_xpath('created_at').text,
 						updated_at: item.at_xpath('updated_at').text
 				}
@@ -77,6 +78,21 @@ module RealtiesHelper
 				end
 
 				j
+		end
+
+		def get_commission(item)
+				commission = false
+				properties = item.xpath("properties//property")
+				properties.each do |prop|
+						if prop["attribute"] == "property_41"
+								commission = true
+						else
+								commission
+						end
+				end
+
+				commission
+
 		end
 
 
