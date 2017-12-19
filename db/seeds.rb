@@ -1,3 +1,5 @@
+User.create!(lastName: 'Admin', firstName: 'Admin', email: 'admin@example.com', password: 'estateadminpass', password_confirmation: 'estateadminpass')
+
 Region.create!([
   {state_id: 1, name: "Винницкая", translit: "vynnytskaia", declension: "Винницкой области", region_center: "Винница", center_declension: "Винницы"},
   {state_id: 18, name: "Волынская", translit: "volynskaia", declension: "Волынской области", region_center: "Луцк", center_declension: "Луцка"},
