@@ -613,18 +613,18 @@ City.create!([
 ])
 =end
 District.create!([
-  {city_id: 10, area_id: 15186, name: "Святошинский", level: 1, parent: 1},
-  {city_id: 10, area_id: 15185, name: "Соломенский", level: 1, parent: 1},
-  {city_id: 10, area_id: 15949, name: "Троещина", level: 1, parent: 1},
-  {city_id: 10, area_id: 15190, name: "Шевченковский", level: 1, parent: 1},
-  {city_id: 10, area_id: 17420, name: "Борщаговка", level: 1, parent: 1},
-  {city_id: 10, area_id: 15184, name: "Голосеевский", level: 1, parent: 1},
-  {city_id: 10, area_id: 15181, name: "Дарницкий", level: 1, parent: 1},
-  {city_id: 10, area_id: 15183, name: "Деснянский", level: 1, parent: 1},
-  {city_id: 10, area_id: 15182, name: "Днепровский", level: 1, parent: 1},
-  {city_id: 10, area_id: 15187, name: "Оболонский", level: 1, parent: 1},
-  {city_id: 10, area_id: 15189, name: "Печерский", level: 1, parent: 1},
-  {city_id: 10, area_id: 15188, name: "Подольский", level: 1, parent: 1}
+  {city_id: 10, area_id: 15186, name: "Святошинский", level: 1, parent: 0},
+  {city_id: 10, area_id: 15185, name: "Соломенский", level: 1, parent: 0},
+  {city_id: 10, area_id: 15949, name: "Троещина", level: 1, parent: 0},
+  {city_id: 10, area_id: 15190, name: "Шевченковский", level: 1, parent: 0},
+  {city_id: 10, area_id: 17420, name: "Борщаговка", level: 1, parent: 0},
+  {city_id: 10, area_id: 15184, name: "Голосеевский", level: 1, parent: 0},
+  {city_id: 10, area_id: 15181, name: "Дарницкий", level: 1, parent: 0},
+  {city_id: 10, area_id: 15183, name: "Деснянский", level: 1, parent: 0},
+  {city_id: 10, area_id: 15182, name: "Днепровский", level: 1, parent: 0},
+  {city_id: 10, area_id: 15187, name: "Оболонский", level: 1, parent: 0},
+  {city_id: 10, area_id: 15189, name: "Печерский", level: 1, parent: 0},
+  {city_id: 10, area_id: 15188, name: "Подольский", level: 1, parent: 0}
 ])
 
 District.create!([
