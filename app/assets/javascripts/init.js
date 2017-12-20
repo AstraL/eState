@@ -309,7 +309,7 @@ var REAL = window.REAL || {};
 /* ==================================================
    Init Functions
 ================================================== */
-$(document).on('turbolinks:render',function(){
+$(document).on('turbolinks:load',function(){
     REAL.ContactForm();
     REAL.scrollToTop();
     REAL.accordion();
