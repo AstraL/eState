@@ -1,3 +1,4 @@
+=begin
 User.create!(lastName: 'Admin', firstName: 'Admin', email: 'admin@example.com', password: 'estateadminpass', password_confirmation: 'estateadminpass')
 
 Region.create!([
@@ -610,6 +611,7 @@ City.create!([
   {city_id: 544, state_id: 25, name: "Хотин", translit: "hotin"},
   {city_id: 25, state_id: 25, name: "Черновцы", translit: "chernovciy"}
 ])
+=end
 District.create!([
   {city_id: 10, area_id: 15186, name: "Святошинский", level: 1, parent_id: 1},
   {city_id: 10, area_id: 15185, name: "Соломенский", level: 1, parent_id: 1},
