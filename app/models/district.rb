@@ -4,8 +4,7 @@ class District < ApplicationRecord
 		# level 1-Район, 2-Пригород, 3-Село, 4-Микрорайон
 		validates_uniqueness_of :area_id
 
-		has_many :micro_districts, class_name: 'District', foreign_key: 'parent_id'
-		belongs_to :parent, class_name: 'District'
+		has_many :microdistricts, foreign_key: 'area_id'
 
 		def parent_id
 				if self.parent

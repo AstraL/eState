@@ -11,7 +11,7 @@
                         <%= f.input :realty_type, label: false, collection: @realty_type, label_method: ->(obj){obj[:label]}, value_method: ->(obj){obj[:value]}, include_blank: false, prompt: t('search.placeholder.realty_type'), input_html: {name: 'realty_type', class: 'input-lg selectpicker'} %>
                     </div>
                     <div class="col-md-3">
-                        <%= f.input :district, label: false, collection: @kiev_districts, as: :grouped_select, group_method: :micro_districts, include_blank: false, prompt: 'Район', input_html: {name: 'district', class: 'input-lg selectpicker'} %>
+                        <%= f.input :district, label: false, collection: @kiev_districts, as: :grouped_select, group_method: :microdistricts, include_blank: false, prompt: 'Район', input_html: {name: 'district', class: 'input-lg selectpicker'} %>
                     </div>
                     <div class="col-md-2">
                         <%= f.button :button, id: 'btn-search', class: 'btn-primary btn-block btn-lg' do %>

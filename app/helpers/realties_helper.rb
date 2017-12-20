@@ -179,7 +179,7 @@ module RealtiesHelper
 		end
 
 		def get_district_value(label)
-				district = District.find_by_name(label)
+				district = Microdistrict.find_by_name(label)
 				if district
 						district.area_id
 				end

@@ -4,7 +4,7 @@
         <%= simple_form_for(:q, url: realties_search_path, method: 'get') do |f| %>
             <%= f.input :deal, label: false, collection: @deal, label_method: ->(obj){obj[:label]}, value_method: ->(obj){obj[:value]}, selected: params[:deal], include_blank: false, prompt: t('search.placeholder.deal'), input_html: { name: "deal", class: 'input-lg selectpicker'} %>
             <%= f.input :realty_type, label: false, collection: @realty_type, label_method: ->(obj){obj[:label]}, value_method: ->(obj){obj[:value]}, include_blank: false, prompt: t('search.placeholder.realty_type'), input_html: {name: 'realty_type', class: 'input-lg selectpicker'} %>
-            <%= f.input :district, label: false, collection: @kiev_districts, as: :grouped_select, group_method: :micro_districts, include_blank: false, prompt: 'Район', input_html: {name: 'district', class: 'input-lg selectpicker'} %>
+            <%= f.input :district, label: false, collection: @kiev_districts, as: :grouped_select, group_method: :microdistricts, include_blank: false, prompt: 'Район', input_html: {name: 'district', class: 'input-lg selectpicker'} %>
             <div class="row">
                 <div class="form-group col-md-12">
                     <label for="">Количество комнат</label>
