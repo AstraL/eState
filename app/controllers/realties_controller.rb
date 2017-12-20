@@ -117,6 +117,6 @@ class RealtiesController < ApplicationController
 				@deal = [{ value: 1, label: t('activerecord.attributes.realty.deal.buy') }, { value: 2, label: t('activerecord.attributes.realty.deal.rent') }]
 				@realty_type = [{value: 1, label: t('activerecord.attributes.realty.type.apartment')}, {value: 2, label: t('activerecord.attributes.realty.type.house')}]
 				@rooms = [1, 2, 3, 4, 5]
-				@kiev_districts = District.where('city_id = "10"')
+				@kiev_districts = District.where(city_id: 10)
 		end
 end
