@@ -94,3 +94,29 @@ sup {
     @extend .price;
     background: $success-color !important;
 }
+
+@media only screen and (max-width: 992px) {
+    .hero-slider {
+        height: 300px;
+        &.flexslider ul.slides li {
+            height: 300px;
+            a {
+                display: block;
+                height: 100%;
+            }
+        }
+    }
+    .slider-mask {
+        height: 300px;
+    }
+
+    .parallax .bg-blur {
+        background-position: top left;
+        background-size: 200% 100%;
+    }
+
+    .navigation > ul > li {
+        width: 110%;
+        margin: 0 -15px 0;
+    }
+}
