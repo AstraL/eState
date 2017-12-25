@@ -23,17 +23,32 @@
                     </div>
                 </div>
                 <div class="row hidden-xs hidden-sm">
-                    <div class="col-md-2">
-                        <%= f.input :r_min, label: 'Минимум комнат', required: false, collection: @rooms, input_html: { name: 'r_min', class: 'input-lg selectpicker'}, include_blank: false, prompt: t('search.placeholder.min') %>
+                    <div class="col-md-4">
+                        <label for="">Комнаты</label>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="">Цена</label>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="">Площадь</label>
                     </div>
                     <div class="col-md-2">
-                        <%= f.input :r_max, label: 'Максимум комнат', required: false, collection: @rooms, input_html: { name: 'r_max', class: 'input-lg selectpicker'}, include_blank: false, prompt: t('search.placeholder.max') %>
+                        <%= f.input :r_min, label: false, required: false, collection: @rooms, input_html: { name: 'r_min', class: 'input-lg selectpicker'}, include_blank: false, prompt: t('search.placeholder.min') %>
                     </div>
                     <div class="col-md-2">
-                        <%= f.input :price_min, label: 'Цена мин.', required: false, input_html: { name: 'price_min', class: 'input-lg'}, placeholder: t('search.placeholder.min') %>
+                        <%= f.input :r_max, label: false, required: false, collection: @rooms, input_html: { name: 'r_max', class: 'input-lg selectpicker'}, include_blank: false, prompt: t('search.placeholder.max') %>
                     </div>
                     <div class="col-md-2">
-                        <%= f.input :price_max, label: 'Цена макс', required: false, input_html: { name: 'price_max', class: 'input-lg'}, placeholder: t('search.placeholder.max') %>
+                        <%= f.input :price_min, label: false, required: false, input_html: { name: 'price_min', class: 'input-lg'}, placeholder: t('search.placeholder.min') %>
+                    </div>
+                    <div class="col-md-2">
+                        <%= f.input :price_max, label: false, required: false, input_html: { name: 'price_max', class: 'input-lg'}, placeholder: t('search.placeholder.max') %>
+                    </div>
+                    <div class="col-md-2">
+                        <%= f.input :area_min, label: false, required: false, input_html: { name: 'area_min', class: 'input-lg'}, placeholder: t('search.placeholder.min') %>
+                    </div>
+                    <div class="col-md-2">
+                        <%= f.input :area_max, label: false, required: false, input_html: { name: 'area_max', class: 'input-lg'}, placeholder: t('search.placeholder.max') %>
                     </div>
                 </div>
             <% end %>

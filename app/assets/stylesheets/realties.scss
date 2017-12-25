@@ -43,9 +43,12 @@ sup {
 }
 
 .parallax {
+    background-image: asset-url('banner-bg.jpg');
+    background-size: contain;
+    background-repeat: repeat-x;
     .bg-blur {
-        background-position: bottom;
-        background-size: 100% 105%;
+        background-position: center;
+        background-size: contain;
         background-repeat: no-repeat;
         position: absolute;
         height: 100%;
@@ -97,9 +100,9 @@ sup {
 
 @media only screen and (max-width: 992px) {
     .hero-slider {
-        height: 300px;
+        height: 38vh;
         &.flexslider ul.slides li {
-            height: 300px;
+            height: 38vh;
             a {
                 display: block;
                 height: 100%;
@@ -107,12 +110,12 @@ sup {
         }
     }
     .slider-mask {
-        height: 300px;
+        height: 38vh;
     }
 
     .parallax .bg-blur {
         background-position: top left;
-        background-size: 200% 100%;
+        background-size: 170% 100%;
     }
 
     .navigation > ul > li {

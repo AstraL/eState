@@ -73,6 +73,16 @@ class RealtiesController < ApplicationController
 										@results_ids.push(r[:id])
 								end
 						end
+						unless params[:area_min].blank?
+								if r[:area_total].to_i < params[:area_min].to_i
+										@results_ids.push(r[:id])
+								end
+						end
+						unless params[:area_max].blank?
+								if r[:area_total].to_i > params[:area_max].to_i
+										@results_ids.push(r[:id])
+								end
+						end
 				end
 
 				@results_ids.uniq!
