@@ -25,6 +25,12 @@ GIT
       rails (>= 5.0.0)
       rails_admin (~> 1.2.0)
 
+GIT
+  remote: https://github.com/luciuschoi/jssocials-rails.git
+  revision: b1d16da5b803ebd4630a0eb749275aa348ae1a4b
+  specs:
+    jssocials-rails (0.3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -359,6 +365,7 @@ DEPENDENCIES
   httparty
   jbuilder (~> 2.5)
   jquery-rails
+  jssocials-rails!
   meta-tags
   mini_magick
   pg

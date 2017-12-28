@@ -35,6 +35,7 @@ gem 'gmaps4rails'
 gem 'httparty'
 gem 'seed_dump'
 gem 'meta-tags'
+gem 'jssocials-rails', github: 'luciuschoi/jssocials-rails'
 # gem 'redis', '~> 3.0'
 # gem 'bcrypt', '~> 3.1.7'
 

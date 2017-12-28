@@ -20,6 +20,7 @@
 //= require jquery/helper-plugins
 //= require bootstrap-sprockets
 //= require jquery/waypoints
+//= require jssocials
 //= require turbolinks
 
 //= require ckeditor/init
@@ -27,4 +28,5 @@
 //= require init
 
 //= require realties
+//= require base
 

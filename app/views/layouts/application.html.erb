@@ -5,13 +5,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
         <meta name="format-detection" content="telephone=no">
-        <%= display_meta_tags description: "All text about keywords, other keywords" %>
         <%= display_meta_tags og: { url: "http://#{request.host+request.fullpath}",
                                     title: full_title(yield(:title)),
                                     description: "Сюда надо добавить описание сайта",
-                                    type: 'website',
-                                    image: (image_url "og.jpg"),
-                                    locale: 'ru_RU'} %>
+                                    image: og_image,
+                                    locale: 'ru_RU',
+                                    type: @post.present? ? 'article' : 'website'} %>
         <%= yield :caching %>
         <%= render 'application/favicon' %>
         <%= csrf_meta_tags %>

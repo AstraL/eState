@@ -8,6 +8,7 @@
                     <header class="single-post-header clearfix">
                         <%= content_tag(:h2, @post.title, class: 'post-title') %>
                     </header>
+                    <div id='share'></div>
                     <article class="post-content">
                         <div class="post-meta meta-data">
                             <span><%= fa_icon "calendar", text: "#{t('activerecord.attributes.post.created_at')} #{l(@post.created_at, format: '%d %B %Y')}" %></span>
