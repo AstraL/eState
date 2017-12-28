@@ -34,6 +34,7 @@ gem 'active_link_to'
 gem 'gmaps4rails'
 gem 'httparty'
 gem 'seed_dump'
+gem 'meta-tags'
 # gem 'redis', '~> 3.0'
 # gem 'bcrypt', '~> 3.1.7'
 
