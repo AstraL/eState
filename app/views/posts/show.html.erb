@@ -1,4 +1,5 @@
 <% provide(:title, @post.title) %>
+<% set_meta_tags og: { author: @post.user.fullname } %>
 <%= render partial: 'layouts/partials/page_header', locals: {heading: t('activerecord.models.post.other')} %>
 <div class="main" role="main">
     <div id="content" class="content full">
