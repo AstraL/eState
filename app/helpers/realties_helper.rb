@@ -37,8 +37,8 @@ module RealtiesHelper
 								district: { value: get_district_value(item.at_xpath("location/district").text), label: item.at_xpath("location/district").text },
 								street: { value: item.at_xpath("location/street")["value"], label: item.at_xpath("location/street").text},
 								house_num: item.at_xpath("location/house_num").nil? ? t('activerecord.attributes.realty.empty_field') : item.at_xpath("location/house_num").text,
-								map_lat: item.at_xpath("location/map_lat").nil? ? "": item.at_xpath("location/map_lat").text,
-								map_lng: item.at_xpath("location/map_lng").nil? ? "": item.at_xpath("location/map_lng").text,
+								map_lat: item.at_xpath("location/map_lat").nil? ? "50.4501": item.at_xpath("location/map_lat").text,
+								map_lng: item.at_xpath("location/map_lng").nil? ? "30.5234": item.at_xpath("location/map_lng").text,
 								apartment: item.at_xpath("location/apartment").nil? ? t('activerecord.attributes.realty.empty_field') : item.at_xpath("location/apartment").text,
 								landmark: item.at_xpath("location/landmark").text
 						},

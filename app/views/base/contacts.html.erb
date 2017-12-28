@@ -15,9 +15,27 @@
                     <div class="col-md-5 col-md-offset-1 col-sm-6">
                         <%= content_tag(:h3, t('contacts.feedback_form')) %>
                         <%= simple_form_for @feedback, url: feedbacks_path, remote: true, html: {class: 'contact-form'} do |f| %>
-                            <%= f.input :name, label: false, placeholder: t('activerecord.attributes.feedback.name'), input_html: {class: 'input-lg'} %>
-                            <%= f.input :email, label: false, placeholder: t('activerecord.attributes.feedback.email'), input_html: {class: 'input-lg'} %>
-                            <%= f.input :phone, label: false, placeholder: t('activerecord.attributes.feedback.phone'), input_html: {class: 'input-lg'} %>
+                            <div class="row">
+                                <div class="col-md-6 col-xs-12">
+                                    <%= f.input :name, label: false, placeholder: t('activerecord.attributes.feedback.name'), input_html: {class: 'input-lg'} %>
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <%= f.input :person, label: false, collection: Feedback::PERSON, input_html: {class: 'input-lg selectpicker'}, include_blank: false, prompt: :translate  %>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <%= f.input :question, label: false, collection: Feedback::QUESTIONS, input_html: {class: 'input-lg selectpicker'}, include_blank: false, prompt: :translate  %>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-xs-12">
+                                    <%= f.input :email, label: false, placeholder: t('activerecord.attributes.feedback.email'), input_html: {class: 'input-lg'} %>
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <%= f.input :phone, label: false, placeholder: t('activerecord.attributes.feedback.phone'), input_html: {class: 'input-lg'} %>
+                                </div>
+                            </div>
                             <%= f.input :body, label: false, placeholder: t('activerecord.attributes.feedback.body'), input_html: {rows: '8', class: 'input-lg'} %>
                             <%= f.button :button, class: 'btn-primary btn-lg btn-block' do %>
                                 <%= fa_icon "envelope-o", text: t('contacts.send') %>

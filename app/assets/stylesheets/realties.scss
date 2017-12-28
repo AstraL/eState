@@ -43,7 +43,7 @@ sup {
 }
 
 .parallax {
-    background-image: asset-url('banner-bg.jpg');
+    //background-image: asset-url('banner-bg.jpg');
     background-size: contain;
     background-repeat: repeat-x;
     .bg-blur {
@@ -121,5 +121,13 @@ sup {
     .navigation > ul > li {
         width: 110%;
         margin: 0 -15px 0;
+    }
+
+    .property-amenities > span, .single-property .property-amenities span  {
+        font-size: 10px;
+    }
+
+    .property-amenities > span > strong {
+        font-size: 10px;
     }
 }

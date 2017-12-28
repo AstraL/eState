@@ -1,0 +1,19 @@
+ru:
+  simple_form:
+    prompts:
+      feedback:
+        person: 'Я'
+        question: 'Меня интересует'
+    options:
+      feedback:
+        person:
+          owner: 'Владелец'
+          client: 'Клиент'
+          intermediary: 'Посредник'
+        question:
+          rent: 'Аренда недвижимости'
+          sell: 'Продажа недвижимости'
+          consulting: 'Юридическая консультация'
+          trust_management: 'Доверительное управление недвижимостью'
+          transaction_escort: 'Сопровождение сделки по купле/продаже недвижимости'
+          other: 'Другой вопрос'
