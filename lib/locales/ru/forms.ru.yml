@@ -2,8 +2,8 @@ ru:
   simple_form:
     prompts:
       feedback:
-        person: 'Я'
-        question: 'Меня интересует'
+        person: 'Ваш статус'
+        question: 'Выбрать услугу'
     options:
       feedback:
         person:
