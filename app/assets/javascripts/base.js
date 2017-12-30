@@ -5,4 +5,6 @@ $(document).on('turbolinks:load',function() {
         showLabel: false,
         shares: ["facebook", "googleplus", "linkedin", "pocket", "whatsapp", "viber", "messenger", "vkontakte", "telegram"]
     });
+
+
 });

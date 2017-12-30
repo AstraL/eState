@@ -22,6 +22,6 @@ class BaseController < RealtiesController
     end
 
     def contacts
-		    @feedback = Feedback.new
+
     end
 end

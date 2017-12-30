@@ -13,8 +13,7 @@
 //= require rails-ujs
 
 //= require jquery2
-//= require underscore-min
-//= require gmaps/google
+//= require jquery_ujs
 //= require prettyphoto/js/prettyphoto
 //= require flexslider/js/jquery.flexslider
 //= require jquery/helper-plugins

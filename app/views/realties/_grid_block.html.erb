@@ -7,7 +7,7 @@
         <%= content_tag(:h4, (link_to strip_title(realty), realty_path(id: realty[:id]))) %>
         <%= content_tag(:span, realty[:location].fetch(:city).fetch(:label), class: 'location') %>
         <div class="price"><%= set_price(realty) %></div>
-        <% unless realty[:commission] %>
+        <% if realty[:commission] %>
             <div class="commission" data-toggle="tooltip" data-placement="bottom" title="Без коммисии"><strong>%</strong><span>0</span></div>
         <% end %>
     </div>

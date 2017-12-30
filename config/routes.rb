@@ -10,14 +10,10 @@ Rails.application.routes.draw do
 				resources :posts, path: '/'
 				match 'category/:category_slug', to: 'posts#category', via: :get, as: :category_posts
 		end
-		resources :feedbacks, only: [:create]
+		resources :feedbacks
 
-		get '/contacts', to: 'base#contacts', as: :contacts
+		get '/contacts', to: 'feedbacks#new', as: :contacts
 
 		mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 		mount Ckeditor::Engine => '/ckeditor'
-
-		namespace :control do
-				get '/locations', to: 'location#locations', as: :regions
-		end
 end

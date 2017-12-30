@@ -15,7 +15,7 @@
                             <%= content_tag(:span, @realty[:location].fetch(:city).fetch(:label), class: 'location') %>
                         <% end %>
                         <div class="price"><%= set_price(@realty) %></div>
-                        <% unless @realty[:commission] %>
+                        <% if @realty[:commission] %>
                             <div class="commission"><strong>%</strong><span>Без комиссии</span></div>
                         <% end %>
                         <div class="date"><%= fa_icon "calendar-o", text: creation_date(@realty) %></div>

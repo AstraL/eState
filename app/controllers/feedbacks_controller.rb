@@ -1,16 +1,21 @@
 class FeedbacksController < ApplicationController
 
+		def new
+				@feedback = Feedback.new
+		end
+
 		def create
 				@feedback = Feedback.create(feedback_params)
-				#TODO: Mailer
-				respond_to do |format|
-						format.js {}
+				if @feedback.save
+						redirect_to root_path
+				else
+						redirect_to realties_path
 				end
 		end
 
 		private
 
 		def feedback_params
-				params.require(:feedback).permit(:name, :email, :phone, :body)
+				params.require(:feedback).permit(:name, :email, :phone, :body, :person, :question)
 		end
 end

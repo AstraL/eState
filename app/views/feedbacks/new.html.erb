@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-md-5 col-md-offset-1 col-sm-6">
                         <%= content_tag(:h3, t('contacts.feedback_form')) %>
-                        <%= simple_form_for @feedback, url: feedbacks_path, html: {class: 'contact-form'} do |f| %>
+                        <%= simple_form_for @feedback, html: {class: 'contact-form'} do |f| %>
                             <div class="row">
                                 <div class="col-md-6 col-xs-12">
                                     <%= f.input :name, label: false, placeholder: t('activerecord.attributes.feedback.name'), input_html: {class: 'input-lg'} %>
@@ -37,7 +37,7 @@
                                 </div>
                             </div>
                             <%= f.input :body, label: false, placeholder: t('activerecord.attributes.feedback.body'), input_html: {rows: '8', class: 'input-lg'} %>
-                            <%= f.button :button, class: 'btn-primary btn-lg btn-block' do %>
+                            <%= f.button :submit, class: 'btn-primary btn-lg btn-block' do %>
                                 <%= fa_icon "envelope-o", text: t('contacts.send') %>
                             <% end %>
                         <% end %>
@@ -46,8 +46,7 @@
                     <div class="col-md-6 col-sm-6">
                         <%= content_tag(:h3, t('contacts.location')) %>
                         <div id="address" data-lat="50.416014" data-lng="30.539294" class="padding-as25 lgray-bg">
-                            <p class="big">Украина, г. Киев<br>
-                                бульвар Дружбы Народов, 17/5</p>
+                            <p class="big">Украина, г. Киев<br>бульвар Дружбы Народов, 17/5</p>
                         </div>
                         <%= content_tag(:h3, t('contacts.contact_info')) %>
                         <div class="padding-as25 lgray-bg">
