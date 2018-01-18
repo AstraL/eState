@@ -303,9 +303,10 @@ var REAL = window.REAL || {};
 			return false;
 		if ($(window).width() > 992){
 			$(".main-menu-wrapper").sticky({topSpacing:0,getWidthFrom: ''});
+            $("#realties-search").css('position', 'static');
             $("#realties-search").sticky({topSpacing:65,getWidthFrom: '.col-md-3'});
 		}
-	}
+	};
 /* ==================================================
    Init Functions
 ================================================== */
@@ -325,9 +326,9 @@ $(document).on('turbolinks:load',function(){
     $('.selectpicker').selectpicker({container:'body'});
 });
 
-
 /* Design Related Scripts */
 $(document).on('turbolinks:load', function() {
+    $("#realties-search").sticky('update');
     $(".flex-caption").each(function(){
         $(this).prepend('<i class="fa fa-caret-down"></i>');
     });
@@ -363,7 +364,6 @@ $(document).on('turbolinks:load', function() {
         $(this).css("line-height", mpheight+"px");
     });
 });
-
 
 $(window).resize(function(){
 	$(".media-box .zoom").each(function(){
