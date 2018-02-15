@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.default_locale %>">
+<head>
+    <title><%= full_title(yield(:title)) %></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <%#= yield :caching %>
+    <%= render 'application/favicon' %>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'administrator', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'administrator', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+    <%= yield %>
+</body>
+</html>

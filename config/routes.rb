@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :administrator do
+    get 'base/index'
+  end
+
 		root 'base#index'
 		devise_for :users, path: '/', path_names: { sign_in: 'login', sign_out: 'logout' }
 		get '/realties', to: 'realties#index'
@@ -16,4 +20,8 @@ Rails.application.routes.draw do
 
 		mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 		mount Ckeditor::Engine => '/ckeditor'
+
+		scope module: 'administrator', path: 'panel' do
+				root 'base#index'
+		end
 end
