@@ -1,27 +1,27 @@
 <div class="property-block">
-    <%= link_to realty_path(id: realty[:id]), class: 'property-featured-image', style: "background-image: url(#{main_image(realty)});" do %>
-        <%= content_tag(:span, (fa_icon "picture-o", text: realty.fetch(:images).count), class: 'images-count') %>
-        <%= content_tag(:span, get_deal_type(realty), class: 'badges') %>
+    <%= link_to realty_path(realty), class: 'property-featured-image', style: "background-image: url(#{main_image(realty)});" do %>
+        <%= content_tag(:span, (fa_icon "picture-o", text: realty.images.count), class: 'images-count') %>
+        <%= content_tag(:span, t(realty.deal), class: 'badges') %>
     <% end %>
     <div class="property-info">
-        <%= content_tag(:h4, (link_to strip_title(realty), realty_path(id: realty[:id]))) %>
-        <%= content_tag(:span, realty[:location].fetch(:city).fetch(:label), class: 'location') %>
-        <div class="price"><%= set_price(realty) %></div>
-        <% if realty[:commission] %>
+        <%= content_tag(:h4, (link_to realty.strip_title, realty_path(realty))) %>
+        <%= content_tag(:span, realty.city_id, class: 'location') %> <!-- TODO: Название города -->
+        <div class="price"><%= content_tag(:strong, currency_symbol(realty)) + content_tag(:span, formatted_price(realty)) %></div>
+        <% if realty.commission == 0 %>
             <div class="commission" data-toggle="tooltip" data-placement="bottom" title="Без коммисии"><strong>%</strong><span>0</span></div>
         <% end %>
     </div>
     <div class="property-amenities clearfix">
         <span class="area">
-            <%= content_tag(:strong, "#{realty[:area_total]} м<sup>2</sup>".html_safe) %>
+            <%= content_tag(:strong, "#{number_with_precision(realty.area_total, strip_insignificant_zeros: true)} м<sup>2</sup>".html_safe) %>
             <%= t('activerecord.attributes.realty.area_total.short') %>
         </span>
         <span class="baths">
-            <%= content_tag(:strong, realty[:room_count]) %>
+            <%= content_tag(:strong, field_present?(realty.room_count)) %>
             <%= room_count_label(realty) %>
         </span>
         <span class="beds">
-            <%= content_tag(:strong, realty[:floor]) %>
+            <%= content_tag(:strong, realty.floor) %>
             <%= t('activerecord.attributes.realty.floor') %>
         </span>
     </div>

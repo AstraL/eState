@@ -68,9 +68,10 @@ ru:
         body: 'Сообщение'
       realty:
         empty_field: 'Не указано'
-        type:
+        realty_type:
           apartment: 'Квартира'
           house: 'Дом'
+          office: 'Офис'
         deal:
           rent: 'Аренда'
           buy: 'Продажа'
@@ -92,12 +93,12 @@ ru:
           one: 'Комната'
           two: 'Комнаты'
           other: 'Комнат'
-        property_2: 'Газ'
-        property_11: 'Высота потолков'
+        gas: 'Газ'
+        ceiling_height: 'Высота потолков'
         property_13: 'Эксклюзив'
-        property_16: 'Количество спален'
-        property_17: 'Материал стен'
-        property_18: 'Ремонт'
+        bedroom_count: 'Количество спален'
+        wall_material: 'Материал стен'
+        renovation: 'Ремонт'
         property_19: 'Количество санузлов'
         property_20: 'Планировка'
         property_21: 'Класс жилья'

@@ -1,4 +1,4 @@
-<% provide(:title, @realty[:title]) %>
+<% provide(:title, @realty.title) %>
 <div class="site-showcase">
     <!-- Start Google Map -->
     <div class="clearfix map-single-page" id="gmap"></div>
@@ -11,34 +11,34 @@
                 <div class="col-md-8">
                     <div class="single-property">
                         <%= content_tag(:h2, class: 'page-title') do %>
-                            <%= strip_title(@realty) %>
-                            <%= content_tag(:span, @realty[:location].fetch(:city).fetch(:label), class: 'location') %>
+                            <%= @realty.strip_title %>
+                            <%= content_tag(:span, @realty.city_id, class: 'location') %>
                         <% end %>
-                        <div class="price"><%= set_price(@realty) %></div>
-                        <% if @realty[:commission] %>
+                        <div class="price"><%= content_tag(:strong, currency_symbol(@realty)) + content_tag(:span, formatted_price(@realty)) %></div>
+                        <% if @realty.commission == 0 %>
                             <div class="commission"><strong>%</strong><span>Без комиссии</span></div>
                         <% end %>
                         <div class="date"><%= fa_icon "calendar-o", text: creation_date(@realty) %></div>
                         <div class="property-amenities clearfix">
-                            <span class="area"><%= content_tag(:strong, get_deal_type(@realty)) %></span>
-                            <span class="baths"><%= content_tag(:strong, get_realty_type(@realty)) %></span>
-                            <span class="area"><%= content_tag(:strong, "#{@realty[:area_total]}/#{@realty[:area_living]}/#{@realty[:area_kitchen]}") %><%= "м<sup>2</sup>".html_safe %></span>
-                            <span class="beds"><%= content_tag(:strong, @realty.fetch(:floor)) %><%= t('activerecord.attributes.realty.floor') %></span>
-                            <span class="parking"><%= content_tag(:strong, @realty.fetch(:room_count)) %><%= room_count_label(@realty) %></span>
+                            <span class="area"><%= content_tag(:strong, t(@realty.deal)) %></span>
+                            <span class="baths"><%= content_tag(:strong, t(@realty.realty_type)) %></span>
+                            <span class="area"><%= content_tag(:strong, area_all(@realty)) %><%= "м<sup>2</sup>".html_safe %></span>
+                            <span class="beds"><%= content_tag(:strong, @realty.floor) %><%= t('activerecord.attributes.realty.floor') %></span>
+                            <span class="parking"><%= content_tag(:strong, @realty.room_count) %><%= room_count_label(@realty) %></span>
                         </div>
                         <div class="property-slider">
-                            <% if !@realty[:images].blank? %>
+                            <% if @realty.images.present? %>
                                 <div id="property-images" class="flexslider">
                                     <div class="slides">
-                                        <% @realty[:images].each do |img| %>
-                                            <a href="<%= img %>" data-rel="prettyPhoto[gallery]" class="item" style="background-image: url(<%= img %>); min-height: 460px;"></a>
+                                        <% @realty.images.each do |img| %>
+                                            <a href="<%= img.url %>" data-rel="prettyPhoto[gallery]" class="item" style="background-image: url(<%= img.url %>); min-height: 460px;"></a>
                                         <% end %>
                                     </div>
                                 </div>
                                 <div id="property-thumbs" class="flexslider">
                                     <ul class="slides">
-                                        <% @realty[:images].each do |img| %>
-                                            <li class="item" style="background-image: url(<%= img %>); min-height: 117px; cursor: pointer"></li>
+                                        <% @realty.images.each do |img| %>
+                                            <li class="item" style="background-image: url(<%= img.url %>); min-height: 117px; cursor: pointer"></li>
                                         <% end %>
                                     </ul>
                                 </div>
@@ -57,7 +57,7 @@
                                     </div>
                                     <div class="clearfix"></div>
                                     <div class="timer">
-                                        <%= content_tag(:span, "#{@realty[:area_total]} м<sup>2</sup>".html_safe , class: 'count') %>
+                                        <%= content_tag(:span, "#{number_with_precision(@realty.area_total, strip_insignificant_zeros: true)} м<sup>2</sup>".html_safe , class: 'count') %>
                                     </div>
                                     <div class="clearfix"></div>
                                     <%= content_tag(:span, t('activerecord.attributes.realty.area_total.long'), class: 'fact') %>
@@ -68,7 +68,7 @@
                                     </div>
                                     <div class="clearfix"></div>
                                     <div class="timer">
-                                        <%= content_tag(:span, "#{@realty[:area_living]} м<sup>2</sup>".html_safe , class: 'count') %>
+                                        <%= content_tag(:span, "#{number_with_precision(field_present?(@realty.area_living), strip_insignificant_zeros: true)} м<sup>2</sup>".html_safe , class: 'count') %>
                                     </div>
                                     <div class="clearfix"></div>
                                     <%= content_tag(:span, t('activerecord.attributes.realty.area_living'), class: 'fact') %>
@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="clearfix"></div>
                                     <div class="timer">
-                                        <%= content_tag(:span, "#{@realty[:area_kitchen]} м<sup>2</sup>".html_safe , class: 'count') %>
+                                        <%= content_tag(:span, "#{number_with_precision(field_present?(@realty.area_kitchen), strip_insignificant_zeros: true)} м<sup>2</sup>".html_safe , class: 'count') %>
                                     </div>
                                     <div class="clearfix"></div>
                                     <%= content_tag(:span, t('activerecord.attributes.realty.area_kitchen'), class: 'fact') %>
@@ -90,7 +90,7 @@
                                     </div>
                                     <div class="clearfix"></div>
                                     <div class="timer">
-                                        <%= content_tag(:span, "#{@realty[:floor]}/#{@realty[:total_floors]}".html_safe , class: 'count') %>
+                                        <%= content_tag(:span, "#{@realty.floor}/#{field_present?(@realty.total_floors)}".html_safe , class: 'count') %>
                                     </div>
                                     <div class="clearfix"></div>
                                     <%= content_tag(:span, t('activerecord.attributes.realty.floor'), class: 'fact') %>
@@ -100,15 +100,35 @@
                     <hr>
                     <div id="amenities">
                         <div class="additional-amenities">
-                            <% @realty[:properties].each do |key, prop| %>
-                                <% if key == "property_39" or key == "property_41" or key == "property_26" or key == "property_40" %>
-                                    <% next %>
-                                <% else %>
-                                    <span class="ameniti">
-                                        <%= content_tag(:strong, "#{t("activerecord.attributes.realty.#{key}")}: ".html_safe) %>
-                                        <%= content_tag(:span, prop[:value], class: 'ameniti-value') %>
-                                    </span>
-                                <% end %>
+                            <% unless @realty.gas.nil? %>
+                                <span class="ameniti">
+                                    <%= content_tag(:strong, t("activerecord.attributes.realty.gas")) %>
+                                    <%= content_tag(:span, @realty.gas, class: 'ameniti-value') %>
+                                </span>
+                            <% end %>
+                            <% unless @realty.ceiling_height.nil? %>
+                                <span class="ameniti">
+                                    <%= content_tag(:strong, t("activerecord.attributes.realty.ceiling_height")) %>
+                                    <%= content_tag(:span, @realty.ceiling_height, class: 'ameniti-value') %>
+                                </span>
+                            <% end %>
+                            <% unless @realty.bedroom_count.nil? %>
+                                <span class="ameniti">
+                                    <%= content_tag(:strong, t("activerecord.attributes.realty.bedroom_count")) %>
+                                    <%= content_tag(:span, @realty.bedroom_count, class: 'ameniti-value') %>
+                                </span>
+                            <% end %>
+                            <% unless @realty.wall_material.nil? %>
+                                <span class="ameniti">
+                                    <%= content_tag(:strong, t("activerecord.attributes.realty.wall_material")) %>
+                                    <%= content_tag(:span, @realty.wall_material, class: 'ameniti-value') %>
+                                </span>
+                            <% end %>
+                            <% unless @realty.renovation.nil? %>
+                                <span class="ameniti">
+                                    <%= content_tag(:strong, t("activerecord.attributes.realty.renovation")) %>
+                                    <%= content_tag(:span, @realty.renovation, class: 'ameniti-value') %>
+                                </span>
                             <% end %>
                         </div>
                     </div>
@@ -118,31 +138,31 @@
                     <div id="agent" class="widget">
                         <%= content_tag(:h3, t('activerecord.attributes.realty.agent'), class: 'widgettitle') %>
                         <div class="agent">
-                            <%= content_tag(:h4, @realty.fetch(:user).fetch(:name)) %>
+                            <%#= content_tag(:h4, @realty.fetch(:user).fetch(:name)) %>
                             <div class="agent-contacts clearfix">
                                 <ul>
-                                    <li><%= mail_to @realty.fetch(:user).fetch(:email), (fa_icon "envelope", text: @realty.fetch(:user).fetch(:email)) %></li>
-                                    <% @realty.fetch(:user).fetch(:phones).each do |phone| %>
-                                        <li><%= link_to (fa_icon "phone", text: phone), "tel:#{phone}" %></li>
-                                    <% end %>
+                                    <li><%#= mail_to @realty.fetch(:user).fetch(:email), (fa_icon "envelope", text: @realty.fetch(:user).fetch(:email)) %></li>
+                                    <%# @realty.fetch(:user).fetch(:phones).each do |phone| %>
+                                        <li><%#= link_to (fa_icon "phone", text: phone), "tel:#{phone}" %></li>
+                                    <%# end %>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <% unless @realty[:description].blank? %>
+                    <% unless @realty.description.blank? %>
                     <div class="widget">
                         <%= content_tag(:h3, t('activerecord.attributes.realty.description'), class: 'widgettitle') %>
-                        <%= content_tag(:div, @realty[:description].html_safe.capitalize, id: 'description') %>
+                        <%= content_tag(:div, @realty.description.html_safe.capitalize, id: 'description') %>
                     </div>
                     <% end %>
                     <div class="widget">
                         <%= content_tag(:h3, t('activerecord.attributes.realty.address'), class: 'widgettitle') %>
-                        <div id="address" data-lat="<%= @realty[:location].fetch(:map_lat) %>" data-lng="<%= @realty[:location].fetch(:map_lng) %>">
+                        <div id="address" data-lat="<%= @realty.map_lat %>" data-lng="<%= @realty.map_lng %>">
                             <ul>
-                                <li><%= content_tag(:strong, "#{t('activerecord.attributes.realty.city')}: ") %><%= content_tag(:span, @realty[:location].fetch(:city).fetch(:label)) %></li>
-                                <li><%= content_tag(:strong, "#{t('activerecord.attributes.realty.district')}: ") %><%= content_tag(:span, @realty[:location].fetch(:district).fetch(:label), class: 'available') %></li>
-                                <li><%= content_tag(:strong, "#{t('activerecord.attributes.realty.street')}: ") %><%= content_tag(:span, @realty[:location].fetch(:street).fetch(:label), class: 'available') %></li>
-                                <li><%= content_tag(:strong, "#{t('activerecord.attributes.realty.house_num')}: ") %><%= content_tag(:span, @realty[:location].fetch(:house_num), class: 'available') %></li>
+                                <li><%= content_tag(:strong, "#{t('activerecord.attributes.realty.city')}: ") %><%= content_tag(:span, @realty.city_id) %></li>
+                                <li><%= content_tag(:strong, "#{t('activerecord.attributes.realty.district')}: ") %><%= content_tag(:span, @realty.district_id, class: 'available') %></li>
+                                <li><%= content_tag(:strong, "#{t('activerecord.attributes.realty.street')}: ") %><%= content_tag(:span, @realty.street, class: 'available') %></li>
+                                <li><%= content_tag(:strong, "#{t('activerecord.attributes.realty.house_num')}: ") %><%= content_tag(:span, @realty.house_num, class: 'available') %></li>
                             </ul>
                         </div>
                     </div>

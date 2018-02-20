@@ -1,26 +1,64 @@
 module RealtiesHelper
 
-		def active?(item)
-				properties = item.xpath("properties//property")
-				properties.each do |prop|
-						if prop["attribute"] == 'property_39'
-								@actuality = prop
-						end
-				end
-				if @actuality.text == 'Активный'
-						true
+		def main_image(r)
+				if r.images.present?
+						r.images.first.url
 				else
-						false
+						image_path "fallback/thumb_post_placeholder.jpg"
 				end
+		end
+
+		def currency_symbol(r)
+				currency = r.price_currency
+				case currency
+						when "USD"
+								"$"
+						else
+								"₴"
+				end
+		end
+
+		def formatted_price(r)
+				type = r.deal_id
+				price = r.price_value.to_s
+
+				if type == 2
+						price + I18n.t('realties.price.monthly')
+				else
+						price
+				end
+		end
+
+		def room_count_label(r)
+				i = r.room_count.to_i
+				case i
+						when 1
+								t('activerecord.attributes.realty.room_count.one')
+						when 2...4
+								t('activerecord.attributes.realty.room_count.two')
+						else
+								t('activerecord.attributes.realty.room_count.other')
+				end
+		end
+
+		def creation_date(r)
+				content_tag(:span, "#{t('activerecord.attributes.realty.created_at')} #{l(r.crm_created_at, format: :long)}")
+		end
+
+		def area_all(r)
+				"#{number_with_precision(r.area_total, strip_insignificant_zeros: true)}/#{number_with_precision(field_present?(r.area_living), strip_insignificant_zeros: true)}/#{number_with_precision(field_present?(r.area_kitchen), strip_insignificant_zeros: true)}"
 		end
 
 		def field_present?(field)
 				if field.nil?
 						"-"
 				else
-						field.text
+						field
 				end
 		end
+
+		# Old methods
+
 
 		def xml_to_json(item)
 				j = {
@@ -80,108 +118,12 @@ module RealtiesHelper
 				j
 		end
 
-		def get_commission(item)
-				commission = false
-				properties = item.xpath("properties//property")
-				properties.each do |prop|
-						if prop["attribute"] == "property_41"
-								commission = true
-						else
-								commission
-						end
-				end
-
-				commission
-
-		end
-
-
-		def set_price(r)
-				type = r.fetch(:deal).fetch(:value)
-				price = r.fetch(:price).fetch(:value).to_s
-				currency = r.fetch(:price).fetch(:currency)
-
-				symbol = ''
-				formatted_price = if type == 2
-															price + I18n.t('realties.price.monthly')
-                          else
-															price
-				                  end
-
-				case currency
-				when "USD"
-						symbol = "$"
-				else
-						symbol = "₴"
-				end
-
-				content_tag(:strong, symbol) + content_tag(:span, formatted_price)
-		end
-
-		def main_image(r)
-				if r.fetch(:images)[0].nil?
-						image_path "fallback/thumb_post_placeholder.jpg"
-				else
-						r.fetch(:images)[0]
-				end
-		end
-
-		def strip_title(r)
-				r[:title].sub('Аренда /', '').sub('Продажа /', '').sub(', г. Киев','').sub('Квартира /', '')
-		end
-
 		def get_property(r, key)
 				props = r[:properties]
 				if props.key?(key)
 						props.fetch(key).fetch(:value)
 				else
 						"0"
-				end
-		end
-
-		def get_deal_type(r)
-				d = r.fetch(:deal).fetch(:value)
-				case d
-						when 1
-								t('activerecord.attributes.realty.deal.buy')
-						when 2
-								t('activerecord.attributes.realty.deal.rent')
-						else
-								t('activerecord.attributes.realty.empty_field')
-				end
-		end
-
-		def get_realty_type(r)
-				t = r.fetch(:realty_type).fetch(:value)
-				case t
-						when 1
-								t('activerecord.attributes.realty.type.apartment')
-						else
-								t('activerecord.attributes.realty.empty_field')
-				end
-		end
-
-		def room_count_label(r)
-				i = r.fetch(:room_count).to_i
-				case i
-						when 1
-								t('activerecord.attributes.realty.room_count.one')
-						when 2...4
-								t('activerecord.attributes.realty.room_count.two')
-						else
-								t('activerecord.attributes.realty.room_count.other')
-				end
-		end
-
-		def creation_date(r)
-				date = Date.parse(r[:created_at])
-				content_tag(:span, "#{t('activerecord.attributes.realty.created_at')} #{l(date, format: :long)}")
-		end
-
-		def get_district_value(label)
-				district = Microdistrict.find_by_name(label)
-				if district
-						district.area_id
 				end
 		end
 end
