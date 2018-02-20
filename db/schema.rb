@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180217013145) do
+ActiveRecord::Schema.define(version: 20180220013507) do
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
@@ -20,11 +20,12 @@ ActiveRecord::Schema.define(version: 20180217013145) do
     t.string "slug"
   end
 
-  create_table "cities", force: :cascade do |t|
-    t.integer "city_id"
-    t.integer "state_id"
+  create_table "cities", id: false, force: :cascade do |t|
+    t.integer "city_id", null: false
     t.string "name"
     t.string "translit"
+    t.integer "region_id"
+    t.index ["city_id"], name: "index_cities_on_city_id", unique: true
   end
 
   create_table "ckeditor_assets", force: :cascade do |t|
@@ -37,14 +38,6 @@ ActiveRecord::Schema.define(version: 20180217013145) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["type"], name: "index_ckeditor_assets_on_type"
-  end
-
-  create_table "districts", force: :cascade do |t|
-    t.integer "city_id"
-    t.integer "area_id"
-    t.string "name"
-    t.integer "level"
-    t.integer "parent_id", default: 0
   end
 
   create_table "feedbacks", force: :cascade do |t|
@@ -75,13 +68,6 @@ ActiveRecord::Schema.define(version: 20180217013145) do
     t.integer "realty_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "microdistricts", force: :cascade do |t|
-    t.string "name"
-    t.integer "area_id"
-    t.integer "level"
-    t.integer "district_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -147,13 +133,11 @@ ActiveRecord::Schema.define(version: 20180217013145) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "regions", force: :cascade do |t|
-    t.integer "state_id"
+  create_table "regions", id: false, force: :cascade do |t|
+    t.integer "region_id", null: false
     t.string "name"
     t.string "translit"
-    t.string "declension"
-    t.string "region_center"
-    t.string "center_declension"
+    t.index ["region_id"], name: "index_regions_on_region_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|

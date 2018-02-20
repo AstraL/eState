@@ -147,7 +147,6 @@ GEM
       activerecord (>= 4.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    gmaps4rails (2.1.2)
     haml (5.0.4)
       temple (>= 0.8.0)
       tilt
@@ -361,7 +360,6 @@ DEPENDENCIES
   devise
   font-awesome-rails
   friendly_id (~> 5.2.3)
-  gmaps4rails
   httparty
   jbuilder (~> 2.5)
   jquery-rails

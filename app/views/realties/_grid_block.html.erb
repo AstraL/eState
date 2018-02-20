@@ -5,7 +5,7 @@
     <% end %>
     <div class="property-info">
         <%= content_tag(:h4, (link_to realty.strip_title, realty_path(realty))) %>
-        <%= content_tag(:span, realty.city_id, class: 'location') %> <!-- TODO: Название города -->
+        <%= content_tag(:span, realty.city, class: 'location') %> <!-- TODO: Название города -->
         <div class="price"><%= content_tag(:strong, currency_symbol(realty)) + content_tag(:span, formatted_price(realty)) %></div>
         <% if realty.commission == 0 %>
             <div class="commission" data-toggle="tooltip" data-placement="bottom" title="Без коммисии"><strong>%</strong><span>0</span></div>

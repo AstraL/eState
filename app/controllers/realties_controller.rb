@@ -20,8 +20,8 @@ class RealtiesController < ApplicationController
 								category_id: item.at_xpath("category")["value"].to_i,
 								realty_type_id: item.at_xpath("realty_type")["value"].to_i,
 								deal_id: item.at_xpath("deal")["value"].to_i,
-								region_id: item.at_xpath("location/region")["value"].to_i, #TODO:Сделать проверку из базы по id
-								city_id: item.at_xpath("location/city")["value"].to_i, #TODO:Сделать проверку из базы по id
+								region_id: get_region(item.at_xpath("location/region").text), #TODO:Сделать проверку из базы по id
+								city_id: get_city(item.at_xpath("location/city").text), #TODO:Сделать проверку из базы по id
 								district_id: item.at_xpath("location/district")["value"].to_i, #TODO:Сделать проверку из базы по id
 								microdistrict_id: 0, #TODO:Проверка из баз
 								street: item.at_xpath("location/street").text,
@@ -75,6 +75,23 @@ class RealtiesController < ApplicationController
 
 		def create_images(image_url, realty_id)
 				Image.create!(url: image_url, realty_id: realty_id)
+		end
+
+		def get_region(region_name)
+				region_strip = region_name.sub(' область', '')
+
+				region = Region.find_by_name(region_strip)
+				region.region_id
+		end
+
+		def get_city(city_name)
+				city = City.find_by_name(city_name)
+
+				if city
+					city.city_id
+				else
+						10
+				end
 		end
 
 		def get_properties(property, realty_id)

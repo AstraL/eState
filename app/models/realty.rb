@@ -19,6 +19,11 @@ class Realty < ApplicationRecord
 				end
 		end
 
+		def city
+				c = City.find_by_city_id(self.city_id)
+				c.name
+		end
+
 		def strip_title
 				self.title.sub('Аренда /', '').sub('Продажа /', '').sub(', г. Киев','').sub('Квартира /', '')
 		end
