@@ -2,16 +2,16 @@
 <div class="site-search-module">
     <div class="container">
         <div class="site-search-module-inside">
-            <%= simple_form_for(:q, url: realties_search_path, method: 'get') do |f| %>
+            <%= search_form_for @q, url: realties_path, html: { method: :get } do |f| %>
                 <div class="row">
                     <div class="col-md-2">
-                        <%= f.input :deal, label: false, collection: @deal, label_method: ->(obj){obj[:label]}, value_method: ->(obj){obj[:value]}, include_blank: false, prompt: t('search.placeholder.deal'), input_html: { name: "deal", class: 'input-lg selectpicker'} %>
+                        <%= f.input :deal_id_eq, label: false, collection: @deal, label_method: ->(obj){obj[:label]}, value_method: ->(obj){obj[:value]}, include_blank: false, prompt: t('search.placeholder.deal'), input_html: {class: 'input-lg selectpicker'} %>
                     </div>
                     <div class="col-md-3">
-                        <%= f.input :realty_type, label: false, collection: @realty_type, label_method: ->(obj){obj[:label]}, value_method: ->(obj){obj[:value]}, include_blank: false, prompt: t('search.placeholder.realty_type'), input_html: {name: 'realty_type', class: 'input-lg selectpicker'} %>
+                        <%= f.input :realty_type_id_eq, label: false, collection: @realty_type, label_method: ->(obj){obj[:label]}, value_method: ->(obj){obj[:value]}, include_blank: false, prompt: t('search.placeholder.realty_type'), input_html: {class: 'input-lg selectpicker'} %>
                     </div>
                     <div class="col-md-3">
-                        <%= f.input :district, label: false, collection: @kiev_districts, as: :grouped_select, group_method: :microdistricts, include_blank: false, prompt: 'Район', input_html: {name: 'district', class: 'input-lg selectpicker'} %>
+                        <%= f.input :district_id_eq, label: false, collection: @districts, as: :grouped_select, group_method: :micro_districts, include_blank: false, prompt: 'Район', input_html: {class: 'input-lg selectpicker'} %>
                     </div>
                     <div class="col-md-2">
                         <%= f.button :button, id: 'btn-search', class: 'btn-primary btn-block btn-lg' do %>
@@ -33,22 +33,22 @@
                         <label for="">Площадь</label>
                     </div>
                     <div class="col-md-2">
-                        <%= f.input :r_min, label: false, required: false, collection: @rooms, input_html: { name: 'r_min', class: 'input-lg selectpicker'}, include_blank: false, prompt: t('search.placeholder.min') %>
+                        <%= f.input :room_count_gteq, label: false, required: false, collection: @rooms, input_html: { class: 'input-lg selectpicker'}, include_blank: true, prompt: t('search.placeholder.min') %>
                     </div>
                     <div class="col-md-2">
-                        <%= f.input :r_max, label: false, required: false, collection: @rooms, input_html: { name: 'r_max', class: 'input-lg selectpicker'}, include_blank: false, prompt: t('search.placeholder.max') %>
+                        <%= f.input :room_count_lteq, label: false, required: false, collection: @rooms, input_html: { class: 'input-lg selectpicker'}, include_blank: true, prompt: t('search.placeholder.max') %>
                     </div>
                     <div class="col-md-2">
-                        <%= f.input :price_min, label: false, required: false, input_html: { name: 'price_min', class: 'input-lg'}, placeholder: t('search.placeholder.min') %>
+                        <%= f.input :price_value_gteq, label: false, required: false, input_html: {class: 'input-lg'}, placeholder: t('search.placeholder.min') %>
                     </div>
                     <div class="col-md-2">
-                        <%= f.input :price_max, label: false, required: false, input_html: { name: 'price_max', class: 'input-lg'}, placeholder: t('search.placeholder.max') %>
+                        <%= f.input :price_value_lteq, label: false, required: false, input_html: {class: 'input-lg'}, placeholder: t('search.placeholder.max') %>
                     </div>
                     <div class="col-md-2">
-                        <%= f.input :area_min, label: false, required: false, input_html: { name: 'area_min', class: 'input-lg'}, placeholder: t('search.placeholder.min') %>
+                        <%= f.input :area_total_gteq, label: false, required: false, input_html: {class: 'input-lg'}, placeholder: t('search.placeholder.min') %>
                     </div>
                     <div class="col-md-2">
-                        <%= f.input :area_max, label: false, required: false, input_html: { name: 'area_max', class: 'input-lg'}, placeholder: t('search.placeholder.max') %>
+                        <%= f.input :area_total_lteq, label: false, required: false, input_html: {class: 'input-lg'}, placeholder: t('search.placeholder.max') %>
                     </div>
                 </div>
             <% end %>

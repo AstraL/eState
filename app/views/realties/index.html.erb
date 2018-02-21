@@ -18,11 +18,15 @@
                             <a href="simple-listing.html"><i class="fa fa-th-list"></i></a>
                         </div>-->
                     </div>
-                    <%= render 'realties/grid_listing', realties: @realties %>
+                    <% if Realty.all.count != 0 %>
+                        <%= render 'realties/grid_listing', realties: @realties %>
+                    <% else %>
+                        <%= render partial: 'realties/realties_empty' %>
+                    <% end %>
                 </div>
                 <!-- Start Sidebar -->
                 <div class="sidebar right-sidebar col-md-3">
-                    <%#= render 'realties/search_widget' %>
+                    <%= render 'realties/search_widget' %>
                 </div>
             </div>
         </div>

@@ -16,6 +16,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'httparty'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem "font-awesome-rails"
 gem 'devise'
 gem 'rails_admin_grid', github: 'jprberlin/rails_admin_grid'

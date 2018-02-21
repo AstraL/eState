@@ -1,12 +1,13 @@
-class RealtiesController < ApplicationController
+class RealtiesController < BaseController
+		before_action :search_init, only: [:index]
 		include RealtiesHelper
 
 		def index
-				@realties = Realty.all.order(crm_created_at: :desc).paginate(:page => params[:page])
+				@realties = @q.result.order(crm_created_at: :desc).paginate(page: params[:page])
 		end
 
 		def show
-				@realty = Realty.find(params[:id])
+				@realty = Realty.friendly.find(params[:id])
 		end
 
 		def import
@@ -20,10 +21,9 @@ class RealtiesController < ApplicationController
 								category_id: item.at_xpath("category")["value"].to_i,
 								realty_type_id: item.at_xpath("realty_type")["value"].to_i,
 								deal_id: item.at_xpath("deal")["value"].to_i,
-								region_id: get_region(item.at_xpath("location/region").text), #TODO:Сделать проверку из базы по id
-								city_id: get_city(item.at_xpath("location/city").text), #TODO:Сделать проверку из базы по id
-								district_id: item.at_xpath("location/district")["value"].to_i, #TODO:Сделать проверку из базы по id
-								microdistrict_id: 0, #TODO:Проверка из баз
+								region_id: get_region(item.at_xpath("location/region").text),
+								city_id: get_city(item.at_xpath("location/city").text),
+								district_id: get_district(item.at_xpath("location/district").text),
 								street: item.at_xpath("location/street").text,
 								house_num: item.at_xpath("location/house_num").nil? ? nil : item.at_xpath("location/house_num").text,
 								map_lat: item.at_xpath("location/map_lat").nil? ? 50.4501: item.at_xpath("location/map_lat").text.to_f,
@@ -39,7 +39,8 @@ class RealtiesController < ApplicationController
 								price_value: item.at_xpath("price").text.to_i,
 								price_currency: item.at_xpath("price")["currency"],
 								crm_created_at: item.at_xpath('created_at').text.to_datetime,
-								crm_updated_at: item.at_xpath('updated_at').text.to_datetime
+								crm_updated_at: item.at_xpath('updated_at').text.to_datetime,
+								user_id: get_user(item.at_xpath('user/email').text)
 						)
 
 						images = item.xpath("images//image_url")
@@ -66,12 +67,7 @@ class RealtiesController < ApplicationController
 				@realties_xml = Nokogiri::XML.parse(xml.to_s)
 		end
 
-		def search_collection
-				@deal = [{ value: 1, label: t('activerecord.attributes.realty.deal.buy') }, { value: 2, label: t('activerecord.attributes.realty.deal.rent') }]
-				@realty_type = [{value: 1, label: t('activerecord.attributes.realty.type.apartment')}, {value: 2, label: t('activerecord.attributes.realty.type.house')}]
-				@rooms = [1, 2, 3, 4, 5]
-				@kiev_districts = District.where(city_id: 10)
-		end
+
 
 		def create_images(image_url, realty_id)
 				Image.create!(url: image_url, realty_id: realty_id)
@@ -91,6 +87,26 @@ class RealtiesController < ApplicationController
 					city.city_id
 				else
 						10
+				end
+		end
+
+		def get_district(district_name)
+				district = District.find_by_name(district_name)
+
+				if district
+						district.district_id
+				else
+						0
+				end
+		end
+
+		def get_user(email)
+				user = User.find_by_email(email)
+
+				if user
+						user.id
+				else
+						1
 				end
 		end
 

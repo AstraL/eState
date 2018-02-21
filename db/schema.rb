@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180220013507) do
+ActiveRecord::Schema.define(version: 20180221012443) do
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 20180220013507) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["type"], name: "index_ckeditor_assets_on_type"
+  end
+
+  create_table "districts", id: false, force: :cascade do |t|
+    t.integer "district_id", null: false
+    t.string "name"
+    t.integer "city_id"
+    t.integer "parent_district_id"
+    t.index ["district_id"], name: "index_districts_on_district_id", unique: true
+    t.index ["parent_district_id"], name: "index_districts_on_parent_district_id"
   end
 
   create_table "feedbacks", force: :cascade do |t|
@@ -68,6 +77,15 @@ ActiveRecord::Schema.define(version: 20180220013507) do
     t.integer "realty_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "phones", force: :cascade do |t|
+    t.string "purpose"
+    t.string "number"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_phones_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -131,6 +149,8 @@ ActiveRecord::Schema.define(version: 20180220013507) do
     t.datetime "crm_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.string "slug"
   end
 
   create_table "regions", id: false, force: :cascade do |t|

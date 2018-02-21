@@ -1,0 +1,15 @@
+<div class="property-columns clearfix">
+    <% unless controller.controller_name == 'realties' %>
+        <div class="col-md-12">
+            <div class="block-heading">
+                <h4><span class="heading-icon"><%= fa_icon "leaf" %></span><%= "Свежие объявления" %></h4>
+            </div>
+        </div>
+    <% end %>
+    <div class="col-md-12">
+        <div class="alert alert-error" id="empty-latest-message">
+            <h3><%= fa_icon "exclamation-triangle", text: 'Ой-ой-ой! Кажется здесь ничего нет!' %></h3>
+            <p>Нет недвижимости для показа в данном блоке. Возможно, Вы еще не импортировали объявления? Посетите панель управления и импортируйте объявления в базу данных.</p>
+        </div>
+    </div>
+</div>

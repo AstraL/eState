@@ -1,17 +1,39 @@
 <!DOCTYPE html>
 <html lang="<%= I18n.default_locale %>">
 <head>
+    <meta charset="utf-8">
     <title><%= full_title(yield(:title)) %></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <%#= yield :caching %>
     <%= render 'application/favicon' %>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'administrator', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'administrator', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'administrator', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
-<body>
-    <%= yield %>
+<body class="fixed-header">
+    <%= render 'administrator/sidebar' %>
+    <!-- START PAGE-CONTAINER -->
+    <div class="page-container">
+        <%= render 'administrator/header' %>
+        <!-- START PAGE CONTENT WRAPPER -->
+        <div class="page-content-wrapper">
+            <!-- START PAGE CONTENT -->
+            <div class="content">
+                <% unless controller.controller_name == 'base' %>
+                    <%= render 'administrator/breadcumbs' %>
+                <% end %>
+                <!-- START CONTAINER FLUID -->
+                <div class="container-fluid">
+                    <%= yield %>
+                </div>
+                <!-- END CONTAINER FLUID -->
+            </div>
+            <!-- END PAGE CONTENT -->
+            <%= render 'administrator/footer' %>
+        </div>
+        <!-- END PAGE CONTENT WRAPPER -->
+    </div>
+    <!-- END PAGE CONTAINER -->
+    <%= javascript_include_tag 'administrator', 'data-turbolinks-track': 'reload' %>
 </body>
 </html>

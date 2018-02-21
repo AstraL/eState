@@ -28,7 +28,7 @@ Region.create!([
   {region_id: 6, name: "Черниговская", translit: "chernygovskaia"},
   {region_id: 25, name: "Черновицкая", translit: "chernovytskaia"}
 ])
-=end
+
 City.create!([
   {city_id: 597, region_id: 1, name: "Бар", translit: "bar"},
   {city_id: 599, region_id: 1, name: "Бершадь", translit: "bershad"},
@@ -612,66 +612,73 @@ City.create!([
   {city_id: 544, region_id: 25, name: "Хотин", translit: "hotin"},
   {city_id: 25, region_id: 25, name: "Черновцы", translit: "chernovciy"}
 ])
-=begin
+
 District.create!([
-  {city_id: 10, area_id: 15186, name: "Святошинский", level: 1},
-  {city_id: 10, area_id: 15185, name: "Соломенский", level: 1},
-  {city_id: 10, area_id: 15949, name: "Троещина", level: 1},
-  {city_id: 10, area_id: 15190, name: "Шевченковский", level: 1},
-  {city_id: 10, area_id: 17420, name: "Борщаговка", level: 1},
-  {city_id: 10, area_id: 15184, name: "Голосеевский", level: 1},
-  {city_id: 10, area_id: 15181, name: "Дарницкий", level: 1},
-  {city_id: 10, area_id: 15183, name: "Деснянский", level: 1},
-  {city_id: 10, area_id: 15182, name: "Днепровский", level: 1},
-  {city_id: 10, area_id: 15187, name: "Оболонский", level: 1},
-  {city_id: 10, area_id: 15189, name: "Печерский", level: 1},
-  {city_id: 10, area_id: 15188, name: "Подольский", level: 1}
+  {city_id: 10, district_id: 15186, name: "Святошинский"},
+  {city_id: 10, district_id: 15185, name: "Соломенский"},
+  {city_id: 10, district_id: 15949, name: "Троещина"},
+  {city_id: 10, district_id: 15190, name: "Шевченковский"},
+  {city_id: 10, district_id: 17420, name: "Борщаговка"},
+  {city_id: 10, district_id: 15184, name: "Голосеевский"},
+  {city_id: 10, district_id: 15181, name: "Дарницкий"},
+  {city_id: 10, district_id: 15183, name: "Деснянский"},
+  {city_id: 10, district_id: 15182, name: "Днепровский"},
+  {city_id: 10, district_id: 15187, name: "Оболонский"},
+  {city_id: 10, district_id: 15189, name: "Печерский"},
+  {city_id: 10, district_id: 15188, name: "Подольский"}
 ])
 
 
-Microdistrict.create!([
-		                 {district_id: 101, name: "Академгородок", level: 4, area_id: 15186},
-		                 {district_id: 102, name: "Беличи", level: 4, area_id: 15186},
-		                 {district_id: 103, name: "Березняки", level: 4, area_id: 15182},
-		                 {district_id: 104, name: "Бортничи", level: 4, area_id: 15181},
-		                 {district_id: 105, name: "Борщаговка", level: 4, area_id: 15186},
-		                 {district_id: 106, name: "Ветряные Горы", level: 4, area_id: 15188},
-		                 {district_id: 107, name: "Виноградарь", level: 4, area_id: 15188},
-		                 {district_id: 108, name: "Воскресенка", level: 4, area_id: 15182},
-		                 {district_id: 109, name: "Галаганы", level: 4, area_id: 15186},
-		                 {district_id: 110, name: "Голосеево", level: 4, area_id: 15184},
-		                 {district_id: 111, name: "ДВРЗ", level: 4, area_id: 15182},
-		                 {district_id: 112, name: "Комсомольский", level: 4, area_id: 15182},
-		                 {district_id: 113, name: "Кудрявец", level: 4, area_id: 15190},
-		                 {district_id: 114, name: "Куреневка", level: 4, area_id: 15187},
-		                 {district_id: 115, name: "Левобережный массив", level: 4, area_id: 15182},
-		                 {district_id: 116, name: "Лесной", level: 4, area_id: 15183},
-		                 {district_id: 117, name: "Липки", level: 4, area_id: 15189},
-		                 {district_id: 118, name: "Лукьяновка", level: 4, area_id: 15190},
-		                 {district_id: 119, name: "Минский массив", level: 4, area_id: 15187},
-		                 {district_id: 120, name: "Мостицкий массив", level: 4, area_id: 15188},
-		                 {district_id: 121, name: "Нивки", level: 4, area_id: 15190},
-		                 {district_id: 122, name: "Новое строение", level: 4, area_id: 15190},
-		                 {district_id: 123, name: "Оболонь", level: 4, area_id: 15187},
-		                 {district_id: 124, name: "Осокорки", level: 4, area_id: 15181},
-		                 {district_id: 125, name: "Отрадный", level: 4, area_id: 15185},
-		                 {district_id: 126, name: "Печерск", level: 4, area_id: 15189},
-		                 {district_id: 127, name: "Подол", level: 4, area_id: 15188},
-		                 {district_id: 128, name: "Позняки", level: 4, area_id: 15181},
-		                 {district_id: 129, name: "Пуща-Водица", level: 4, area_id: 15187},
-		                 {district_id: 130, name: "Русановка", level: 4, area_id: 15182},
-		                 {district_id: 131, name: "Саперная Слободка", level: 4, area_id: 15184},
-		                 {district_id: 132, name: "Святошино", level: 4, area_id: 15186},
-		                 {district_id: 133, name: "Соломенка", level: 4, area_id: 15185},
-		                 {district_id: 134, name: "Соцгород", level: 4, area_id: 15182},
-		                 {district_id: 135, name: "Старый Киев", level: 4, area_id: 15190},
-		                 {district_id: 136, name: "Сырец", level: 4, area_id: 15190},
-		                 {district_id: 137, name: "Татарка", level: 4, area_id: 15190},
-		                 {district_id: 138, name: "Теремки", level: 4, area_id: 15184},
-		                 {district_id: 139, name: "Троещина", level: 4, area_id: 15183},
-		                 {district_id: 140, name: "Харьковский", level: 4, area_id: 15181},
-		                 {district_id: 141, name: "Чёрная гора", level: 4, area_id: 15189},
-		                 {district_id: 142, name: "Шулявка", level: 4, area_id: 15190},
-		                 {district_id: 143, name: "Дарница", level: 4, area_id: 15181}
+District.create!([
+		                 {district_id: 101, name: "Академгородок", parent_district_id: 15186, city_id: 10},
+		                 {district_id: 102, name: "Беличи", parent_district_id: 15186, city_id: 10},
+		                 {district_id: 103, name: "Березняки", parent_district_id: 15182, city_id: 10},
+		                 {district_id: 104, name: "Бортничи", parent_district_id: 15181, city_id: 10},
+		                 {district_id: 105, name: "Борщаговка", parent_district_id: 15186, city_id: 10},
+		                 {district_id: 106, name: "Ветряные Горы", parent_district_id: 15188, city_id: 10},
+		                 {district_id: 107, name: "Виноградарь", parent_district_id: 15188, city_id: 10},
+		                 {district_id: 108, name: "Воскресенка", parent_district_id: 15182, city_id: 10},
+		                 {district_id: 109, name: "Галаганы", parent_district_id: 15186, city_id: 10},
+		                 {district_id: 110, name: "Голосеево", parent_district_id: 15184, city_id: 10},
+		                 {district_id: 111, name: "ДВРЗ", parent_district_id: 15182, city_id: 10},
+		                 {district_id: 112, name: "Комсомольский", parent_district_id: 15182, city_id: 10},
+		                 {district_id: 113, name: "Кудрявец", parent_district_id: 15190, city_id: 10},
+		                 {district_id: 114, name: "Куреневка", parent_district_id: 15187, city_id: 10},
+		                 {district_id: 115, name: "Левобережный массив", parent_district_id: 15182, city_id: 10},
+		                 {district_id: 116, name: "Лесной", parent_district_id: 15183, city_id: 10},
+		                 {district_id: 117, name: "Липки", parent_district_id: 15189, city_id: 10},
+		                 {district_id: 118, name: "Лукьяновка", parent_district_id: 15190, city_id: 10},
+		                 {district_id: 119, name: "Минский массив", parent_district_id: 15187, city_id: 10},
+		                 {district_id: 120, name: "Мостицкий массив", parent_district_id: 15188, city_id: 10},
+		                 {district_id: 121, name: "Нивки", parent_district_id: 15190, city_id: 10},
+		                 {district_id: 122, name: "Новое строение", parent_district_id: 15190, city_id: 10},
+		                 {district_id: 123, name: "Оболонь", parent_district_id: 15187, city_id: 10},
+		                 {district_id: 124, name: "Осокорки", parent_district_id: 15181, city_id: 10},
+		                 {district_id: 125, name: "Отрадный", parent_district_id: 15185, city_id: 10},
+		                 {district_id: 126, name: "Печерск", parent_district_id: 15189, city_id: 10},
+		                 {district_id: 127, name: "Подол", parent_district_id: 15188, city_id: 10},
+		                 {district_id: 128, name: "Позняки", parent_district_id: 15181, city_id: 10},
+		                 {district_id: 129, name: "Пуща-Водица", parent_district_id: 15187, city_id: 10},
+		                 {district_id: 130, name: "Русановка", parent_district_id: 15182, city_id: 10},
+		                 {district_id: 131, name: "Саперная Слободка", parent_district_id: 15184, city_id: 10},
+		                 {district_id: 132, name: "Святошино", parent_district_id: 15186, city_id: 10},
+		                 {district_id: 133, name: "Соломенка", parent_district_id: 15185, city_id: 10},
+		                 {district_id: 134, name: "Соцгород", parent_district_id: 15182, city_id: 10},
+		                 {district_id: 135, name: "Старый Киев", parent_district_id: 15190, city_id: 10},
+		                 {district_id: 136, name: "Сырец", parent_district_id: 15190, city_id: 10},
+		                 {district_id: 137, name: "Татарка", parent_district_id: 15190, city_id: 10},
+		                 {district_id: 138, name: "Теремки", parent_district_id: 15184, city_id: 10},
+		                 {district_id: 139, name: "Троещина", parent_district_id: 15183, city_id: 10},
+		                 {district_id: 140, name: "Харьковский", parent_district_id: 15181, city_id: 10},
+		                 {district_id: 141, name: "Чёрная гора", parent_district_id: 15189, city_id: 10},
+		                 {district_id: 142, name: "Шулявка", parent_district_id: 15190, city_id: 10},
+		                 {district_id: 143, name: "Дарница", parent_district_id: 15181, city_id: 10}
                  ])
+
+User.create!(firstName: "Анна", email: "e_state@ukr.net", password: "estatepass", password_confirmation: "estatepass")
+User.create!(firstName: "Даниил", email: "e-state2@i.ua", password: "estatepass", password_confirmation: "estatepass")
+User.create!(firstName: "Максим", email: "e-state1@i.ua", password: "estatepass", password_confirmation: "estatepass")
 =end
+Phone.create!(purpose: 'mobile', number: '+380509118982', user_id: 2)
+Phone.create!(purpose: 'mobile', number: '+380501717770', user_id: 3)
+Phone.create!(purpose: 'mobile', number: '+380674143441', user_id: 4)

@@ -35,6 +35,9 @@
 .hero-slider {
     height: $slider-height;
     &.flexslider ul.slides li {
+        background-image: asset-url("banner-bg.jpg");
+        background-size: contain;
+        background-repeat: repeat-x;
         height: $slider-height;
         a {
             display: block;
@@ -49,5 +52,20 @@
 
 .form-group {
     margin-bottom: 0;
+}
+
+#empty-latest-message {
+    margin: 0 auto;
+    width: 80%;
+    h3 {
+        color: #b94a48;
+        text-align: center;
+        font-weight: 700;
+    }
+    p {
+        font-size: 1.1em;
+        line-height: 1.5;
+        text-align: justify;
+    }
 }
 

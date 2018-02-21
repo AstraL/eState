@@ -1,10 +1,12 @@
 class Realty < ApplicationRecord
-
+		extend FriendlyId
 		# Category: 1 - Жилая недвижимость, 2 - Коммерческая
 		# realty_type: 1 - Квартира, 2 - Дом, 10 - Офис
 		# deal: 1 - Продажа, 2 - Аренда
+		belongs_to :user
+		has_many :images, dependent: :destroy
 
-		has_many :images
+		friendly_id :title, use: :slugged
 
 		self.per_page = 18
 
@@ -24,6 +26,16 @@ class Realty < ApplicationRecord
 				c.name
 		end
 
+		def district
+				if self.district_id == 0
+						"Района нет в базе"
+				else
+						d = District.find_by_district_id(self.district_id)
+						d.name
+				end
+
+		end
+
 		def strip_title
 				self.title.sub('Аренда /', '').sub('Продажа /', '').sub(', г. Киев','').sub('Квартира /', '')
 		end
@@ -39,5 +51,13 @@ class Realty < ApplicationRecord
 						else
 								'activerecord.attributes.realty.empty_field'
 				end
+		end
+
+		def should_generate_new_friendly_id?
+				slug.blank? || title_changed?
+		end
+
+		def normalize_friendly_id(text)
+				text.to_slug.transliterate(:russian).normalize.to_s
 		end
 end

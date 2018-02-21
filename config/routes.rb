@@ -23,10 +23,13 @@ Rails.application.routes.draw do
 
 		get '/contacts', to: 'feedbacks#new', as: :contacts
 
-		mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+		#mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 		mount Ckeditor::Engine => '/ckeditor'
 
-		scope module: 'administrator', path: 'panel' do
+		namespace :administrator do
 				root 'base#index'
+				get 'realties/db', to: 'realties#db', as: :realties_db
+				resources :realties, only: [:index, :show]
+
 		end
 end

@@ -8,43 +8,19 @@
         </ul>
     </div>
     <!-- End Hero Slider -->
-    <%#= render 'base/big_search' %>
+    <%= render 'base/big_search' %>
 </div>
 <!-- Start Content -->
 <div class="main" role="main">
     <div id="content" class="content full">
         <div class="container">
             <div class="row">
-                <div class="property-columns clearfix" id="latest-properties-rent">
-                    <div class="col-md-12">
-                        <div class="block-heading">
-                            <h4><span class="heading-icon"><%= fa_icon "leaf" %></span><%= "Свежие в разделе 'Аренда'" %></h4>
-                            <%= link_to (fa_icon "long-arrow-right", text: t('home.view_more'), right: true), realties_path(deal_id: 2), class: 'btn btn-primary btn-sm pull-right' %>
-                        </div>
-                    </div>
-                    <ul>
-                        <% @rent.each do |r| %>
-                        <li class="col-md-4 col-sm-6 type-rent">
-                            <%= render partial: 'realties/grid_block', locals: {realty: r} %>
-                        </li>
-                        <% end %>
-                    </ul>
-                </div>
-                <div class="property-columns clearfix" id="latest-properties-buy">
-                    <div class="col-md-12">
-                        <div class="block-heading">
-                            <h4><span class="heading-icon"><%= fa_icon "leaf" %></span><%= "Свежие в разделе 'Продажа'" %></h4>
-                            <%= link_to (fa_icon "long-arrow-right", text: t('home.view_more'), right: true), realties_path(deal_id: 1), class: 'btn btn-primary btn-sm pull-right' %>
-                        </div>
-                    </div>
-                    <ul>
-                        <% @buy.each do |r| %>
-                            <li class="col-md-4 col-sm-6 type-rent">
-                                <%= render partial: 'realties/grid_block', locals: {realty: r} %>
-                            </li>
-                        <% end %>
-                    </ul>
-                </div>
+                <% if Realty.all.count != 0 %>
+                    <%= render partial: 'base/latest_block', locals: {deal_name: 'Аренда', block_id: "latest-properties-rent", deal_id: 2, realties: @rent} %>
+                    <%= render partial: 'base/latest_block', locals: {deal_name: 'Продажа', block_id: "latest-properties-buy", deal_id: 1, realties: @buy} %>
+                <% else %>
+                    <%= render partial: 'realties/realties_empty' %>
+                <% end %>
             </div>
         </div>
     </div>

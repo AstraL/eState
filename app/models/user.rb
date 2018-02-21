@@ -24,11 +24,17 @@ class User < ApplicationRecord
 		include UserAdmin
     devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 		has_many :posts
+		has_many :phones
+		has_many :realties
 
-		validates_presence_of :firstName, :lastName, :email, :password, :password_confirmation
+		validates_presence_of :firstName, :email, :password, :password_confirmation
 
 
 		def fullname
-				self.firstName + " " + self.lastName
+				if self.lastName.present?
+					self.firstName + " " + self.lastName
+				else
+						self.firstName
+				end
 		end
 end

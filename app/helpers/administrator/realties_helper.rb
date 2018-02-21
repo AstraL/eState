@@ -1,0 +1,3 @@
+module Administrator::RealtiesHelper
+
+end

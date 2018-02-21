@@ -1,0 +1,27 @@
+<%= render 'application/fb_sdk' %>
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footer-widget widget">
+                <h3 class="widgettitle">Последние записи</h3>
+                <ul>
+                    <% @posts_latests = Post.last(3) %>
+                    <% @posts_latests.each do |post| %>
+                        <li>
+                            <%= link_to post.title, post_path(post) %>
+                            <%= content_tag(:span, l(post.created_at, format: '%d %B %Y'), class: 'meta-data') %>
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+            <div class="col-md-4 col-sm-6 footer-widget widget">
+                <h3 class="widgettitle">Facebook</h3>
+                <div class="fb-page" data-href="https://www.facebook.com/estatecomua/" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
+                    <blockquote cite="https://www.facebook.com/estatecomua/" class="fb-xfbml-parse-ignore">
+                        <a href="https://www.facebook.com/estatecomua/">E-state Агентство Недвижимости</a>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

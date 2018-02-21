@@ -1,0 +1,43 @@
+<div class="card card-transparent">
+    <div class="card-header">
+        <div class="card-title">
+            <%= "Недвижимость (#{@realties.count})" %>
+        </div>
+    </div>
+    <div class="card-block">
+        <div class="table-responsive">
+            <table class="table table-hover no-footer" id="realtiesTable">
+                <thead>
+                    <tr role="row">
+                        <th class="text-center">
+                            ID в CRM
+                        </th>
+                        <th class="text-center">
+                            Заголовок
+                        </th>
+                        <th class="text-center">
+                            Тип недвижимости
+                        </th>
+                        <th class="text-center">
+                            Тип сделки
+                        </th>
+                        <th class="text-center">
+                            Цена
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% @realties.each do |r| %>
+                    <tr>
+                        <%= content_tag(:td, r.crm_id, class: 'v-align-middle') %>
+                        <%= content_tag(:td, r.title, class: 'v-align-middle') %>
+                        <%= content_tag(:td, t(r.realty_type), class: 'v-align-middle') %>
+                        <%= content_tag(:td, t(r.deal), class: 'v-align-middle') %>
+                        <%= content_tag(:td, formatted_price(r), class: 'v-align-middle') %>
+                    </tr>
+                <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
