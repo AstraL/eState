@@ -1,18 +1,6 @@
 Rails.application.routes.draw do
-
-  namespace :administrator do
-    get 'base/index'
-  end
-
 		root 'base#index'
 		devise_for :users, path: '/', path_names: { sign_in: 'login', sign_out: 'logout' }
-    get '/realties/import', to: 'realties#import', as: :realties_db_import
-    get '/realties/clean', to: 'realties#clean', as: :realties_db_clean
-=begin
-		get '/realties', to: 'realties#index'
-		get '/realties/search', to: 'realties#search', as: :realties_search
-		get '/realties/:id', to: 'realties#show', as: :realty
-=end
 		resources :realties, only: [:index, :show]
 
 		scope '/blog' do
@@ -28,8 +16,9 @@ Rails.application.routes.draw do
 
 		namespace :administrator do
 				root 'base#index'
-				get 'realties/db', to: 'realties#db', as: :realties_db
+				get 'realties/db', to: 'realties#db', as: :realties_db_control
+				get 'realties/db/import', to: 'realties#import', as: :realties_db_import
+				get 'realties/db/clean', to: 'realties#clean_db', as: :realties_db_clean
 				resources :realties, only: [:index, :show]
-
 		end
 end
