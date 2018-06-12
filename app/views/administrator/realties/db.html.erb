@@ -48,6 +48,18 @@
             <div class="card-block">
                 <div class="row">
                     <div class="col-md-4">
+                        <div class="card b-success full-height">
+                            <div class="card-block">
+                                <h3><%= content_tag(:span, t('admin.titles.realties.update_db')) %></h3>
+                                <hr class="b-success">
+                                <%= content_tag(:p, t('admin.hints.realties.update_db').html_safe) %>
+                                <div class="action">
+                                    <%= link_to t('admin.buttons.realties.update_db'), administrator_realties_db_import_path, data: {toggle: 'modal', target: '#updateDb'}, class: 'btn btn-success btn-lg' %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
                         <div class="card b-complete full-height">
                             <div class="card-block">
                                 <h3><%= content_tag(:span, t('admin.titles.realties.import_db')) %></h3>
@@ -56,7 +68,6 @@
                                 <div class="action">
                                     <%= link_to t('admin.buttons.realties.import_db'), administrator_realties_db_import_path, remote: true, class: 'btn btn-complete btn-lg' %>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -77,18 +88,4 @@
         </div>
     </div>
 </div>
-<%= content_for :scripts do %>
-<script type="text/javascript" charset="utf-8">
-    $(document).ready(function() {
-        // Apply the plugin to the body
-        $('body').pgNotification({
-            style: 'flip',
-            message: 'Test alert!',
-            position: 'top-right',
-            type: 'warning',
-            showClose: true,
-            timeout: 0
-        }).show();
-    });
-</script>
-<% end %>
+<%= render partial: 'administrator/realties/update_db_modal' %>

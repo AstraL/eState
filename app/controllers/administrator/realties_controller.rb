@@ -20,6 +20,13 @@ class Administrator::RealtiesController < Administrator::BaseController
 				end
 		end
 
+		def update_db
+				get_xml
+				respond_to do |format|
+						format.js {}
+				end
+		end
+
 		def update_from_crm
 				get_xml
 				@realties_xml.xpath('//item').each do |item|

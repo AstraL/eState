@@ -1,0 +1,45 @@
+<div class="modal fade stick-up" id="updateDb" tabindex="-1" role="dialog" aria-labelledby="modalFillInLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="pg-close fs-14"></i>
+                </button>
+                <h5><span class="semi-bold">Обновление</span> базы данных</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div id="in-db-entries" class="big-number">
+                            <%= content_tag(:span, Realty.all.count) %>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="in-crm-entries" class="big-number">
+                            <%= content_tag(:span, '0') %>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div style="width:100%">
+                            <!-- Default height -->
+                            <div class="progress">
+                                <div id="#update-progress" style="width: 45%;" class="progress-bar progress-bar-success"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <%= link_to 'Начать', administrator_realties_db_update_path, remote: true, class: 'btn btn-success btn-block' %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
