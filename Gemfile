@@ -35,6 +35,7 @@ gem 'httparty'
 gem 'seed_dump'
 gem 'meta-tags'
 gem 'jssocials-rails', github: 'luciuschoi/jssocials-rails'
+gem 'pg'
 # gem 'redis', '~> 3.0'
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -42,15 +43,11 @@ group :development do
   gem 'rails_real_favicon'
   gem 'web-console', '>= 3.3.0'
   gem 'byebug'
-  gem 'sqlite3'
   gem 'annotate'
   gem 'capistrano',         require: false
   gem 'capistrano-rvm',     require: false
   gem 'capistrano-rails',   require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano3-puma',   require: false
-end
-
-group :production do
-		gem 'pg'
+  gem "capistrano-db-tasks", require: false
 end

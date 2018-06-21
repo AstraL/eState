@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20180221012443) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "categories", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -44,7 +47,7 @@ ActiveRecord::Schema.define(version: 20180221012443) do
     t.integer "district_id", null: false
     t.string "name"
     t.integer "city_id"
-    t.integer "parent_district_id"
+    t.bigint "parent_district_id"
     t.index ["district_id"], name: "index_districts_on_district_id", unique: true
     t.index ["parent_district_id"], name: "index_districts_on_parent_district_id"
   end

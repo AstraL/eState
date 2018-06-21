@@ -62,9 +62,9 @@ class Administrator::RealtiesController < Administrator::BaseController
 						category_id: item.at_xpath("category")["value"].to_i,
 						realty_type_id: item.at_xpath("realty_type")["value"].to_i,
 						deal_id: item.at_xpath("deal")["value"].to_i,
-						region_id: get_region(item.at_xpath("location/region").text),
-						city_id: get_city(item.at_xpath("location/city").text),
-						district_id: get_district(item.at_xpath("location/district").text),
+						#region_id: get_region(item.at_xpath("location/region").text),
+						#city_id: get_city(item.at_xpath("location/city").text),
+						#district_id: get_district(item.at_xpath("location/district").text),
 						street: item.at_xpath("location/street").text,
 						house_num: item.at_xpath("location/house_num").nil? ? nil : item.at_xpath("location/house_num").text,
 						map_lat: item.at_xpath("location/map_lat").nil? ? 50.4501: item.at_xpath("location/map_lat").text.to_f,
@@ -139,7 +139,9 @@ class Administrator::RealtiesController < Administrator::BaseController
 		end
 
 		def create_images(image_url, realty_id)
-				Image.create!(url: image_url, realty_id: realty_id)
+				i = Image.new(realty_id: realty_id)
+				i.remote_url_url = image_url
+				i.save
 		end
 
 		def get_region(region_name)
