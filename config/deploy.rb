@@ -3,6 +3,7 @@ require 'capistrano-db-tasks'
 server '95.46.44.97', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:AstraL/eState.git'
+set :branch,          'database'
 set :application,     'estate'
 set :user,            'deploy'
 set :puma_threads,    [4, 16]
