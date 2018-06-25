@@ -1,6 +1,6 @@
 class BaseController < ApplicationController
 		layout "application"
-		before_action :search_init, only: :index
+		#before_action :search_init, only: :index
 
     def index
 		    @active_realties = Realty.where(active: true).order(crm_created_at: :desc)
