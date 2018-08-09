@@ -49,7 +49,7 @@ class Administrator::RealtiesController < Administrator::BaseController
 		end
 
 		def get_xml
-				xml = HTTParty.get("http://crm-e-state.realtsoft.net/feed/xml?id=1")
+				xml = HTTParty.get("http://localhost:3000/estate_db.xml")
 				@realties_xml = Nokogiri::XML.parse(xml.to_s)
 		end
 
