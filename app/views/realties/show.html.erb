@@ -12,7 +12,7 @@
                     <div class="single-property">
                         <%= content_tag(:h2, class: 'page-title') do %>
                             <%= @realty.strip_title %>
-                            <%#= content_tag(:span, @realty.city, class: 'location') %>
+                            <%= content_tag(:span, @realty.city, class: 'location') %>
                         <% end %>
                         <div class="price"><%= content_tag(:strong, currency_symbol(@realty)) + content_tag(:span, formatted_price(@realty)) %></div>
                         <% if @realty.commission == 0 %>
@@ -231,8 +231,8 @@
                         <%= content_tag(:h3, t('activerecord.attributes.realty.address'), class: 'widgettitle') %>
                         <div id="address" data-lat="<%= @realty.map_lat %>" data-lng="<%= @realty.map_lng %>">
                             <ul>
-                                <li><%= content_tag(:strong, "#{t('activerecord.attributes.realty.city')}: ") %><%#= content_tag(:span, @realty.city) %></li>
-                                <li><%= content_tag(:strong, "#{t('activerecord.attributes.realty.district')}: ") %><%#= content_tag(:span, @realty.district, class: 'available') %></li>
+                                <li><%= content_tag(:strong, "#{t('activerecord.attributes.realty.city')}: ") %><%= content_tag(:span, @realty.city) %></li>
+                                <li><%= content_tag(:strong, "#{t('activerecord.attributes.realty.district')}: ") %><%= content_tag(:span, @realty.district, class: 'available') %></li>
                                 <li><%= content_tag(:strong, "#{t('activerecord.attributes.realty.street')}: ") %><%= content_tag(:span, @realty.street, class: 'available') %></li>
                                 <li><%= content_tag(:strong, "#{t('activerecord.attributes.realty.house_num')}: ") %><%= content_tag(:span, @realty.house_num, class: 'available') %></li>
                             </ul>
