@@ -1,0 +1,34 @@
+<% provide(:title, 'Калькулятор стоимости аренды') %>
+<% content_for :caching, '<meta name="turbolinks-cache-control" content="no-cache">'.html_safe %>
+<%= render partial: 'application/partials/page_header', locals: {heading: 'Калькулятор стоимости аренды'} %>
+<div class="main" role="main">
+		<div id="content" class="content full">
+				<div class="container">
+						<div class="row">
+								<div class="col-md-8 col-md-offset-2">
+										<div class="block-heading">
+												<h4>
+                            <span class="heading-icon">
+                                <%= fa_icon "th-large" %>
+                            </span>
+														<%= 'Узнать среднюю стоимость аренды' %>
+
+												</h4>
+												<div class="calculator-form">
+														<%= search_form_for @q do |f| %>
+																<div class="row">
+																		<div class="col-sm-6">
+																				<%= f.input :district_id_eq, label: 'Микрорайон', collection: @districts, as: :grouped_select, group_method: :micro_districts, input_html: {class: 'input-lg selectpicker'} %>
+																		</div>
+																		<div class="col-sm-6">
+																				<%= f.input :is_new_building_true, as: :boolean, label: 'Новострой'  %>
+																		</div>
+																</div>
+														<% end %>
+												</div>
+										</div>
+								</div>
+						</div>
+				</div>
+		</div>
+</div>

@@ -1,5 +1,5 @@
 class RealtiesController < BaseController
-		before_action :search_init, only: [:index]
+		before_action :search_init, only: [:index, :calculator]
 
 		def index
 				@realties = @q.result.order(crm_created_at: :desc).paginate(page: params[:page])
@@ -7,5 +7,9 @@ class RealtiesController < BaseController
 
 		def show
 				@realty = Realty.friendly.find(params[:id])
+		end
+
+		def calculator
+				@realties = @q.result
 		end
 end

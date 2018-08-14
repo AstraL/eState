@@ -51,6 +51,7 @@
                         <ul class="sf-menu">
                             <%= active_link_to t('titles.home'), root_path, active: :exclusive, wrap_tag: :li %>
                             <%= active_link_to t('titles.realties'), realties_path, wrap_tag: :li %>
+														<%= active_link_to 'Калькулятор стоимости аренды', calculator_path, wrap_tag: :li %>
                             <%= active_link_to t('titles.blog'), posts_path, wrap_tag: :li %>
                             <%= active_link_to t('titles.contacts'), contacts_path, wrap_tag: :li %>
                         </ul>

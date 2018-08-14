@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 		devise_for :users, path: '/', path_names: { sign_in: 'login', sign_out: 'logout' }
 		resources :realties, only: [:index, :show]
 
+		get '/calculator', to: 'realties#calculator', as: :calculator
+
 		scope '/blog' do
 				resources :posts, path: '/'
 				match 'category/:category_slug', to: 'posts#category', via: :get, as: :category_posts
