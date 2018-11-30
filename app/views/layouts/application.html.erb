@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="<%= I18n.default_locale %>">
     <head>
-        <title><%= full_title(yield(:title)) %></title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-        <meta name="format-detection" content="telephone=no">
-        <%= display_meta_tags og: { url: "http://#{request.host+request.fullpath}",
-                                    title: full_title(yield(:title)),
-                                    description: "Недвижимость Вашей мечты на расстоянии всего 1 клика! Обратитесь к нам и убедитесь, что поиск недвижимости может быть эффективным!",
-                                    image: og_image,
-                                    locale: 'ru_RU',
-                                    type: @post.present? ? 'article' : 'website'} %>
-        <%= yield :caching %>
-        <%= render 'application/favicon' %>
-        <%= csrf_meta_tags %>
-        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <title><%= full_title(yield(:title)) %></title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+      <meta name="format-detection" content="telephone=no">
+      <%= display_meta_tags og: { url: "http://#{request.host+request.fullpath}",
+                                  title: full_title(yield(:title)),
+                                  description: "Недвижимость Вашей мечты на расстоянии всего 1 клика! Обратитесь к нам и убедитесь, что поиск недвижимости может быть эффективным!",
+                                  image: og_image,
+                                  locale: 'ru_RU',
+                                  type: @post.present? ? 'article' : 'website'} %>
+      <%= yield :caching %>
+      <%= render 'application/favicon' %>
+      <%= csp_meta_tag %>
+      <%= csrf_meta_tags %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
     <body class="home">
         <div class="body">

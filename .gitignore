@@ -48,5 +48,7 @@ config/master.key
 .byebug_history
 .idea
 node_modules
-storage
-
+# Ignore uploaded files in development
+/storage/*
+!/storage/.keep
+/public/assets

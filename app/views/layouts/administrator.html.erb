@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="<%= I18n.default_locale %>">
 <head>
-    <meta charset="utf-8">
-    <title><%= full_title(yield(:title)) %></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <%#= yield :caching %>
-    <%= render 'application/favicon' %>
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag 'administrator', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <meta charset="utf-8">
+  <title><%= full_title(yield(:title)) %></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <%#= yield :caching %>
+  <%= render 'application/favicon' %>
+  <%= csp_meta_tag %>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'administrator', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
 <body class="fixed-header">
     <%= render 'administrator/sidebar' %>

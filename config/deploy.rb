@@ -1,4 +1,3 @@
-require 'capistrano-db-tasks'
 # Change these
 server '95.46.44.97', port: 22, roles: [:web, :app, :db], primary: true
 
