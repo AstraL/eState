@@ -2,6 +2,7 @@ class FeedbacksController < ApplicationController
 
 		def new
 				@feedback = Feedback.new
+			@page_title = t('titles.contacts')
 		end
 
 		def create

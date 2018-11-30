@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 		before_action :search
 		def index
 				@posts = @q.result.order('created_at DESC').paginate(page: params[:page])
+				@page_title = 'Статьи'
 		end
 
 		def show

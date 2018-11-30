@@ -6,10 +6,12 @@ class BaseController < ApplicationController
 		    @active_realties = Realty.where(active: true).order(crm_created_at: :desc)
 				@rent = @active_realties.where(deal_id: 2).first(6)
 				@buy = @active_realties.where(deal_id: 1).first(6)
+
+				@page_title = 'Главная'
     end
 
     def contacts
-
+			@page_title = t('titles.contacts')
     end
 
 		private
