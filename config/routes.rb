@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 		root 'base#index'
 		devise_for :users, path: '/', path_names: { sign_in: 'login', sign_out: 'logout' }
-		resources :realties, only: [:index, :show]
+		resources :realties, only: [:index, :show] do
+		  collection do
+				match 'search' => 'realties#search', via: [:get, :post], as: :search
+		  end
+		end
 
-		get '/calculator', to: 'realties#calculator', as: :calculator
 
 		scope '/blog' do
 				resources :posts, path: '/'

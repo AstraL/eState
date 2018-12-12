@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="<%= I18n.default_locale %>">
     <head>
-      <%= display_meta_tags site: 'eState', reverse: true %>
+      <%= display_meta_tags site: 'eState', title: @page_title, reverse: true %>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
       <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-      <meta name="format-detection" content="telephone=no">
-      <%= display_meta_tags og: { url: "http://#{request.host+request.fullpath}",
+      <%= display_meta_tags og: { url: "https://#{request.host+request.fullpath}",
                                   title: full_title(yield(:title)),
                                   description: "Недвижимость Вашей мечты на расстоянии всего 1 клика! Обратитесь к нам и убедитесь, что поиск недвижимости может быть эффективным!",
                                   image: og_image,
                                   locale: 'ru_RU',
                                   type: @post.present? ? 'article' : 'website'} %>
+      <%= display_meta_tags noindex: false %>
+      <%= display_meta_tags nofollow: false %>
       <%= yield :caching %>
       <%= render 'application/favicon' %>
       <%= csp_meta_tag %>

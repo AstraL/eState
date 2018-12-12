@@ -1,7 +1,7 @@
 <div id="realties-search" class="widget sidebar-widget" data-turbolinks-permanent>
     <%=  content_tag(:h3, t('search.title'), class: 'widgettitle') %>
     <div class="full-search-form">
-        <%= search_form_for @q do |f| %>
+        <%= search_form_for @q, url: search_realties_path, html: { method: :post } do |f| %>
             <%= f.input :deal_id_eq, label: false, collection: @deal, label_method: ->(obj){obj[:label]}, value_method: ->(obj){obj[:value]}, selected: params[:deal], include_blank: false, prompt: t('search.placeholder.deal'), input_html: { class: 'input-lg selectpicker'} %>
             <%= f.input :realty_type_id_eq, label: false, collection: @realty_type, label_method: ->(obj){obj[:label]}, value_method: ->(obj){obj[:value]}, include_blank: false, prompt: t('search.placeholder.realty_type'), input_html: {class: 'input-lg selectpicker'} %>
             <%= f.input :district_id_eq, label: false, collection: @districts, as: :grouped_select, group_method: :micro_districts, include_blank: false, prompt: 'Район', input_html: {class: 'input-lg selectpicker'} %>
