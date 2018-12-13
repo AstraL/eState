@@ -1,5 +1,0 @@
-<% count = 0  %>
-<% @realties_xml.xpath('//item').each do |item| %>
-    <% count += 1 %>
-<% end %>
-console.log("<%= escape_javascript(count.to_s) %> entries");

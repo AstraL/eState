@@ -14,7 +14,6 @@
 #
 
 class Post < ApplicationRecord
-		include PostAdmin
 		extend FriendlyId
 
 		friendly_id :title, use: :slugged

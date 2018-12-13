@@ -1,15 +1,19 @@
 class Administrator::RealtiesController < Administrator::BaseController
-		before_action :get_realty, only: [:show, :update_from_crm]
+		before_action :set_realty, only: [:show, :edit]
 
 		def index
 				@realties = Realty.all
 		end
 
-		def db
-				
+		def show
+
 		end
 
-		def show
+		def new
+
+		end
+
+		def edit
 
 		end
 
@@ -44,7 +48,7 @@ class Administrator::RealtiesController < Administrator::BaseController
 
 		private
 
-		def get_realty
+		def set_realty
 				@realty = Realty.friendly.find(params[:id])
 		end
 

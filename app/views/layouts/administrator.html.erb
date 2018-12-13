@@ -7,37 +7,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <%= display_meta_tags noindex: true %>
   <%= display_meta_tags nofollow: true %>
-  <%#= yield :caching %>
   <%= render 'application/favicon' %>
   <%= csp_meta_tag %>
   <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag 'administrator', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_pack_tag 'administrator' %>
+  <%= javascript_pack_tag 'administrator' %>
 </head>
-<body class="fixed-header">
-    <%= render 'administrator/sidebar' %>
-    <!-- START PAGE-CONTAINER -->
-    <div class="page-container">
-        <%= render 'administrator/header' %>
-        <!-- START PAGE CONTENT WRAPPER -->
-        <div class="page-content-wrapper">
-            <!-- START PAGE CONTENT -->
-            <div class="content">
-                <% unless controller.controller_name == 'base' %>
-                    <%= render 'administrator/breadcumbs' %>
-                <% end %>
-                <!-- START CONTAINER FLUID -->
-                <div class="container-fluid">
-                    <%= yield %>
-                </div>
-                <!-- END CONTAINER FLUID -->
-            </div>
-            <!-- END PAGE CONTENT -->
-            <%= render 'administrator/footer' %>
-        </div>
-        <!-- END PAGE CONTENT WRAPPER -->
+<body class="fix-header fix-sidebar card-no-border">
+  <%#= render 'administrator/preloader' %>
+  <div id="main-wrapper">
+    <%= render 'administrator/topbar' %>
+    <%= render 'administrator/sidebar_left' %>
+    <div class="page-wrapper">
+      <%= render 'administrator/breadcrumbs' %>
+      <div class="container-fluid">
+        <%= yield %>
+        <%= render 'administrator/sidebar_right' %>
+      </div>
+      <%= render 'administrator/footer' %>
     </div>
-    <!-- END PAGE CONTAINER -->
-    <%= javascript_include_tag 'administrator', 'data-turbolinks-track': 'reload' %>
-    <%= yield :scripts %>
+  </div>
 </body>
 </html>

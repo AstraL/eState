@@ -19,8 +19,6 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem "font-awesome-rails"
 gem 'devise'
-gem 'rails_admin_grid', github: 'jprberlin/rails_admin_grid'
-gem 'rails_admin'
 gem 'friendly_id', '~> 5.2.3'
 gem 'babosa'
 gem 'carrierwave'
@@ -36,6 +34,7 @@ gem 'jssocials-rails', github: 'luciuschoi/jssocials-rails'
 gem 'pg'
 gem 'mini_magick', '~> 4.8'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 # gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -51,4 +50,5 @@ group :development do
   gem 'capistrano-bundler', require: false
   gem 'capistrano3-puma',   require: false
   gem "capistrano-db-tasks", "0.4", require: false
+  gem 'capistrano-yarn', require: false
 end
