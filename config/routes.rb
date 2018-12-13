@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 		get '/contacts', to: 'feedbacks#new', as: :contacts
 
 		#mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-		mount Ckeditor::Engine => '/ckeditor'
+		#mount Ckeditor::Engine => '/ckeditor'
 
 		namespace :administrator do
 				root to: 'base#index'

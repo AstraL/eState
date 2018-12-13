@@ -1,7 +1,7 @@
 # Change these
 server '95.46.44.97', port: 22, roles: [:web, :app, :db], primary: true
 
-set :repo_url,        'git@github.com:AstraL/eState.git'
+set :repo_url,        'git@lab.quatrohost.pro:astral/eState.git'
 set :branch,          'master'
 set :application,     'estate'
 set :user,            'deploy'
