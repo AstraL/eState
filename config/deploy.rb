@@ -32,8 +32,8 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 # set :keep_releases, 5
 
 ## Linked Files & Directories (Default None):
-set :linked_files, %w{config/database.yml config/secrets.yml}
-set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
+set :linked_files, %w{config/database.yml config/master.key}
+set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads storage}
 set :db_dump_dir, "./db"
 
 namespace :puma do
@@ -65,7 +65,7 @@ namespace :deploy do
 				on roles(:app) do
 						execute "mkdir #{shared_path}/config -p"
 						upload! StringIO.new(File.read("config/database.yml")), "#{shared_path}/config/database.yml"
-						upload! StringIO.new(File.read("config/secrets.yml")), "#{shared_path}/config/secrets.yml"
+						upload! StringIO.new(File.read("config/master.key")), "#{shared_path}/config/master.key"
 				end
 		end
 
@@ -98,7 +98,7 @@ namespace :deploy do
 		before :starting,     :check_revision
 		after  :finishing,    :compile_assets
 		after  :finishing,    :cleanup
-		after  :finishing,    :restart
+		#after  :finishing,    :restart
 end
 
 # ps aux | grep puma    # Get puma pid
