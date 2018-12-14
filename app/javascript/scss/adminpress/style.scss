@@ -21,7 +21,7 @@ File: scss
 @import 'app';
 @import 'pages';
 @import 'sidebar';
-/*@import 'icons/font-awesome/scss/font-awesome';*/
+@import 'icons/font-awesome/scss/font-awesome';
 @import 'icons/simple-line-icons/scss/simple-line-icons';
 /*@import 'icons/weather-icons/sass/weather-icons';*/
 /*@import 'icons/linea-icons/linea';*/
@@ -32,6 +32,6 @@ File: scss
 @import 'grid';
 @import 'responsive'; 
 @import 'material';
-/*@import '../css/spinners.css';
-@import '../css/animate.css'; */
+@import 'spinners';
+@import '~animate.css/animate';
   

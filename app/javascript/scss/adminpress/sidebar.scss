@@ -14,11 +14,12 @@ Main sidebar
     position: absolute;
     width: 240px;
     height: 100%;
-    top: 0px;
+    top: 0;
     z-index: 20;
     padding-top: 60px;
     background: $sidebar;
-    box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 1px 0 20px rgba(0, 0, 0, 0.08);
+    transition: width .3s linear;
 }
 
 .fix-sidebar .left-sidebar {

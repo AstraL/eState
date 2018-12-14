@@ -32,6 +32,7 @@ File: scss
 .page-wrapper {
     background: $bodycolor;
     padding-bottom: 60px;
+    transition: margin-left .3s linear;
 }
 
 .container-fluid {
@@ -56,6 +57,7 @@ File: scss
         .navbar-header {
             line-height: 45px;
             text-align: center;
+            transition: width .3s linear;
             .navbar-brand {
                 margin-right: 0px;
                 padding-bottom: 0px;

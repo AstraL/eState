@@ -310,7 +310,7 @@ var REAL = window.REAL || {};
 /* ==================================================
    Init Functions
 ================================================== */
-$(document).on('turbolinks:load',function(){
+$(document).ready(function(){
     REAL.ContactForm();
     REAL.scrollToTop();
     REAL.accordion();
@@ -323,14 +323,11 @@ $(document).on('turbolinks:load',function(){
     //REAL.Counters();
     //REAL.IsoTope();
     REAL.StickyNav();
-    $('.selectpicker').selectpicker({
-        container: 'body',
-        style: 'btn-default'
-    });
+    $('.selectpicker').selectpicker();
 });
 
 /* Design Related Scripts */
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
     $("#realties-search").sticky('update');
     $(".flex-caption").each(function(){
         $(this).prepend('<i class="fa fa-caret-down"></i>');
@@ -389,7 +386,7 @@ $(".container").fitVids();
 
 
 // List Styles
-    $(document).on('turbolinks:load', function() {
+    $(document).ready(function() {
         $('#ads-trigger').click(function (e) {
             e.preventDefault();
             if ($(this).hasClass('advanced')) {

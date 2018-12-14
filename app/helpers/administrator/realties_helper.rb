@@ -2,10 +2,10 @@ module Administrator::RealtiesHelper
 
   def realty_status(realty)
     if realty.active
-      icon = 'ti-check'
+      icon = 'fa fa-check'
       color = 'text-success'
     else
-      icon = 'ti-close'
+      icon = 'fa fa-times'
       color = 'text-danger'
     end
 
