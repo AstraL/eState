@@ -12,4 +12,8 @@ module Administrator::RealtiesHelper
     content_tag(:i,'', class: "#{icon} #{color}")
   end
 
+  def realty_deal_badge(realty)
+    content_tag(:span, realty.deal.name, class: "deal-badge #{realty.deal.slug}")
+  end
+
 end

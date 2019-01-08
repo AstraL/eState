@@ -34,6 +34,7 @@ gem 'pg'
 gem 'mini_magick', '~> 4.8'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
+gem 'loaf'
 # gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 

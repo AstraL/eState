@@ -1,0 +1,11 @@
+.deal-badge {
+  @extend .badge;
+  font-weight: 500;
+  font-size: 90%;
+  &.rent {
+    @extend .badge-primary;
+  }
+  &.sell {
+    @extend .badge-info;
+  }
+}

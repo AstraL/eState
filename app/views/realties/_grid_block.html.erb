@@ -1,7 +1,7 @@
 <div class="property-block">
     <%= link_to realty_path(realty), class: 'property-featured-image', style: "background-image: url(#{main_image(realty)});" do %>
         <%= content_tag(:span, (fa_icon "picture-o", text: realty.images.count), class: 'images-count') %>
-        <%= content_tag(:span, t(realty.deal), class: 'badges') %>
+        <%= content_tag(:span, t(realty.deal.name), class: 'badges') %>
     <% end %>
     <div class="property-info">
         <%= content_tag(:h4, (link_to realty.strip_title, realty_path(realty))) %>

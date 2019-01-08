@@ -678,7 +678,11 @@ District.create!([
 User.create!(firstName: "Анна", email: "e_state@ukr.net", password: "estatepass", password_confirmation: "estatepass")
 User.create!(firstName: "Даниил", email: "e-state2@i.ua", password: "estatepass", password_confirmation: "estatepass")
 User.create!(firstName: "Максим", email: "e-state1@i.ua", password: "estatepass", password_confirmation: "estatepass")
-=end
+
 Phone.create!(purpose: 'mobile', number: '+380509118982', user_id: 2)
 Phone.create!(purpose: 'mobile', number: '+380501717770', user_id: 3)
 Phone.create!(purpose: 'mobile', number: '+380674143441', user_id: 4)
+=end
+
+Deal.create(id: 1, name: 'Продажа', slug: 'sell')
+Deal.create(id: 2, name: 'Аренда', slug: 'rent')

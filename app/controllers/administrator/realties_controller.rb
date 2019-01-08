@@ -1,21 +1,22 @@
 class Administrator::RealtiesController < Administrator::BaseController
-		before_action :set_realty, only: [:show, :edit]
+	breadcrumb I18n.t('activerecord.models.realty.other'), :administrator_realties_path, match: :exact
+	before_action :set_realty, only: [:show, :edit]
 
-		def index
-				@realties = Realty.all
-		end
+	def index
+		@realties = Realty.all
+	end
 
-		def show
+	def show
 
-		end
+	end
 
-		def new
+	def new
 
-		end
+	end
 
-		def edit
+	def edit
 
-		end
+	end
 
 		def import
 				get_xml

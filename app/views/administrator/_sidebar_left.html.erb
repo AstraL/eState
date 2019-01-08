@@ -13,10 +13,12 @@
       </div>
       <!-- User profile text-->
       <div class="profile-text">
-        <h5>Markarn Doe</h5>
+        <%= content_tag(:h5, current_user.fullname) %>
         <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><i class="mdi mdi-settings"></i></a>
         <a href="app-email.html" class="" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
-        <a href="pages-login.html" class="" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
+        <%= link_to destroy_user_session_path, method: :delete, data: {toggle: 'tooltip'}, title: t('sessions.logout') do %>
+          <i class="mdi mdi-power"></i>
+        <% end %>
         <div class="dropdown-menu animated flipInY">
           <!-- text-->
           <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
@@ -31,7 +33,9 @@
           <!-- text-->
           <div class="dropdown-divider"></div>
           <!-- text-->
-          <a href="login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+          <%= link_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do %>
+            <i class="fa fa-power-off"></i> <%= t('sessions.logout') %>
+          <% end %>
           <!-- text-->
         </div>
       </div>
@@ -45,7 +49,7 @@
         <li>
           <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
             <i class="mdi mdi-gauge"></i>
-            <span class="hide-menu">Объявления <span class="label label-rouded label-themecolor pull-right">4</span></span>
+            <span class="hide-menu">Объявления <span class="label label-rouded label-themecolor pull-right"><%= Realty.all.count %></span></span>
           </a>
           <ul aria-expanded="false" class="collapse">
             <li>

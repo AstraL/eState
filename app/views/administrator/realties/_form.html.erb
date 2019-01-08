@@ -1,0 +1,109 @@
+<%= simple_form_for [:administrator, @realty] do |f| %>
+  <%= f.input :title %>
+  <div class="row">
+    <div class="col-5">
+      <hr>
+      <div class="row">
+        <div class="col">
+          <%= f.input :room_count %>
+        </div>
+        <div class="col">
+          <%= f.input :price_value %>
+        </div>
+        <div class="col">
+          <%= f.input :price_currency %>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col">
+          <%= f.input :area_living %>
+        </div>
+        <div class="col">
+          <%= f.input :area_kitchen %>
+        </div>
+        <div class="col">
+          <%= f.input :area_total %>
+        </div>
+      </div>
+      <hr>
+      <div class="row align-items-center">
+        <div class="col-5">
+          <%= f.input :is_new_building %>
+        </div>
+        <div class="col-7">
+          <%= f.input :total_floors, wrapper: :horizontal_form %>
+        </div>
+      </div>
+    </div>
+    <div class="col-7">
+      <div class="row">
+        <div class="col">
+          <%= f.input :slug do %>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">/</div>
+              </div>
+              <%= f.input_field :slug, class: 'form-control' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= f.association :user, collection: User.all, label_method: :fullname %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= f.input :realty_type_id %>
+        </div>
+        <div class="col">
+          <%= f.association :deal, collection: Deal.all %>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col">
+          <%= f.input :region_id %>
+        </div>
+        <div class="col">
+          <%= f.input :city_id %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= f.input :district_id %>
+        </div>
+        <div class="col">
+          <%= f.input :street %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= f.input :house_num %>
+        </div>
+        <div class="col">
+          <%= f.input :floor %>
+        </div>
+        <div class="col">
+          <%= f.input :apartment %>
+        </div>
+      </div>
+      <hr>
+      <%= f.input :description, input_html: {rows: 6} %>
+      <hr>
+      <%= content_tag(:h4, 'Дополнительные параметры') %>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="btn-group btn-group-lg pull-right">
+        <%= f.button :button, class: 'btn-success' %>
+        <%= link_to 'Удалить', '#', class: 'btn btn-danger' %>
+        <%= link_to 'Отменить', :back, class: 'btn btn-secondary' %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -4,6 +4,9 @@ ru:
       user:
         one: 'Пользователь'
         other: 'Пользователи'
+      realty:
+        one: 'Объявление'
+        other: 'Объявления'
       feedback:
         one: 'Сообщение'
         other: 'Сообщения'
@@ -72,9 +75,7 @@ ru:
           apartment: 'Квартира'
           house: 'Дом'
           office: 'Офис'
-        deal:
-          rent: 'Аренда'
-          buy: 'Продажа'
+        deal: 'Тип сделки'
         description: 'Описание'
         agent: 'Агент'
         address: 'Адрес'
@@ -84,9 +85,7 @@ ru:
         house_num: '№ дома'
         apartment: '№ квартиры'
         floor: 'Этаж'
-        area_total:
-          long: 'Общая площадь'
-          short: 'Площадь'
+        area_total: 'Общая площадь'
         area_living: 'Жилая площадь'
         area_kitchen: 'Площадь кухни'
         room_count:

@@ -4,22 +4,14 @@ class Realty < ApplicationRecord
 		# realty_type: 1 - Квартира, 2 - Дом, 10 - Офис
 		# deal: 1 - Продажа, 2 - Аренда
 		belongs_to :user
+		belongs_to :deal
 		has_many :images, dependent: :destroy
+
+		default_scope { order(created_at: :desc) }
 
 		friendly_id :title, use: :slugged
 
 		self.per_page = 18
-
-		def deal
-				case self.deal_id
-						when 1
-								'activerecord.attributes.realty.deal.buy'
-						when 2
-								'activerecord.attributes.realty.deal.rent'
-						else
-								'activerecord.attributes.realty.empty_field'
-				end
-		end
 
 		def city
 				c = City.find_by_city_id(self.city_id)

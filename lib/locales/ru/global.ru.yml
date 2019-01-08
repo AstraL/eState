@@ -49,3 +49,8 @@ ru:
       max: 'До'
   footer:
     copyright: 'Все права защищены.'
+  sessions:
+    logout: 'Выйти'
+  loaf:
+    breadcrumbs:
+      home: 'Главная'
