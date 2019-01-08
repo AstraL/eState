@@ -51,4 +51,5 @@ group :development do
   gem 'capistrano3-puma',   require: false
   gem "capistrano-db-tasks", "0.4", require: false
   gem 'capistrano-yarn', require: false
+  gem 'capistrano-local-precompile', '~> 1.1.3', require: false
 end

@@ -1,13 +1,14 @@
 require 'capistrano/setup'
 require 'capistrano/deploy'
-
-require "capistrano/rails/assets"
+require 'capistrano/scm/git'
+install_plugin Capistrano::SCM::Git
 require "capistrano/rails/migrations"
 require 'capistrano/bundler'
 require 'capistrano/rvm'
 require 'capistrano/puma'
 require 'capistrano/yarn'
 require 'capistrano-db-tasks'
+require 'capistrano/local_precompile'
 install_plugin Capistrano::Puma
 # Load the SCM plugin appropriate to your project:
 #
@@ -17,8 +18,6 @@ install_plugin Capistrano::Puma
 # require "capistrano/scm/svn"
 # install_plugin Capistrano::SCM::Svn
 # or
-require "capistrano/scm/git"
-install_plugin Capistrano::SCM::Git
 
 # Include tasks from other gems included in your Gemfile
 #
