@@ -1,5 +1,5 @@
 # Change these
-server '95.46.44.97', port: 22, roles: [:web, :app, :db], primary: true
+server '95.46.44.97', port: 22, roles: %i[web app db], user: 'deploy', primary: true
 
 set :repo_url,        'git@lab.quatrohost.pro:astral/eState.git'
 set :branch,          'master'
@@ -33,7 +33,7 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 
 ## Linked Files & Directories (Default None):
 set :linked_files, %w{config/database.yml config/master.key}
-set :linked_dirs,  %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads storage node_modules}
+set :linked_dirs,  %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/assets public/packs public/system public/uploads storage node_modules}
 set :db_dump_dir, "./db"
 
 namespace :puma do
@@ -96,7 +96,6 @@ namespace :deploy do
 		end
 
 		before :starting,     :check_revision
-		after  :finishing,    :compile_assets
 		after  :finishing,    :cleanup
 		#after  :finishing,    :restart
 end

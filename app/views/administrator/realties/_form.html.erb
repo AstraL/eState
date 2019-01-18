@@ -1,5 +1,15 @@
 <%= simple_form_for [:administrator, @realty] do |f| %>
-  <%= f.input :title %>
+  <div class="row align-items-center">
+    <div class="col-6">
+      <%= f.input :title %>
+    </div>
+    <div class="col-2">
+      <%= f.input :active %>
+    </div>
+    <div class="col-4">
+      <%= f.input :commission %>
+    </div>
+  </div>
   <div class="row">
     <div class="col-5">
       <hr>
@@ -56,24 +66,24 @@
       </div>
       <div class="row">
         <div class="col">
-          <%= f.input :realty_type_id %>
+          <%= f.association :realty_type, collection: RealtyType.all, include_blank: false %>
         </div>
         <div class="col">
-          <%= f.association :deal, collection: Deal.all %>
+          <%= f.association :deal, collection: Deal.all, include_blank: false %>
         </div>
       </div>
       <hr>
       <div class="row">
         <div class="col">
-          <%= f.input :region_id %>
+          <%= f.association :region, collection: Region.all, include_blank: false %>
         </div>
         <div class="col">
-          <%= f.input :city_id %>
+          <%= f.association :city, collection: City.all, include_blank: false %>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <%= f.input :district_id %>
+          <%= f.association :district, collection: District.where(city_id: 10, parent_district_id: nil), as: :grouped_select, group_method: :micro_districts, include_blank: false %>
         </div>
         <div class="col">
           <%= f.input :street %>
@@ -94,6 +104,70 @@
       <%= f.input :description, input_html: {rows: 6} %>
       <hr>
       <%= content_tag(:h4, 'Дополнительные параметры') %>
+      <div class="row align-items-center">
+        <div class="col-2">
+          <%= f.input :gas %>
+        </div>
+
+        <div class="col-3">
+          <%= f.input :exclusive %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <%= f.input :bedroom_count %>
+        </div>
+        <div class="col-4">
+          <%= f.input :ceiling_height %>
+        </div>
+        <div class="col-4">
+          <%= f.input :wall_material %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <%= f.input :renovation %>
+        </div>
+        <div class="col-4">
+          <%= f.input :bathroom_count %>
+        </div>
+        <div class="col-4">
+          <%= f.input :planing %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <%= f.input :realty_class %>
+        </div>
+        <div class="col-4">
+          <%= f.input :room_schema %>
+        </div>
+        <div class="col-4">
+          <%= f.input :year %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <%= f.input :balcony_count %>
+        </div>
+        <div class="col-4">
+          <%= f.input :windows %>
+        </div>
+        <div class="col-4">
+          <%= f.input :ownership %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <%= f.input :ceiling_material %>
+        </div>
+        <div class="col-4">
+          <%= f.input :entrance %>
+        </div>
+        <div class="col-4">
+          <%= f.input :plumbing %>
+        </div>
+      </div>
     </div>
 
   </div>

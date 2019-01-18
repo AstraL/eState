@@ -682,7 +682,13 @@ User.create!(firstName: "Максим", email: "e-state1@i.ua", password: "estat
 Phone.create!(purpose: 'mobile', number: '+380509118982', user_id: 2)
 Phone.create!(purpose: 'mobile', number: '+380501717770', user_id: 3)
 Phone.create!(purpose: 'mobile', number: '+380674143441', user_id: 4)
-=end
+
 
 Deal.create(id: 1, name: 'Продажа', slug: 'sell')
 Deal.create(id: 2, name: 'Аренда', slug: 'rent')
+
+=end
+
+RealtyType.create(id: 1, name: 'Квартира')
+RealtyType.create(id: 2, name: 'Дом')
+RealtyType.create(id: 10, name: 'Офис')

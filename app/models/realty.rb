@@ -5,6 +5,11 @@ class Realty < ApplicationRecord
 		# deal: 1 - Продажа, 2 - Аренда
 		belongs_to :user
 		belongs_to :deal
+		belongs_to :realty_type
+
+		belongs_to :region
+		belongs_to :city
+		belongs_to :district
 		has_many :images, dependent: :destroy
 
 		default_scope { order(created_at: :desc) }

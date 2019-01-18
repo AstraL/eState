@@ -57,6 +57,12 @@
             </li>
           </ul>
         </li>
+        <li>
+          <%= link_to administrator_users_path, class: 'waves-effect waves-dark' do %>
+            <i class="mdi mdi-gauge"></i>
+            <%= content_tag(:span, t('activerecord.models.user.other'), class: 'hide-menu') %>
+          <% end %>
+        </li>
       </ul>
     </nav>
     <!-- End Sidebar navigation -->

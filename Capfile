@@ -6,10 +6,11 @@ require "capistrano/rails/migrations"
 require 'capistrano/bundler'
 require 'capistrano/rvm'
 require 'capistrano/puma'
+install_plugin Capistrano::Puma
 require 'capistrano/yarn'
 require 'capistrano-db-tasks'
 require 'capistrano/local_precompile'
-install_plugin Capistrano::Puma
+
 # Load the SCM plugin appropriate to your project:
 #
 # require "capistrano/scm/hg"

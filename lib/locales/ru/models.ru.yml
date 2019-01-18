@@ -71,10 +71,7 @@ ru:
         body: 'Сообщение'
       realty:
         empty_field: 'Не указано'
-        realty_type:
-          apartment: 'Квартира'
-          house: 'Дом'
-          office: 'Офис'
+        realty_type: 'Тип объекта'
         deal: 'Тип сделки'
         description: 'Описание'
         agent: 'Агент'
