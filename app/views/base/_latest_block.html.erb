@@ -1,13 +1,11 @@
-<div class="property-columns col-md-12" id="<%= block_id %>">
-    <div class="row">
-      <div class="col-md-12">
+<div class="property-columns clearfix" id="<%= block_id %>">
+    <div class="col-md-12">
         <div class="block-heading">
-          <h4><span class="heading-icon"><%= fa_icon "leaf" %></span><%= "Свежие в разделе '#{deal_name}'" %></h4>
-          <%= link_to (fa_icon "long-arrow-right", text: t('home.view_more'), right: true), realties_path(deal_id: deal_id), class: 'btn btn-primary btn-sm pull-right' %>
+            <h4><span class="heading-icon"><%= fa_icon "leaf" %></span><%= "Свежие в разделе '#{deal_name}'" %></h4>
+            <%= link_to (fa_icon "long-arrow-right", text: t('home.view_more'), right: true), realties_path(deal_id: deal_id), class: 'btn btn-primary btn-sm pull-right' %>
         </div>
-      </div>
     </div>
-    <ul class="row">
+    <ul>
         <% realties.each do |r| %>
             <li class="col-md-4 col-sm-6 type-rent">
                 <%= render partial: 'realties/grid_block', locals: {realty: r} %>
