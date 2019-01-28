@@ -20,8 +20,8 @@
                         <% end %>
                         <div class="date"><%= fa_icon "calendar-o", text: creation_date(@realty) %></div>
                         <div class="property-amenities clearfix">
-                            <span class="area"><%= content_tag(:strong, t(@realty.deal)) %></span>
-                            <span class="baths"><%= content_tag(:strong, t(@realty.realty_type)) %></span>
+                            <span class="area"><%= content_tag(:strong, @realty.deal.name) %></span>
+                            <span class="baths"><%= content_tag(:strong, @realty.realty_type.name) %></span>
                             <span class="area"><%= content_tag(:strong, area_all(@realty)) %><%= "м<sup>2</sup>".html_safe %></span>
                             <span class="beds"><%= content_tag(:strong, @realty.floor) %><%= t('activerecord.attributes.realty.floor') %></span>
                             <span class="parking"><%= content_tag(:strong, @realty.room_count) %><%= room_count_label(@realty) %></span>

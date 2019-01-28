@@ -36,17 +36,4 @@ class Realty < ApplicationRecord
 		def strip_title
 				self.title.sub('Аренда /', '').sub('Продажа /', '').sub(', г. Киев','').sub('Квартира /', '')
 		end
-
-		def realty_type
-				case self.realty_type_id
-						when 1
-								'activerecord.attributes.realty.realty_type.apartment'
-						when 2
-								'activerecord.attributes.realty.realty_type.house'
-						when 10
-								'activerecord.attributes.realty.realty_type.office'
-						else
-								'activerecord.attributes.realty.empty_field'
-				end
-		end
 end
