@@ -11,7 +11,7 @@ class Administrator::RealtiesController < Administrator::BaseController
 	end
 
 	def new
-
+		@realty = Realty.new
 	end
 
 	def edit
