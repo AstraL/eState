@@ -1,14 +1,19 @@
 AllCops:
+  TargetRubyVersion: 2.6
   Exclude:
     - 'bin/*'
-    - 'spec/spec_helper.rb'
+    - 'db/schema.rb'
 Rails:
   Enabled: true
 Metrics/LineLength:
-  Max: 120
+  Max: 130
 Style/Documentation:
   Enabled: false
 Metrics/MethodLength:
   Max: 30
 Metrics/BlockLength:
   ExcludedMethods: ['describe', 'context']
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  EnforcedStyle: nested

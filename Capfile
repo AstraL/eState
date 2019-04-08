@@ -7,9 +7,11 @@ require 'capistrano/bundler'
 require 'capistrano/rvm'
 require 'capistrano/puma'
 install_plugin Capistrano::Puma
-require 'capistrano/yarn'
+install_plugin Capistrano::Puma::Nginx
+# require 'capistrano/yarn'
 require 'capistrano-db-tasks'
 require 'capistrano/local_precompile'
+require 'capistrano/upload-config'
 
 # Load the SCM plugin appropriate to your project:
 #

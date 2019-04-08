@@ -22,6 +22,7 @@ config/initializers/secret_token.rb
 # Only include if you have production secrets in this file, which is no longer a Rails default
 config/secrets.yml
 config/database.yml
+config/database.*.yml
 config/master.key
 
 # dotenv
@@ -49,7 +50,7 @@ config/master.key
 .idea
 node_modules
 # Ignore uploaded files in development
-/storage/*
+storage/
 !/storage/.keep
 /public/assets
 /public/packs
