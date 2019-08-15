@@ -1,3 +1,4 @@
+require 'open-uri'
 class Administrator::RealtiesController < Administrator::BaseController
 	breadcrumb I18n.t('activerecord.models.realty.other'), :administrator_realties_path, match: :exact
 	before_action :set_realty, only: [:show, :edit]
@@ -54,7 +55,7 @@ class Administrator::RealtiesController < Administrator::BaseController
 		end
 
 		def get_xml
-				xml = HTTParty.get("http://localhost:3000/estate_db.xml")
+				xml = HTTParty.get("http://crm-e-state.realtsoft.net/feed/xml?id=1")
 				@realties_xml = Nokogiri::XML.parse(xml.to_s)
 		end
 
@@ -63,13 +64,13 @@ class Administrator::RealtiesController < Administrator::BaseController
 						crm_id: item.at_xpath("article").text.to_i,
 						is_new_building: item.at_xpath("is_new_building").text.to_i,
 						title: item.at_xpath("title").text,
-						description: item.at_xpath("description").text,
-						category_id: item.at_xpath("category")["value"].to_i,
+						description: item.at_xpath("description").nil? ? nil : item.at_xpath("description").text,
+						realty_category_id: item.at_xpath("category")["value"].to_i,
 						realty_type_id: item.at_xpath("realty_type")["value"].to_i,
 						deal_id: item.at_xpath("deal")["value"].to_i,
-						region_id: get_region(item.at_xpath("location/region").text),
+						region_id: item.at_xpath("location/region").nil? ? nil : get_region(item.at_xpath("location/region").text),
 						city_id: get_city(item.at_xpath("location/city").text),
-						district_id: get_district(item.at_xpath("location/district").text),
+						district_id: item.at_xpath("location/district").nil? ? nil : get_district(item.at_xpath("location/district").text),
 						street: item.at_xpath("location/street").text,
 						house_num: item.at_xpath("location/house_num").nil? ? nil : item.at_xpath("location/house_num").text,
 						map_lat: item.at_xpath("location/map_lat").nil? ? 50.4501: item.at_xpath("location/map_lat").text.to_f,
@@ -90,8 +91,10 @@ class Administrator::RealtiesController < Administrator::BaseController
 				)
 
 				images = item.xpath("images//image_url")
-				images.each do |img|
+				images.each_with_index do |img, i|
 						create_images(img.text, r.id)
+						#file = open(img.text)
+						#r.photos.attach(io: file, filename: "realty_#{r.id}_#{i}.jpg")
 				end
 
 				properties = item.xpath("properties//property")
@@ -106,7 +109,7 @@ class Administrator::RealtiesController < Administrator::BaseController
 						is_new_building: item.at_xpath("is_new_building").text.to_i,
 						title: item.at_xpath("title").text,
 						description: item.at_xpath("description").text,
-						category_id: item.at_xpath("category")["value"].to_i,
+						realty_category_id: item.at_xpath("category")["value"].to_i,
 						realty_type_id: item.at_xpath("realty_type")["value"].to_i,
 						deal_id: item.at_xpath("deal")["value"].to_i,
 						region_id: get_region(item.at_xpath("location/region").text),
@@ -153,11 +156,15 @@ class Administrator::RealtiesController < Administrator::BaseController
 				region_strip = region_name.sub(' область', '')
 
 				region = Region.find_by_name(region_strip)
-				region.region_id
+				if region
+					region.id
+				else
+					nil
+				end
 		end
 
 		def get_city(city_name)
-				city = City.find_by_name(city_name)
+				city = City.find_by(name: city_name)
 
 				if city
 						city.city_id

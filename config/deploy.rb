@@ -1,6 +1,6 @@
 set :repo_url,        'git@github.com:AstraL/eState.git'
 set :user,            'deploy'
-set :application, 		"#{fetch(:application)}_#{fetch(:stage)}"
+set :application, 		"estate_#{fetch(:stage)}"
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
@@ -30,41 +30,49 @@ set :config_example_suffix, '.example'
 
 set :nginx_sites_available_path, "/etc/nginx/sites-available"
 set :nginx_sites_enabled_path, "/etc/nginx/sites-enabled"
-set :nginx_config_name, "#{fetch(:application)}_#{fetch(:stage)}"
 set :nginx_flags, 'fail_timeout=0'
 set :nginx_http_flags, fetch(:nginx_flags)
 set :nginx_socket_flags, fetch(:nginx_flags)
-set :nginx_ssl_certificate, "/etc/letsencrypt/live/#{fetch(:nginx_server_name)}/fullchain.pem"
-set :nginx_ssl_certificate_key, "/etc/letsencrypt/live/#{fetch(:nginx_server_name)}/privkey.pem"
 set :nginx_use_ssl, true
 
 namespace :config do
 	desc "copy config/master.key to shared/config"
 	task :key do
-		on roles(fetch(:setup_roles)) do
+		on roles(:app) do
 			sudo :mkdir, "-pv", shared_path
 			upload! "config/master.key", "#{shared_path}/config/master.key"
 			sudo :chmod, "600", "#{shared_path}/config/master.key"
 		end
   end
-
-	before "deploy:symlink:linked_files", "config:key"
 end
 
 namespace :deploy do
 		desc "Make sure local git is in sync with remote."
 		task :check_revision do
 				on roles(:app) do
-						unless `git rev-parse HEAD` == "git rev-parse origin/#{fetch(:branch)}"
+						unless `git rev-parse HEAD` == `git rev-parse origin/master`
 								puts "WARNING: HEAD is not the same as origin/#{fetch(:branch)}"
 								puts "Run `git push` to sync changes."
 								exit
 						end
 				end
-		end
+    end
+
+    desc "Create db"
+    task create: [:set_rails_env] do
+			on fetch(:migration_servers) do
+				within release_path do
+					with rails_env: fetch(:rails_env) do
+						execute :rake, 'db:create'
+					end
+        end
+      end
+    end
 
 		before :starting,     :check_revision
 		before 'deploy:check:linked_files', 'config:push'
+		before 'deploy:check:linked_files', "config:key"
+		before 'deploy:migrate', 'deploy:create'
 		after  :finishing,    'puma:nginx_config'
 		after  :finishing,    :cleanup
 end

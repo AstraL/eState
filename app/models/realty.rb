@@ -1,15 +1,18 @@
 class Realty < ApplicationRecord
 		extend FriendlyId
-		# Category: 1 - Жилая недвижимость, 2 - Коммерческая
+		# Category: 1 - Жилая недвижимость, 2 - Коммерческая, 3- Земельные участки
 		# realty_type: 1 - Квартира, 2 - Дом, 10 - Офис
 		# deal: 1 - Продажа, 2 - Аренда
 		belongs_to :user
 		belongs_to :deal
 		belongs_to :realty_type
+		belongs_to :realty_category, :class_name => 'Realty::Category'
 
-		belongs_to :region
+		belongs_to :region, optional: true
 		belongs_to :city
-		belongs_to :district
+		belongs_to :district, optional: true
+		has_many_attached :photos
+
 		has_many :images, dependent: :destroy
 
 		default_scope { order(created_at: :desc) }

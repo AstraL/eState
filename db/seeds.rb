@@ -687,8 +687,12 @@ Phone.create!(purpose: 'mobile', number: '+380674143441', user_id: 4)
 Deal.create(id: 1, name: 'Продажа', slug: 'sell')
 Deal.create(id: 2, name: 'Аренда', slug: 'rent')
 
-=end
+
 
 RealtyType.create(id: 1, name: 'Квартира')
 RealtyType.create(id: 2, name: 'Дом')
 RealtyType.create(id: 10, name: 'Офис')
+=end
+Realty::Category.create(id: 1, title: 'Жилая недвижимость')
+Realty::Category.create(id: 2, title: 'Коммерческая недвижимость')
+Realty::Category.create(id: 3, title: 'Земельные участки')

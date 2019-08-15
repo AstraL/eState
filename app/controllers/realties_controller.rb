@@ -2,7 +2,7 @@ class RealtiesController < BaseController
 		before_action :search_init, only: [:index, :search, :calculator]
 
 		def index
-				@realties = @q.result.order(crm_created_at: :desc).paginate(page: params[:page])
+				@realties = @q.result.paginate(page: params[:page]).order(crm_created_at: :desc)
 				@page_title = 'Объявления'
 		end
 

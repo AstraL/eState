@@ -22,7 +22,11 @@ Rails.application.routes.draw do
   namespace :administrator do
     root to: 'base#index'
 
-    resources :realties
+    resources :realties do
+      collection do
+        get 'import'
+      end
+    end
     resources :users
   end
 end

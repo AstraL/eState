@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_18_212753) do
+ActiveRecord::Schema.define(version: 2019_04_22_091746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,7 +135,7 @@ ActiveRecord::Schema.define(version: 2019_01_18_212753) do
     t.boolean "is_new_building"
     t.string "title"
     t.text "description"
-    t.integer "category_id"
+    t.integer "realty_category_id"
     t.integer "realty_type_id"
     t.integer "deal_id"
     t.integer "region_id"
@@ -182,6 +182,13 @@ ActiveRecord::Schema.define(version: 2019_01_18_212753) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.string "slug"
+  end
+
+  create_table "realty_categories", force: :cascade do |t|
+    t.string "title"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "realty_types", force: :cascade do |t|

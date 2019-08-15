@@ -1,10 +1,10 @@
 <div class="property-grid">
-    <ul class="grid-holder">
+    <ul class="row grid-holder">
         <% realties.each do |realty| %>
-            <li class="grid-item type-rent" data-appear-animation>
+            <li class="col-md-12 col-lg-4 grid-item type-rent" data-appear-animation>
                 <%= render partial: 'realties/grid_block', locals: {realty: realty} %>
             </li>
         <% end %>
     </ul>
 </div>
-<%#= will_paginate(realties, :renderer => WillPaginate::ActionView::BootstrapLinkRenderer, :previous_label => (fa_icon "long-arrow-left"), :next_label => (fa_icon "long-arrow-right")) %>
+<%= will_paginate(realties, :renderer => WillPaginate::ActionView::BootstrapLinkRenderer, :previous_label => (fa_icon "long-arrow-left"), :next_label => (fa_icon "long-arrow-right")) %>
