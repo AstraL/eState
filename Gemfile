@@ -12,7 +12,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'mini_racer', platforms: :ruby
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder', '~> 2.9'
 gem 'httparty'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
