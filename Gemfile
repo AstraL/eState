@@ -31,7 +31,7 @@ gem 'seed_dump'
 gem 'meta-tags'
 gem 'jssocials-rails', github: 'luciuschoi/jssocials-rails'
 gem 'pg'
-gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.9'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 gem 'loaf'
